@@ -468,3 +468,37 @@ header p {
     opacity: 1 !important; 
     transition: none !important;
 }
+
+/* --- AJUSTES PARA CELULAR --- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem; /* Diminuído de 3rem para 2.2rem */
+        letter-spacing: 2px;
+    }
+
+    header p {
+        font-size: 0.75rem; /* Frase menor para não ocupar muitas linhas */
+        margin-bottom: 2rem;
+    }
+
+    .container {
+        width: 95%; /* Usa quase toda a largura lateral */
+        padding: 0 15px;
+    }
+
+    .links {
+        gap: 12px; /* Botões mais próximos para caberem mais na tela */
+        width: 100%;
+    }
+
+    .btn {
+        padding: 12px 18px; /* Botões menos "gordos" */
+        font-size: 0.8rem;   /* Texto do botão menor */
+    }
+
+    /* Rodapé discreto no celular */
+    .footer-fixed p {
+        font-size: 0.6rem;
+        bottom: 10px;
+    }
+}
