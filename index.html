@@ -1,0 +1,116 @@
+<!--
+⚠️ AVISO LEGAL — PROPRIEDADE INTELECTUAL ⚠️
+
+Este código-fonte é protegido pela Lei nº 9.610/1998 (Lei de Direitos Autorais – Brasil)
+e por tratados internacionais de copyright.
+
+AUTORIA E TITULARIDADE:
+- Programação, Arquitetura e Código: Erick Matias / Ergo
+- Direitos Comerciais e Institucionais:
+  • Grand Divina Eventos
+  • Divina Picanha Comércio de Alimentos LTDA
+
+LICENCIAMENTO:
+Este projeto está hospedado no GitHub sob licença MIT MODIFICADA,
+com CLÁUSULA OBRIGATÓRIA DE ATRIBUIÇÃO E VEDAÇÃO DE USO COMERCIAL
+SEM AUTORIZAÇÃO EXPRESSA E POR ESCRITO DOS TITULARES.
+
+É EXPRESSAMENTE PROIBIDO:
+- Copiar, clonar ou espelhar este site ou seu código
+- Utilizar o layout, estrutura, identidade ou lógica
+- Redistribuir total ou parcialmente sem autorização
+
+O uso indevido poderá resultar em:
+- Notificação extrajudicial
+- Remoção por DMCA (GitHub / provedores)
+- Ação judicial por violação de direitos autorais
+
+Se você está lendo este comentário e não é um dos titulares,
+você NÃO possui autorização de uso.
+
+ERICK MATIAS © 2026 — Todos os direitos reservados.
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Divina</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Divina</title>
+    <link rel="icon" type="image/png" href="assets/logo-granddivina.jpg">
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="background-slider">
+    <img src="assets/foto1.jpg" class="active" alt="Background 1">
+    <img src="assets/foto2.jpg" alt="Background 2">
+    <img src="assets/foto3.jpg" alt="Background 3">
+    <img src="assets/foto4.jpg" alt="Background 4">
+        <div class="overlay"></div>
+</div>
+
+    <div class="container">
+        <header class="fade-in-up">
+            <h1 style="white-space: nowrap;">GRAND DIVINA</h1>
+            <p>Elegância e Exclusividade</p>
+        </header>
+
+        <nav class="links fade-in-up delay-1 align-right">
+    <div onclick="openGallery('espacos')" class="btn cursor-pointer">
+        <span>Nossos Espaços</span>
+        <div class="icon">➜</div>
+    </div>
+
+    <div onclick="openGallery('corporativo')" class="btn cursor-pointer">
+        <span>Eventos Corporativos</span>
+        <div class="icon">➜</div>
+    </div>
+
+    <div onclick="openGallery('social')" class="btn cursor-pointer">
+        <span>Eventos Sociais</span>
+        <div class="icon">➜</div>
+    </div>
+    
+</nav>
+
+</div> <div id="gallery-modal" class="modal">
+    <span class="close-btn" onclick="closeGallery()">&times;</span>
+    
+    <div class="modal-content">
+        <button class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+        
+        <div class="gallery-slide">
+            <div class="slide-image">
+                <img id="modal-img" src="" alt="Imagem do Evento">
+            </div>
+            <div class="slide-info">
+                <h2 id="modal-title">Título</h2>
+                <p id="modal-desc">Descrição</p>
+                <a id="modal-cta" href="#" target="_blank" class="cta-btn">
+                    <span class="whatsapp-icon">Isso aí, ícone do Whats aqui</span> 
+                    Fale Conosco
+                </a>
+            </div>
+        </div>
+
+        <button class="nav-btn next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+</div>
+
+       <footer class="footer-fixed">
+    <a href="https://www.instagram.com/granddivina_eventos/" target="_blank" class="footer-discreto">
+        <p>© 2026 GRAND DIVINA EVENTOS - Todos os direitos reservados</p>
+    </a>
+    </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

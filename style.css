@@ -1,0 +1,434 @@
+/* Variáveis de Cores */
+:root {
+    --color-black: #0a0a0a;
+    --color-wine: #5e0b15;    /* Tom de vinho profundo */
+    --color-gold: #d4af37;    /* Dourado clássico */
+    --color-white: #ffffff;
+    --color-gold-hover: #f1d06e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-white);
+    height: 100vh;
+    overflow: hidden; /* Evita rolagem desnecessária */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-black);
+}
+
+/* --- Configuração do Background Slider --- */
+.background-slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.background-slider img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out; /* Suavidade na troca */
+}
+
+.background-slider img.active {
+    opacity: 1;
+}
+
+/* Overlay escuro para garantir leitura */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(94, 11, 21, 0.6)); /* Degradê Preto para Vinho */
+}
+
+/* --- Conteúdo Principal --- */
+.container {
+    text-align: center;
+    width: 95%;
+    max-width: 500px; /* Largura ideal para não apertar o título */
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center;     /* Centraliza horizontalmente */
+    min-height: 100vh;       /* Ocupa a altura toda da tela */
+    margin: 0 auto;
+}
+
+header h1 {
+    font-family: 'Cinzel', serif; /* Fonte estilo Luxo */
+    font-size: 3rem;
+    color: var(--color-gold);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+header p {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    color: #ddd;
+}
+
+/* --- Botões --- */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento elegante entre botões */
+    width: 100%;
+    max-width: 380px; /* Largura dos botões igual à da referência */
+}
+
+.btn {
+    text-decoration: none;
+    color: var(--color-white);
+    border: 1px solid var(--color-gold);
+    padding: 15px 20px;
+    border-radius: 2px; /* Bordas mais retas para parecer mais luxuoso */
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center; /* Centraliza o texto dentro do botão */
+    align-items: center;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Efeito Hover (Mouse em cima) */
+.btn:hover {
+    background: var(--color-wine);
+    border-color: var(--color-gold-hover);
+    transform: translateY(-3px); /* Levanta levemente */
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2); /* Sombra dourada */
+}
+
+.btn span {
+    z-index: 2;
+}
+
+.btn .icon {
+    position: absolute;
+    right: 20px;
+    color: var(--color-gold);
+    font-size: 0.8rem;
+}
+
+
+/* Remove qualquer estilo padrão de link (cor azul, sublinhado) */
+.footer-discreto {
+    text-decoration: none;
+    color: inherit; /* Herda a cor cinza que você já definiu no footer */
+    cursor: default; /* Mantém a seta normal em vez da mãozinha, se preferir */
+}
+
+.footer-fixed {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+}
+
+.footer-fixed p {
+    margin: 0;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5); /* Sua cor original */
+    letter-spacing: 1px;
+}
+
+/* --- Animações de Entrada --- */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Atrasos para criar efeito cascata */
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- ESTILO DA GALERIA MODAL (NOVO) --- */
+.cursor-pointer { cursor: pointer; }
+
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.95); /* Fundo quase preto total */
+    backdrop-filter: blur(10px); /* Desfoque forte no fundo */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+/* Container do Conteúdo */
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    height: 80vh; /* Altura fixa para manter o design */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    background: #000;
+}
+
+/* O Slide (Imagem + Texto) */
+.gallery-slide {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Lado Esquerdo: Imagem */
+.slide-image {
+    flex: 1.5; /* Ocupa mais espaço */
+    position: relative;
+}
+
+.slide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Lado Direito: Texto */
+.slide-info {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a0508, #000);
+    border-left: 2px solid var(--color-wine);
+}
+
+.slide-info h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--color-gold);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.slide-info p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+/* Botão de WhatsApp dentro do Slide */
+.cta-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: var(--color-wine);
+    color: white;
+    text-decoration: none;
+    border: 1px solid var(--color-gold);
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    width: fit-content;
+}
+
+.cta-btn:hover {
+    background: var(--color-gold);
+    color: black;
+}
+
+/* Botões de Navegação (Setas) */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: var(--color-gold);
+    font-size: 2rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.nav-btn:hover { background: var(--color-wine); }
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Botão Fechar (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+/* Responsividade do Modal (Celular) */
+@media (max-width: 768px) {
+    .modal-content { height: 90vh; flex-direction: column; border: none; background: transparent;}
+    .gallery-slide { flex-direction: column; border: 1px solid var(--color-gold); }
+    .slide-image { flex: 1; height: 50%; }
+    .slide-info { flex: 1; padding: 20px; justify-content: flex-start; overflow-y: auto; }
+    .nav-btn { font-size: 1.5rem; padding: 5px 10px; }
+    .prev { left: -10px; }
+    .next { right: -10px; }
+    .close-btn { top: 10px; right: 20px; font-size: 30px; }
+}
+
+
+/* Garante que o container da imagem/vídeo limpe o conteúdo anterior */
+.slide-image {
+    flex: 1.5;
+    position: relative;
+    background: #000;
+    overflow: hidden;
+    display: flex; /* Centraliza o conteúdo */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Regra para Imagens E Vídeos dentro da galeria */
+.slide-image img, 
+.slide-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz o vídeo preencher todo o espaço sem distorcer */
+    display: block;
+}
+
+/* Animação da luz */
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right, 
+        transparent, 
+        rgba(212, 175, 55, 0.4), 
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: shine 10s infinite ease-in-out; /* Aumentei para 4s para ser mais sutil */
+}
+
+/* --- O SEGREDO PARA NÃO PISCAREM JUNTOS --- */
+/* Cada botão terá um atraso diferente no início da animação */
+
+.links .btn:nth-child(1)::after { animation-delay: 0s; }
+.links .btn:nth-child(2)::after { animation-delay: 0s; }
+.links .btn:nth-child(3)::after { animation-delay: 0s; }
+
+/* 1. Definimos a animação da 'mancha' girando */
+@keyframes liquidGlow {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 2. Configuramos o botão da galeria */
+.cta-btn {
+    position: relative;
+    overflow: hidden; /* Garante que a mancha não saia do botão */
+    background: var(--color-wine); /* Cor de fundo sólida */
+    z-index: 1;
+    border: 1px solid var(--color-gold);
+    transition: all 0.3s ease;
+}
+
+/* 3. Criamos a mancha de luz neon */
+.cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%; /* Maior que o botão para a luz 'sobrar' nas bordas */
+    height: 300%;
+    background: radial-gradient(
+        circle, 
+        rgba(212, 175, 55, 0.8) 0%, 
+        transparent 50%
+    );
+    animation: liquidGlow 4s linear infinite;
+    z-index: -1; /* Fica atrás do texto do botão */
+}
+
+/* 4. Overlay interno para o texto não sumir */
+.cta-btn::after {
+    content: '';
+    position: absolute;
+    inset: 2px; /* Pequena margem para a luz aparecer na borda */
+    background: var(--color-wine);
+    z-index: -1;
+    transition: background 0.3s;
+}
+
+/* 5. Efeito ao passar o mouse */
+.cta-btn:hover::after {
+    background: transparent; /* A mancha toma conta de todo o fundo */
+}
+
+.cta-btn:hover {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    transform: scale(1.05);
+}
