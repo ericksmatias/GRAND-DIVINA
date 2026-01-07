@@ -373,9 +373,6 @@ header p {
     animation: shine 10s infinite ease-in-out; /* Aumentei para 4s para ser mais sutil */
 }
 
-/* --- O SEGREDO PARA NÃO PISCAREM JUNTOS --- */
-/* Cada botão terá um atraso diferente no início da animação */
-
 .links .btn:nth-child(1)::after { animation-delay: 0s; }
 .links .btn:nth-child(2)::after { animation-delay: 0s; }
 .links .btn:nth-child(3)::after { animation-delay: 0s; }
@@ -431,4 +428,28 @@ header p {
 .cta-btn:hover {
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
     transform: scale(1.05);
+
+}
+
+/* Container que agrupa a imagem e o texto */
+.gallery-slide {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out; /* Velocidade do sumiço/surgimento */
+}
+
+/* Classe que o JS vai usar para "apagar" o conteúdo */
+.gallery-slide.fade-out {
+    opacity: 0;
+}
+
+/* Garante que a imagem e vídeo ocupem o espaço corretamente */
+.slide-image img, 
+.slide-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
