@@ -58,40 +58,43 @@ function openGallery(category) {
 }
 
 function updateSlide() {
-    const item = galleryData[currentCategory][currentIndex];
-    const imageContainer = document.querySelector('.slide-image');
+    const slideContainer = document.querySelector('.gallery-slide');
     
-    if (!imageContainer) return;
+    // 1. Inicia o Fade Out (Apaga tudo)
+    slideContainer.classList.add('fade-out');
 
-    imageContainer.style.opacity = 0;
-
+    // 2. Espera o tempo da transição (400ms) para trocar os dados
     setTimeout(() => {
-        imageContainer.innerHTML = ''; // Limpa o conteúdo antigo
-
-        // Lógica para VÍDEO ou IMAGEM
+        const item = galleryData[currentCategory][currentIndex];
+        const imageContainer = document.querySelector('.slide-image');
+        
+        // Troca a Imagem ou Vídeo
+        imageContainer.innerHTML = '';
+        let element;
         if (item.img.toLowerCase().endsWith('.mp4')) {
-            const video = document.createElement('video');
-            video.src = item.img;
-            video.autoplay = true;
-            video.muted = true;
-            video.loop = true;
-            video.playsInline = true;
-            imageContainer.appendChild(video);
+            element = document.createElement('video');
+            element.src = item.img;
+            element.autoplay = true;
+            element.muted = true;
+            element.loop = true;
+            element.playsInline = true;
         } else {
-            const img = document.createElement('img');
-            img.src = item.img;
-            imageContainer.appendChild(img);
+            element = document.createElement('img');
+            element.src = item.img;
         }
+        imageContainer.appendChild(element);
 
-        // Atualiza Textos e Link
+        // Troca os Textos
         modalTitle.textContent = item.title;
         modalDesc.textContent = item.desc;
+        
+        // Atualiza o link do WhatsApp
         const text = `Olá, gostei do ${item.title} que vi no site!`;
         modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
-        modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
-        
-        imageContainer.style.opacity = 1;
-    }, 200);
+
+        // 3. Inicia o Fade In (Acende tudo de novo)
+        slideContainer.classList.remove('fade-out');
+    }, 400); 
 }
 
 function closeGallery() {
@@ -110,4 +113,5 @@ window.onclick = function(event) {
     if (event.target == modal) {
         closeGallery();
     }
+
 }
