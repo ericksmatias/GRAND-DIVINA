@@ -469,36 +469,34 @@ header p {
     transition: none !important;
 }
 
-/* --- AJUSTES PARA CELULAR --- */
+/* --- AJUSTE FINO PARA MOBILE --- */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2.2rem; /* Diminuído de 3rem para 2.2rem */
-        letter-spacing: 2px;
+        /* Reduzimos para 1.8rem para garantir que caiba em telas como iPhone SE */
+        font-size: 1.8rem; 
+        letter-spacing: 1px;
+        white-space: nowrap; /* Impede o nome de quebrar linha */
+        width: 100%;
+        margin-bottom: 0.2rem;
     }
 
     header p {
-        font-size: 0.75rem; /* Frase menor para não ocupar muitas linhas */
-        margin-bottom: 2rem;
+        font-size: 0.65rem; /* Subtítulo bem discreto e elegante */
+        letter-spacing: 2px;
+        margin-bottom: 1.5rem;
+        padding: 0 10px; /* Evita que o subtítulo encoste nas bordas */
     }
 
     .container {
-        width: 95%; /* Usa quase toda a largura lateral */
-        padding: 0 15px;
+        width: 100%;
+        padding: 0 20px;
+        /* Garante que o conteúdo não fique "colado" no topo ou base */
+        justify-content: center; 
     }
 
     .links {
-        gap: 12px; /* Botões mais próximos para caberem mais na tela */
         width: 100%;
-    }
-
-    .btn {
-        padding: 12px 18px; /* Botões menos "gordos" */
-        font-size: 0.8rem;   /* Texto do botão menor */
-    }
-
-    /* Rodapé discreto no celular */
-    .footer-fixed p {
-        font-size: 0.6rem;
-        bottom: 10px;
+        max-width: 320px; /* Limita a largura dos botões no mobile */
+        gap: 10px;
     }
 }
