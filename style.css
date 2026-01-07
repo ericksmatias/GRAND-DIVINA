@@ -453,3 +453,18 @@ header p {
     object-fit: cover;
     display: block;
 }
+
+/* O segredo para o fade total */
+.modal-content {
+    transition: opacity 0.4s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+/* Garante que o container de imagem não tenha transições conflitantes */
+.slide-image {
+    opacity: 1 !important; 
+    transition: none !important;
+}
