@@ -374,8 +374,9 @@ header p {
 }
 
 .links .btn:nth-child(1)::after { animation-delay: 0s; }
-.links .btn:nth-child(2)::after { animation-delay: 0s; }
-.links .btn:nth-child(3)::after { animation-delay: 0s; }
+.links .btn:nth-child(2)::after { animation-delay: 0,2,5s; }
+.links .btn:nth-child(3)::after { animation-delay: 0,5s; }
+.links .btn:nth-child(3)::after { animation-delay: 0,7,5s; }
 
 /* 1. Definimos a animação da 'mancha' girando */
 @keyframes liquidGlow {
@@ -528,4 +529,5 @@ header p {
         font-size: 0.85rem;
     }
 }
+
 
