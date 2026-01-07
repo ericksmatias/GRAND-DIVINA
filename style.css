@@ -74,7 +74,7 @@ body {
 header h1 {
     font-family: 'Cinzel', serif; /* Fonte estilo Luxo */
     font-size: 3rem;
-    color: var(--color-gold);
+    color: var(--color-wine);
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
@@ -528,3 +528,4 @@ header p {
         font-size: 0.85rem;
     }
 }
+
