@@ -58,42 +58,46 @@ function openGallery(category) {
 }
 
 function updateSlide() {
-    const slideContainer = document.querySelector('.gallery-slide');
+    const modalContent = document.querySelector('.modal-content');
     
-    // 1. Inicia o Fade Out (Apaga tudo)
-    slideContainer.classList.add('fade-out');
+    // 1. Inicia o Fade Out no modal inteiro (apaga tudo suavemente)
+    modalContent.classList.add('fade-out');
 
-    // 2. Espera o tempo da transição (400ms) para trocar os dados
+    // 2. Espera o tempo do fade (400ms) para trocar os dados
     setTimeout(() => {
         const item = galleryData[currentCategory][currentIndex];
         const imageContainer = document.querySelector('.slide-image');
         
-        // Troca a Imagem ou Vídeo
-        imageContainer.innerHTML = '';
-        let element;
-        if (item.img.toLowerCase().endsWith('.mp4')) {
-            element = document.createElement('video');
-            element.src = item.img;
-            element.autoplay = true;
-            element.muted = true;
-            element.loop = true;
-            element.playsInline = true;
-        } else {
-            element = document.createElement('img');
-            element.src = item.img;
-        }
-        imageContainer.appendChild(element);
+        if (!imageContainer) return;
 
-        // Troca os Textos
+        // Limpa e reconstrói a Mídia (Vídeo ou Imagem)
+        imageContainer.innerHTML = '';
+        if (item.img.toLowerCase().endsWith('.mp4')) {
+            const video = document.createElement('video');
+            video.src = item.img;
+            video.autoplay = true;
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            imageContainer.appendChild(video);
+        } else {
+            const img = document.createElement('img');
+            img.src = item.img;
+            imageContainer.appendChild(img);
+        }
+
+        // Atualiza Textos e Link do WhatsApp (Suas funções originais)
         modalTitle.textContent = item.title;
         modalDesc.textContent = item.desc;
         
-        // Atualiza o link do WhatsApp
         const text = `Olá, gostei do ${item.title} que vi no site!`;
         modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
+        
+        // Mantém sua lógica de mudar o texto do botão por categoria
+        modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
 
-        // 3. Inicia o Fade In (Acende tudo de novo)
-        slideContainer.classList.remove('fade-out');
+        // 3. Inicia o Fade In (faz tudo reaparecer com os dados novos)
+        modalContent.classList.remove('fade-out');
     }, 400); 
 }
 
@@ -115,3 +119,4 @@ window.onclick = function(event) {
     }
 
 }
+
