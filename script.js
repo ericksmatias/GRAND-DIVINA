@@ -43,6 +43,8 @@ const modalTitle = document.getElementById('modal-title');
 const modalDesc = document.getElementById('modal-desc');
 const modalCta = document.getElementById('modal-cta');
 
+// ... (mantenha a parte 1 e 2 do seu código original igual)
+
 // 3. FUNÇÕES DA GALERIA
 
 function openGallery(category) {
@@ -54,23 +56,22 @@ function openGallery(category) {
     modal.style.display = 'flex';
     setTimeout(() => { modal.classList.add('show'); }, 10);
     
-    updateSlide(); // Chama a atualização do conteúdo
+    // TRUQUE DO BOTÃO VOLTAR: Adiciona um estado no histórico do navegador
+    history.pushState({ modalOpen: true }, '');
+
+    updateSlide(); 
 }
 
 function updateSlide() {
     const modalContent = document.querySelector('.modal-content');
-    
-    // 1. Inicia o Fade Out no modal inteiro (apaga tudo suavemente)
     modalContent.classList.add('fade-out');
 
-    // 2. Espera o tempo do fade (400ms) para trocar os dados
     setTimeout(() => {
         const item = galleryData[currentCategory][currentIndex];
         const imageContainer = document.querySelector('.slide-image');
         
         if (!imageContainer) return;
 
-        // Limpa e reconstrói a Mídia (Vídeo ou Imagem)
         imageContainer.innerHTML = '';
         if (item.img.toLowerCase().endsWith('.mp4')) {
             const video = document.createElement('video');
@@ -86,17 +87,13 @@ function updateSlide() {
             imageContainer.appendChild(img);
         }
 
-        // Atualiza Textos e Link do WhatsApp (Suas funções originais)
         modalTitle.textContent = item.title;
         modalDesc.textContent = item.desc;
         
         const text = `Olá, gostei do ${item.title} que vi no site!`;
         modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
-        
-        // Mantém sua lógica de mudar o texto do botão por categoria
         modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
 
-        // 3. Inicia o Fade In (faz tudo reaparecer com os dados novos)
         modalContent.classList.remove('fade-out');
     }, 400); 
 }
@@ -104,6 +101,11 @@ function updateSlide() {
 function closeGallery() {
     modal.classList.remove('show');
     setTimeout(() => { modal.style.display = 'none'; }, 400);
+
+    // Se o modal foi fechado manualmente (no X ou fora), removemos o estado do histórico
+    if (history.state && history.state.modalOpen) {
+        history.back();
+    }
 }
 
 function changeSlide(direction) {
@@ -117,6 +119,13 @@ window.onclick = function(event) {
     if (event.target == modal) {
         closeGallery();
     }
-
 }
 
+// --- NOVO: CAPTURAR O BOTÃO VOLTAR DO CELULAR ---
+window.onpopstate = function(event) {
+    // Se o usuário apertar voltar e o modal estiver visível, apenas fechamos o modal
+    if (modal.classList.contains('show')) {
+        modal.classList.remove('show');
+        setTimeout(() => { modal.style.display = 'none'; }, 400);
+    }
+};
