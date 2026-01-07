@@ -469,34 +469,62 @@ header p {
     transition: none !important;
 }
 
-/* --- AJUSTE FINO PARA MOBILE --- */
+/* --- AJUSTE FINO PARA MOBILE (VERSÃO FINAL) --- */
 @media (max-width: 768px) {
     header h1 {
-        /* Reduzimos para 1.8rem para garantir que caiba em telas como iPhone SE */
-        font-size: 1.8rem; 
+        font-size: 1.7rem; /* Reduzi levemente para garantir espaço */
         letter-spacing: 1px;
-        white-space: nowrap; /* Impede o nome de quebrar linha */
+        white-space: nowrap;
         width: 100%;
         margin-bottom: 0.2rem;
     }
 
     header p {
-        font-size: 0.65rem; /* Subtítulo bem discreto e elegante */
+        font-size: 0.6rem;
         letter-spacing: 2px;
-        margin-bottom: 1.5rem;
-        padding: 0 10px; /* Evita que o subtítulo encoste nas bordas */
+        margin-bottom: 2rem;
+        padding: 0 10px;
     }
 
     .container {
         width: 100%;
         padding: 0 20px;
-        /* Garante que o conteúdo não fique "colado" no topo ou base */
-        justify-content: center; 
+        /* MUDANÇA AQUI: Empurra o conteúdo para perto do rodapé */
+        justify-content: flex-end; 
+        padding-bottom: 100px; /* Distância segura do rodapé */
+        min-height: 100vh;
     }
 
     .links {
         width: 100%;
-        max-width: 320px; /* Limita a largura dos botões no mobile */
-        gap: 10px;
+        max-width: 300px; /* Botões um pouco mais estreitos no celular */
+        gap: 12px;
+    }
+
+    .btn {
+        padding: 12px 15px; /* Botões menos altos */
+        font-size: 0.75rem;
+    }
+
+    /* RODAPÉ EM UMA LINHA SÓ */
+    .footer-fixed {
+        bottom: 15px; /* Um pouco mais perto da borda */
+    }
+
+    .footer-fixed p {
+        font-size: 0.52rem; /* Tamanho calculado para caber em telas pequenas */
+        white-space: nowrap; /* Força linha única */
+        letter-spacing: 0.5px;
+        width: 100%;
+        opacity: 0.7;
+    }
+
+    /* Ajuste do Modal no Celular para não cortar o conteúdo */
+    .slide-info h2 {
+        font-size: 1.4rem;
+    }
+    
+    .slide-info p {
+        font-size: 0.85rem;
     }
 }
