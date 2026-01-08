@@ -43,7 +43,6 @@ const modalTitle = document.getElementById('modal-title');
 const modalDesc = document.getElementById('modal-desc');
 const modalCta = document.getElementById('modal-cta');
 
-
 // ... (mantenha a parte 1 e 2 do seu código original igual)
 
 // 3. FUNÇÕES DA GALERIA
@@ -53,58 +52,27 @@ function openGallery(category) {
     currentCategory = category;
     currentIndex = 0;
     
-    // 1. Primeiro atualizamos o conteúdo (ainda invisível)
-    updateSlideContent(); 
-
-    // 2. Preparamos o display
+    // Mostra o modal
     modal.style.display = 'flex';
+    setTimeout(() => { modal.classList.add('show'); }, 10);
     
-    // 3. Mostramos com o fade suave
-    setTimeout(() => { 
-        modal.classList.add('show'); 
-    }, 50);
-    
-    // Adiciona o histórico para o botão voltar do celular
+    // TRUQUE DO BOTÃO VOLTAR: Adiciona um estado no histórico do navegador
     history.pushState({ modalOpen: true }, '');
+
+    updateSlide(); 
 }
 
-function changeSlide(direction) {
-    // Selecionamos o conteúdo que deve deslizar
-    const slideContainer = document.querySelector('.gallery-slide');
-    
-    // 1. Remove classes de animação anteriores para não bugar
-    slideContainer.classList.remove('slide-next', 'slide-prev');
-    
-    // Força o navegador a "resetar" (hack de reflow)
-    void slideContainer.offsetWidth;
+function updateSlide() {
+    const modalContent = document.querySelector('.modal-content');
+    modalContent.classList.add('fade-out');
 
-    // 2. Adiciona a classe de movimento (faz a foto sair da tela)
-    const effectClass = direction === 1 ? 'slide-next' : 'slide-prev';
-    slideContainer.classList.add(effectClass);
-
-    // 3. Espera o deslize de saída e troca o conteúdo
     setTimeout(() => {
-        const items = galleryData[currentCategory];
-        currentIndex = (currentIndex + direction + items.length) % items.length;
+        const item = galleryData[currentCategory][currentIndex];
+        const imageContainer = document.querySelector('.slide-image');
         
-        updateSlideContent(); // Atualiza as mídias e textos
+        if (!imageContainer) return;
 
-        // 4. Remove a classe de efeito para o novo conteúdo aparecer centralizado
-        slideContainer.classList.remove(effectClass);
-    }, 400); // Esse tempo deve ser menor ou igual ao transition do seu CSS
-}
-
-function updateSlideContent() {
-    const item = galleryData[currentCategory][currentIndex];
-    const imageContainer = document.querySelector('.slide-image');
-
-    // Reset de animação para o texto não ficar "preso" em cima
-    modalTitle.style.opacity = '0';
-    modalTitle.style.transform = 'translateY(10px)';
-
-    if (imageContainer) {
-        imageContainer.innerHTML = ''; // Limpa o "Imagem do Evento" que aparece bugado
-        
+        imageContainer.innerHTML = '';
         if (item.img.toLowerCase().endsWith('.mp4')) {
             const video = document.createElement('video');
             video.src = item.img;
@@ -112,39 +80,45 @@ function updateSlideContent() {
             video.muted = true;
             video.loop = true;
             video.playsInline = true;
-            // O segredo: só mostra o texto quando o vídeo começar a carregar
-            video.onloadeddata = () => {
-                modalTitle.style.opacity = '1';
-                modalTitle.style.transform = 'translateY(0)';
-            };
             imageContainer.appendChild(video);
         } else {
             const img = document.createElement('img');
             img.src = item.img;
-            img.onload = () => {
-                modalTitle.style.opacity = '1';
-                modalTitle.style.transform = 'translateY(0)';
-            };
             imageContainer.appendChild(img);
         }
-    }
 
-    // Atualiza os dados
-    modalTitle.textContent = item.title;
-    modalDesc.textContent = item.desc;
-    
-    // ... restante do código do botão WhatsApp ...
+        modalTitle.textContent = item.title;
+        modalDesc.textContent = item.desc;
+        
+        const text = `Olá, gostei do ${item.title} que vi no site!`;
+        modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
+        modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
+
+        modalContent.classList.remove('fade-out');
+    }, 400); 
 }
-    
-    const text = `Olá, gostei do ${item.title} que vi no site!`;
-    modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
-    modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
 
-    // Anima o texto novo voltando
-    setTimeout(() => {
-        modalTitle.style.opacity = '1';
-        modalTitle.style.transform = 'translateY(0)';
-    }, 50);
+function closeGallery() {
+    modal.classList.remove('show');
+    setTimeout(() => { modal.style.display = 'none'; }, 400);
+
+    // Se o modal foi fechado manualmente (no X ou fora), removemos o estado do histórico
+    if (history.state && history.state.modalOpen) {
+        history.back();
+    }
+}
+
+function changeSlide(direction) {
+    const items = galleryData[currentCategory];
+    currentIndex = (currentIndex + direction + items.length) % items.length;
+    updateSlide();
+}
+
+// Fechar ao clicar fora do conteúdo
+window.onclick = function(event) {
+    if (event.target == modal) {
+        closeGallery();
+    }
 }
 
 // --- NOVO: CAPTURAR O BOTÃO VOLTAR DO CELULAR ---
@@ -154,32 +128,6 @@ window.onpopstate = function(event) {
         modal.classList.remove('show');
         setTimeout(() => { modal.style.display = 'none'; }, 400);
     }
-}
-
-function closeGallery() {
-    const modal = document.getElementById('gallery-modal');
-    modal.classList.remove('show');
-    
-    // Espera a animação de fade do modal sumir para esconder o display
-    setTimeout(() => { 
-        modal.style.display = 'none'; 
-    }, 400);
-
-    // Se abrimos um estado no histórico, voltamos (mas sem travar o fechamento)
-    if (history.state && history.state.modalOpen) {
-        history.back();
-    }
-}
-
-// Corrigindo o clique fora para o novo layout
-window.onclick = function(event) {
-    const modal = document.getElementById('gallery-modal');
-    // Se o clique foi no modal (fundo glass) e não no conteúdo interno, fecha.
-    if (event.target === modal) {
-        closeGallery();
-    }
 };
-
-
 
 
