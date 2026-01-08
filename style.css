@@ -537,5 +537,28 @@ header p {
     }
 }
 
+.partners-container {
+    margin-top: 30px; /* Espaço abaixo do botão */
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid rgba(212, 175, 55, 0.2); /* Linha divisória fina */
+    padding-top: 15px;
+}
+
+.partners-img {
+    width: 100%; /* Ela ocupa a largura do menu lateral */
+    max-height: 80px; /* Limita a altura para não roubar a cena */
+    object-fit: contain; /* Garante que as logos não estiquem */
+    filter: grayscale(100%) brightness(1.5); /* Opcional: deixa as logos em P&B para ficar elegante */
+    opacity: 0.7; /* Deixa mais discreto no fundo */
+    transition: opacity 0.3s;
+}
+
+.partners-img:hover {
+    opacity: 1; /* Ganha cor/brilho ao passar o mouse */
+    filter: none;
+}
+
+
 
 
