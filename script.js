@@ -113,7 +113,7 @@ function updateSlide() {
     const partnersContainer = document.getElementById('partners-logos');
     
     // Verifica se a categoria é corporativo ou social
-    if (currentCategory === 'corporativo' ) {
+    if (currentCategory === 'social' ) {
         // Insere a imagem das logos (substitua pelo nome correto do seu arquivo)
         partnersContainer.innerHTML = `<img src="assets/logoparceiro.png" alt="Empresas parceiras" class="partners-img">`;
         partnersContainer.style.display = 'block';
@@ -190,6 +190,7 @@ function preloadGalleryAssets() {
 
 // Chama a função após o site carregar o básico
 window.addEventListener('load', preloadGalleryAssets);
+
 
 
 
