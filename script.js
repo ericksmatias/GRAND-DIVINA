@@ -113,9 +113,9 @@ function updateSlide() {
     const partnersContainer = document.getElementById('partners-logos');
     
     // Verifica se a categoria é corporativo ou social
-    if (currentCategory === 'corporativo' || currentCategory === 'social') {
+    if (currentCategory === 'corporativo' ) {
         // Insere a imagem das logos (substitua pelo nome correto do seu arquivo)
-        partnersContainer.innerHTML = `<img src="assets/logos-parceiros.png" alt="Empresas parceiras" class="partners-img">`;
+        partnersContainer.innerHTML = `<img src="assets/logoparceiro.png" alt="Empresas parceiras" class="partners-img">`;
         partnersContainer.style.display = 'block';
     } else {
         // Esconde nas outras categorias (como 'espacos')
@@ -190,6 +190,7 @@ function preloadGalleryAssets() {
 
 // Chama a função após o site carregar o básico
 window.addEventListener('load', preloadGalleryAssets);
+
 
 
 
