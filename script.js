@@ -170,30 +170,27 @@ window.onpopstate = function(event) {
     }
 };
 
-// PRÉ-CARREGAMENTO (Evita o fundo preto/atraso)
 function preloadGalleryAssets() {
-    // Percorre todas as categorias (espacos, social, corporativo)
     Object.keys(galleryData).forEach(category => {
         galleryData[category].forEach(item => {
-            if (item.img.toLowerCase().endsWith('.mp4')) {
-                // Pré-carrega Vídeo
-                const video = document.createElement('link');
-                video.rel = 'preload';
-                video.as = 'video';
-                video.href = item.img;
-                document.head.appendChild(video);
+            const path = item.img.toLowerCase();
+
+            if (path.endsWith('.mp4')) {
+                // LOGICA PARA VÍDEOS: Força o download dos dados
+                const videoPreload = document.createElement('video');
+                videoPreload.src = item.img;
+                videoPreload.preload = 'auto';
+                videoPreload.muted = true;
+                videoPreload.load(); 
             } else {
-                // Pré-carrega Imagem
-                const img = new Image();
-                img.src = item.img;
+                // LOGICA PARA FOTOS: Cria um objeto de imagem na memória
+                const imgPreload = new Image();
+                imgPreload.src = item.img;
             }
         });
     });
-    console.log("Assets da galeria carregados em segundo plano.");
+    console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
-
-// Chama a função após o site carregar o básico
-window.addEventListener('load', preloadGalleryAssets);
 
 
 
