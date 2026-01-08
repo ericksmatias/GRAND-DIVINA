@@ -181,21 +181,19 @@ header p {
 .cursor-pointer { cursor: pointer; }
 
 .modal {
-    display: none;
+    display: none; /* Oculto por padrão */
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    /* Fundo mais transparente e muito desfoque */
-    background-color: rgba(0, 0, 0, 0.25); 
-    backdrop-filter: blur(25px) saturate(160%);
-    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    background-color: rgba(10, 10, 10, 0.95); /* Fundo quase preto total */
+    backdrop-filter: blur(10px); /* Desfoque forte no fundo */
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.4s ease;
 }
 
 .modal.show {
@@ -208,21 +206,21 @@ header p {
     position: relative;
     width: 90%;
     max-width: 1000px;
-    height: 80vh;
+    height: 80vh; /* Altura fixa para manter o design */
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    background: rgba(10, 10, 10, 0.7); /* Vidro escuro interno */
-    overflow: hidden; /* Importante para o slide não vazar */
+    border: 1px solid var(--color-gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    background: #000;
 }
 
+/* O Slide (Imagem + Texto) */
 .gallery-slide {
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s;
+    overflow: hidden;
 }
 
 /* Lado Esquerdo: Imagem */
@@ -343,16 +341,6 @@ header p {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Faz o vídeo preencher todo o espaço sem distorcer */
-    display: block;
-}
-
-/* Classes de transição lateral que o JS vai usar */
-.slide-next { transform: translateX(-40px); opacity: 0; }
-.slide-prev { transform: translateX(40px); opacity: 0; }
-
-/* Garante que o texto tenha espaço para o efeito de morphing */
-#modal-title, #modal-desc {
-    transition: all 0.5s ease;
     display: block;
 }
 
