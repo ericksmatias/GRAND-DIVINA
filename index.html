@@ -154,9 +154,29 @@ ERICK MATIAS © 2026 — Todos os direitos reservados.
     </div>
 
     <script src="script.js"></script>
+<div id="welcome-popup" class="welcome-overlay" onclick="closeWelcome()">
+    <div class="welcome-card" onclick="event.stopPropagation()">
+        <div class="robot-container">
+            <div class="robot-icon">🤖🔧</div>
+            <div class="sparks"></div>
+        </div>
+        
+        <h2>Bem-vindo ao Grand Divina!</h2>
+        <p>Nosso site está em desenvolvimento :D, este poup up é temporário!.</p>
+        
+        <div class="google-loader">
+            <div class="loader-bar"></div>
+        </div>
+
+        <p class="small-text">Clique em qualquer lugar.</p>
+        
+        <button class="btn-welcome" onclick="closeWelcome()">Entendi</button>
+    </div>
+</div>
 </body>
 
 </html>
+
 
 
 
