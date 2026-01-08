@@ -530,6 +530,84 @@ header p {
     }
 }
 
+/* Pop-up de Boas-Vindas */
+.welcome-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    z-index: 9999; /* Fica na frente de tudo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.welcome-card {
+    background: rgba(26, 5, 8, 0.8);
+    border: 1px solid var(--color-gold);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.robot-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+    animation: shake 0.5s infinite alternate;
+}
+
+/* Animação do Robô "se consertando" */
+@keyframes shake {
+    from { transform: rotate(-5deg); }
+    to { transform: rotate(5deg); }
+}
+
+/* Barra de Progresso Estilo Google */
+.google-loader {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    margin: 25px 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.loader-bar {
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(to right, #4285F4, #EA4335, #FBBC05, #34A853);
+    position: absolute;
+    animation: googleMove 2s infinite linear;
+}
+
+@keyframes googleMove {
+    0% { left: -40%; }
+    100% { left: 100%; }
+}
+
+.small-text {
+    font-size: 0.7rem !important;
+    opacity: 0.6;
+    margin-bottom: 20px;
+}
+
+.btn-welcome {
+    background: var(--color-gold);
+    color: black;
+    border: none;
+    padding: 10px 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+
 
 
 
