@@ -64,38 +64,40 @@ function openGallery(category) {
 }
 
 function changeSlide(direction) {
+    // Selecionamos o conteúdo que deve deslizar
     const slideContainer = document.querySelector('.gallery-slide');
     
-    // 1. Aciona o movimento lateral no CSS (slide-next ou slide-prev)
+    // 1. Remove classes de animação anteriores para não bugar
+    slideContainer.classList.remove('slide-next', 'slide-prev');
+    
+    // Força o navegador a "resetar" (hack de reflow)
+    void slideContainer.offsetWidth;
+
+    // 2. Adiciona a classe de movimento (faz a foto sair da tela)
     const effectClass = direction === 1 ? 'slide-next' : 'slide-prev';
     slideContainer.classList.add(effectClass);
 
-    // 2. Espera a animação de deslize começar para trocar o conteúdo
+    // 3. Espera o deslize de saída e troca o conteúdo
     setTimeout(() => {
         const items = galleryData[currentCategory];
         currentIndex = (currentIndex + direction + items.length) % items.length;
         
-        updateSlide(direction); // Passamos a direção para o efeito de texto
+        updateSlideContent(); // Atualiza as mídias e textos
 
-        // 3. Remove a classe para o slide "voltar" centralizado com a nova foto
+        // 4. Remove a classe de efeito para o novo conteúdo aparecer centralizado
         slideContainer.classList.remove(effectClass);
-    }, 400);
+    }, 400); // Esse tempo deve ser menor ou igual ao transition do seu CSS
 }
 
-function updateSlide(direction = 1) {
+function updateSlideContent() {
     const item = galleryData[currentCategory][currentIndex];
     const imageContainer = document.querySelector('.slide-image');
     
-    // Efeito de "PowerPoint" (Morph) nos textos
-    // O texto antigo sobe e some
+    // Efeito de texto "PowerPoint"
     modalTitle.style.opacity = '0';
-    modalTitle.style.transform = 'translateY(-20px)';
-    modalDesc.style.opacity = '0';
+    modalTitle.style.transform = 'translateY(-15px)';
 
-    setTimeout(() => {
-        if (!imageContainer) return;
-
-        // Troca a mídia
+    if (imageContainer) {
         imageContainer.innerHTML = '';
         if (item.img.toLowerCase().endsWith('.mp4')) {
             const video = document.createElement('video');
@@ -110,23 +112,20 @@ function updateSlide(direction = 1) {
             img.src = item.img;
             imageContainer.appendChild(img);
         }
+    }
 
-        // Atualiza os textos
-        modalTitle.textContent = item.title;
-        modalDesc.textContent = item.desc;
-        
-        const text = `Olá, gostei do ${item.title} que vi no site!`;
-        modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
-        modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
+    modalTitle.textContent = item.title;
+    modalDesc.textContent = item.desc;
+    
+    const text = `Olá, gostei do ${item.title} que vi no site!`;
+    modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
+    modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
 
-        // O texto novo surge de baixo para cima (efeito morphing)
-        modalTitle.style.transform = 'translateY(20px)';
-        void modalTitle.offsetWidth; // "Reset" para o navegador entender a nova posição
-
+    // Anima o texto novo voltando
+    setTimeout(() => {
         modalTitle.style.opacity = '1';
         modalTitle.style.transform = 'translateY(0)';
-        modalDesc.style.opacity = '1';
-    }, 300); 
+    }, 50);
 }
 
 // --- NOVO: CAPTURAR O BOTÃO VOLTAR DO CELULAR ---
@@ -162,4 +161,29 @@ function preloadGalleryAssets() {
 
 // Chama a função após o site carregar o básico
 window.addEventListener('load', preloadGalleryAssets);
+
+function closeGallery() {
+    const modal = document.getElementById('gallery-modal');
+    modal.classList.remove('show');
+    
+    // Espera a animação de fade do modal sumir para esconder o display
+    setTimeout(() => { 
+        modal.style.display = 'none'; 
+    }, 400);
+
+    // Se abrimos um estado no histórico, voltamos (mas sem travar o fechamento)
+    if (history.state && history.state.modalOpen) {
+        history.back();
+    }
+}
+
+// Corrigindo o clique fora para o novo layout
+window.onclick = function(event) {
+    const modal = document.getElementById('gallery-modal');
+    // Se o clique foi no modal (fundo glass) e não no conteúdo interno, fecha.
+    if (event.target === modal) {
+        closeGallery();
+    }
+};
+
 
