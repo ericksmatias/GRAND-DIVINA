@@ -607,6 +607,47 @@ header p {
     border-radius: 2px;
 }
 
+.gears-container {
+    position: relative;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.gear {
+    font-size: 40px;
+    position: absolute;
+    animation: rotateGear 3s linear infinite;
+}
+
+/* Engrenagem Grande */
+.gear-one {
+    font-size: 50px;
+    left: 35%;
+    top: 10%;
+}
+
+/* Engrenagem Média (Gira pro lado oposto) */
+.gear-two {
+    font-size: 35px;
+    left: 52%;
+    top: 40%;
+    animation-direction: reverse; 
+}
+
+/* Engrenagem Pequena */
+.gear-three {
+    font-size: 25px;
+    left: 42%;
+    top: 55%;
+}
+
+@keyframes rotateGear {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
 
 
