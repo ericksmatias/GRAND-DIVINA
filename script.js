@@ -102,6 +102,10 @@ function updateSlide() {
             video.muted = true;
             video.loop = true;
             video.playsInline = true;
+            video.setAttribute('preload', 'auto');
+            video.load(); 
+            video.play().catch(e => console.log("Erro ao dar play:", e));
+            
             imageContainer.appendChild(video);
         } else {
             const img = document.createElement('img');
@@ -190,6 +194,7 @@ function preloadGalleryAssets() {
 
 // Chama a função após o site carregar o básico
 window.addEventListener('load', preloadGalleryAssets);
+
 
 
 
