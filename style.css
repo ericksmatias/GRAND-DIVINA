@@ -1,3 +1,21 @@
+/* TAG DE VERSÃO - REMOVER QUANDO FINALIZAR */
+.version-tag {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(94, 11, 21, 0.8); /* Cor Vinho */
+    color: #d4af37; /* Cor Ouro */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    padding: 4px 8px;
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+    z-index: 9999; /* Fica acima de tudo */
+    pointer-events: none; /* Não atrapalha os cliques no site */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
 /* Variáveis de Cores */
 :root {
     --color-black: #0a0a0a;
@@ -600,6 +618,7 @@ header p {
     opacity: 1; /* Ganha cor/brilho ao passar o mouse */
     filter: none;
 }
+
 
 
 
