@@ -137,31 +137,6 @@ window.onpopstate = function(event) {
     }
 }
 
-// 4. PRÉ-CARREGAMENTO (Evita o fundo preto/atraso)
-function preloadGalleryAssets() {
-    // Percorre todas as categorias (espacos, social, corporativo)
-    Object.keys(galleryData).forEach(category => {
-        galleryData[category].forEach(item => {
-            if (item.img.toLowerCase().endsWith('.mp4')) {
-                // Pré-carrega Vídeo
-                const video = document.createElement('link');
-                video.rel = 'preload';
-                video.as = 'video';
-                video.href = item.img;
-                document.head.appendChild(video);
-            } else {
-                // Pré-carrega Imagem
-                const img = new Image();
-                img.src = item.img;
-            }
-        });
-    });
-    console.log("Assets da galeria carregados em segundo plano.");
-}
-
-// Chama a função após o site carregar o básico
-window.addEventListener('load', preloadGalleryAssets);
-
 function closeGallery() {
     const modal = document.getElementById('gallery-modal');
     modal.classList.remove('show');
@@ -185,5 +160,6 @@ window.onclick = function(event) {
         closeGallery();
     }
 };
+
 
 
