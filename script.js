@@ -51,7 +51,7 @@ const galleryData = {
         { img: 'assets/corp2.jpg', title: 'Sala de Reunião', desc: 'Privacidade e conforto.' }
     ],
     'social': [
-        { img: 'assets/social1.jpg', title: 'Casamentos', desc: 'O cenário dos sonhos para o seu sim.' },
+        { img: 'assets/bianchi2025.mp4', title: 'Bianchi Urbanismo', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
         { img: 'assets/social2.jpg', title: '15 Anos', desc: 'Uma festa inesquecível.' }
     ]
 };
@@ -190,6 +190,7 @@ function preloadGalleryAssets() {
 
 // Chama a função após o site carregar o básico
 window.addEventListener('load', preloadGalleryAssets);
+
 
 
 
