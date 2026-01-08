@@ -121,6 +121,7 @@ function updateSlide() {
         // Esconde nas outras categorias (como 'espacos')
         partnersContainer.innerHTML = '';
         partnersContainer.style.display = 'none';
+    }
 
         modalTitle.textContent = item.title;
         modalDesc.textContent = item.desc;
@@ -189,6 +190,7 @@ function preloadGalleryAssets() {
 
 // Chama a função após o site carregar o básico
 window.addEventListener('load', preloadGalleryAssets);
+
 
 
 
