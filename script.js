@@ -53,14 +53,19 @@ function openGallery(category) {
     currentCategory = category;
     currentIndex = 0;
     
-    // Mostra o modal
-    modal.style.display = 'flex';
-    setTimeout(() => { modal.classList.add('show'); }, 10);
-    
-    // TRUQUE DO BOTÃO VOLTAR: Adiciona um estado no histórico do navegador
-    history.pushState({ modalOpen: true }, '');
+    // 1. Primeiro atualizamos o conteúdo (ainda invisível)
+    updateSlideContent(); 
 
-    updateSlide(); 
+    // 2. Preparamos o display
+    modal.style.display = 'flex';
+    
+    // 3. Mostramos com o fade suave
+    setTimeout(() => { 
+        modal.classList.add('show'); 
+    }, 50);
+    
+    // Adiciona o histórico para o botão voltar do celular
+    history.pushState({ modalOpen: true }, '');
 }
 
 function changeSlide(direction) {
@@ -92,13 +97,14 @@ function changeSlide(direction) {
 function updateSlideContent() {
     const item = galleryData[currentCategory][currentIndex];
     const imageContainer = document.querySelector('.slide-image');
-    
-    // Efeito de texto "PowerPoint"
+
+    // Reset de animação para o texto não ficar "preso" em cima
     modalTitle.style.opacity = '0';
-    modalTitle.style.transform = 'translateY(-15px)';
+    modalTitle.style.transform = 'translateY(10px)';
 
     if (imageContainer) {
-        imageContainer.innerHTML = '';
+        imageContainer.innerHTML = ''; // Limpa o "Imagem do Evento" que aparece bugado
+        
         if (item.img.toLowerCase().endsWith('.mp4')) {
             const video = document.createElement('video');
             video.src = item.img;
@@ -106,16 +112,29 @@ function updateSlideContent() {
             video.muted = true;
             video.loop = true;
             video.playsInline = true;
+            // O segredo: só mostra o texto quando o vídeo começar a carregar
+            video.onloadeddata = () => {
+                modalTitle.style.opacity = '1';
+                modalTitle.style.transform = 'translateY(0)';
+            };
             imageContainer.appendChild(video);
         } else {
             const img = document.createElement('img');
             img.src = item.img;
+            img.onload = () => {
+                modalTitle.style.opacity = '1';
+                modalTitle.style.transform = 'translateY(0)';
+            };
             imageContainer.appendChild(img);
         }
     }
 
+    // Atualiza os dados
     modalTitle.textContent = item.title;
     modalDesc.textContent = item.desc;
+    
+    // ... restante do código do botão WhatsApp ...
+}
     
     const text = `Olá, gostei do ${item.title} que vi no site!`;
     modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
@@ -160,6 +179,7 @@ window.onclick = function(event) {
         closeGallery();
     }
 };
+
 
 
 
