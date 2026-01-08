@@ -1,6 +1,28 @@
-// 1. BACKGROUND SLIDER (Imagens de Fundo)
+// 1. BACKGROUND SLIDER DINÂMICO (Desktop vs Mobile)
 document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.background-slider img');
+    const bgSlider = document.getElementById('bg-slider');
+    const isMobile = window.innerWidth <= 768;
+    const totalPhotos = 17;
+    const overlay = document.querySelector('.overlay');
+
+    // Injeta as 17 imagens dinamicamente
+    for (let i = 1; i <= totalPhotos; i++) {
+        const img = document.createElement('img');
+        
+        // Se for mobile, busca "mobile X.jpeg", se for desktop busca "foto X.jpeg"
+        // Note: usei o padrão de espaço "foto 2" que você confirmou antes
+        const fileName = isMobile ? `mobile ${i}.jpeg` : (i === 1 ? `foto1.jpeg` : `foto ${i}.jpeg`);
+        
+        img.src = `assets/${fileName}`;
+        if (i === 1) img.classList.add('active');
+        img.alt = `Background ${i}`;
+        
+        // Insere a imagem antes do overlay
+        bgSlider.insertBefore(img, overlay);
+    }
+
+    // Lógica de rotação das fotos
+    const slides = bgSlider.querySelectorAll('img');
     let currentSlide = 0;
     
     if (slides.length > 0) {
@@ -8,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }, 3000);
+        }, 4000); // Aumentei para 4s para ficar mais elegante
     }
 });
 
@@ -154,6 +176,7 @@ function preloadGalleryAssets() {
 
 // Chama a função após o site carregar o básico
 window.addEventListener('load', preloadGalleryAssets);
+
 
 
 
