@@ -155,43 +155,7 @@ function preloadGalleryAssets() {
 // Chama a função após o site carregar o básico
 window.addEventListener('load', preloadGalleryAssets);
 
-// 5. FUNÇÃO PARA FECHAR O POP-UP DE BOAS-VINDAS
-function closeWelcome() {
-    const welcome = document.getElementById('welcome-popup');
-    welcome.style.opacity = '0';
-    setTimeout(() => {
-        welcome.style.display = 'none';
-    }, 500);
-}
 
-// Opcional: Mostrar apenas uma vez por sessão (para não encher o saco do usuário)
-window.addEventListener('load', () => {
-    if (localStorage.getItem('welcomeShown')) {
-        document.getElementById('welcome-popup').style.display = 'none';
-    } else {
-        localStorage.setItem('welcomeShown', 'true');
-    }
-});
-
-// Exibir o pop-up com um leve delay para não chocar o usuário
-window.addEventListener('load', () => {
-    const welcome = document.getElementById('welcome-popup');
-    if (welcome) {
-        welcome.style.display = 'flex';
-        welcome.style.opacity = '0';
-        setTimeout(() => {
-            welcome.style.opacity = '1';
-        }, 100);
-    }
-});
-
-function closeWelcome() {
-    const welcome = document.getElementById('welcome-popup');
-    welcome.style.opacity = '0';
-    setTimeout(() => {
-        welcome.style.display = 'none';
-    }, 500);
-}
 
 
 
