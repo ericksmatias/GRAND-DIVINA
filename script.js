@@ -43,6 +43,7 @@ const modalTitle = document.getElementById('modal-title');
 const modalDesc = document.getElementById('modal-desc');
 const modalCta = document.getElementById('modal-cta');
 
+
 // ... (mantenha a parte 1 e 2 do seu código original igual)
 
 // 3. FUNÇÕES DA GALERIA
@@ -62,16 +63,39 @@ function openGallery(category) {
     updateSlide(); 
 }
 
-function updateSlide() {
-    const modalContent = document.querySelector('.modal-content');
-    modalContent.classList.add('fade-out');
+function changeSlide(direction) {
+    const slideContainer = document.querySelector('.gallery-slide');
+    
+    // 1. Aciona o movimento lateral no CSS (slide-next ou slide-prev)
+    const effectClass = direction === 1 ? 'slide-next' : 'slide-prev';
+    slideContainer.classList.add(effectClass);
+
+    // 2. Espera a animação de deslize começar para trocar o conteúdo
+    setTimeout(() => {
+        const items = galleryData[currentCategory];
+        currentIndex = (currentIndex + direction + items.length) % items.length;
+        
+        updateSlide(direction); // Passamos a direção para o efeito de texto
+
+        // 3. Remove a classe para o slide "voltar" centralizado com a nova foto
+        slideContainer.classList.remove(effectClass);
+    }, 400);
+}
+
+function updateSlide(direction = 1) {
+    const item = galleryData[currentCategory][currentIndex];
+    const imageContainer = document.querySelector('.slide-image');
+    
+    // Efeito de "PowerPoint" (Morph) nos textos
+    // O texto antigo sobe e some
+    modalTitle.style.opacity = '0';
+    modalTitle.style.transform = 'translateY(-20px)';
+    modalDesc.style.opacity = '0';
 
     setTimeout(() => {
-        const item = galleryData[currentCategory][currentIndex];
-        const imageContainer = document.querySelector('.slide-image');
-        
         if (!imageContainer) return;
 
+        // Troca a mídia
         imageContainer.innerHTML = '';
         if (item.img.toLowerCase().endsWith('.mp4')) {
             const video = document.createElement('video');
@@ -87,6 +111,7 @@ function updateSlide() {
             imageContainer.appendChild(img);
         }
 
+        // Atualiza os textos
         modalTitle.textContent = item.title;
         modalDesc.textContent = item.desc;
         
@@ -94,31 +119,14 @@ function updateSlide() {
         modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
         modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
 
-        modalContent.classList.remove('fade-out');
-    }, 400); 
-}
+        // O texto novo surge de baixo para cima (efeito morphing)
+        modalTitle.style.transform = 'translateY(20px)';
+        void modalTitle.offsetWidth; // "Reset" para o navegador entender a nova posição
 
-function closeGallery() {
-    modal.classList.remove('show');
-    setTimeout(() => { modal.style.display = 'none'; }, 400);
-
-    // Se o modal foi fechado manualmente (no X ou fora), removemos o estado do histórico
-    if (history.state && history.state.modalOpen) {
-        history.back();
-    }
-}
-
-function changeSlide(direction) {
-    const items = galleryData[currentCategory];
-    currentIndex = (currentIndex + direction + items.length) % items.length;
-    updateSlide();
-}
-
-// Fechar ao clicar fora do conteúdo
-window.onclick = function(event) {
-    if (event.target == modal) {
-        closeGallery();
-    }
+        modalTitle.style.opacity = '1';
+        modalTitle.style.transform = 'translateY(0)';
+        modalDesc.style.opacity = '1';
+    }, 300); 
 }
 
 // --- NOVO: CAPTURAR O BOTÃO VOLTAR DO CELULAR ---
