@@ -51,7 +51,7 @@ const galleryData = {
         { img: 'assets/corp2.jpg', title: 'Casamento 2', desc: 'Descrição.' }
     ],
     'social': [
-        { img: 'assets/bianchi2025.mp4', title: 'Bianchi Urbanismo', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
+        { img: 'assets/bianchi2025.mp4', title: 'Eventos corporativos', desc: 'No Grand Divina Eventos dispomos de espaços modernos com capacidade para até 200 pessoas,  ideal para eventos corporativos: reuniões, treinamentos, jantar de negócios, palestras e confraternizações de empresa.  Nosso experiente time tem atendimento personalizado o que garante um serviço de alto padrão. Para completar nossa gastronomia é um dos grandes diferenciais com cardápios exclusivos e adaptados a necessidade do seu evento, unindo sabor e qualidade elevando o nível de seu evento e garantindo o destaque que ele merece.' },
         { img: 'assets/social2.jpg', title: 'Evento tal kkk (testando)', desc: 'Social descrição.' }
     ]
 };
@@ -187,6 +187,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
