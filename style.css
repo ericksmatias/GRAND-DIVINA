@@ -681,19 +681,20 @@ header h1 {
     }
 
     /* 3. BOTÕES: Ajuste para o texto NÃO VAZAR (Conforme seu print) */
-    .links {
+   .links {
         width: 100% !important;
-        max-width: 350px !important; /* Aumentei para 350px para dar espaço */
+        /* Aumentamos de 350px para 420px ou 90% para dar fôlego ao texto */
+        max-width: 420px !important; 
         gap: 12px;
         margin: 0 auto;
     }
 
-        .btn {
+    .btn {
         text-decoration: none;
         color: var(--color-white);
         border: 1px solid var(--color-gold);
-        /* Aumentei o padding da direita para 50px para proteger a seta */
-        padding: 15px 50px 15px 20px; 
+        /* 45px na direita garante que o texto pare ANTES de chegar na seta */
+        padding: 15px 45px 15px 20px !important; 
         border-radius: 2px;
         background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(8px);
@@ -701,26 +702,24 @@ header h1 {
         display: flex;
         justify-content: center; 
         align-items: center;
-        font-weight: 400;
-        text-transform: uppercase;
-        letter-spacing: 2px;
         position: relative;
         cursor: pointer;
-        overflow: hidden; /* Garante que o brilho não escape */
+        width: 100%;
     }
-    
+
     .btn span {
         z-index: 2;
         white-space: nowrap !important;
-        /* Fonte flexível: ela diminui se a tela apertar ou o texto for longo */
-        font-size: clamp(0.65rem, 2vw, 0.85rem) !important;
+        /* Ajustamos o clamp para a fonte não ficar minúscula, mas caber na largura */
+        font-size: clamp(0.7rem, 3vw, 0.85rem) !important;
         text-align: center;
         width: 100%;
+        letter-spacing: 1px !important;
     }
-    
+
     .btn .icon {
         position: absolute;
-        right: 15px; /* Fixa a seta na ponta direita */
+        right: 15px; /* Mantém a seta no lugar original */
         color: var(--color-gold);
         font-size: 0.8rem;
     }
@@ -783,6 +782,7 @@ header h1 {
     .next { 
         right: 10px !important; /* Traz para dentro da imagem à direita */
     }
+
 
 
 
