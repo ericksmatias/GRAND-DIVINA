@@ -116,15 +116,17 @@ function updateSlide() {
             imageContainer.appendChild(img);
         }
 
-            modalTitle.textContent = item.title;
-            modalDesc.textContent = item.desc; 
+        const item = galleryData[currentCategory][currentIndex];
+        const modalCap = document.getElementById('modal-cap');
         
-            if (item.cap) {
-                modalCap.textContent = item.cap;
-                modalCap.style.display = 'block';
-            } else { 
-                modalCap.style.dispay = 'none';
-            }
+        // LÓGICA CORRIGIDA: Só exibe se houver 'cap' E se a categoria for 'espacos'
+        if (currentCategory === 'espacos' && item.cap) {
+            modalCap.textContent = item.cap;
+            modalCap.style.display = 'block';
+        } else {
+            modalCap.textContent = '';
+            modalCap.style.display = 'none';
+        }
 
 // Lógica das Logos
     const partnersContainer = document.getElementById('partners-logos');
@@ -202,6 +204,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
