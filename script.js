@@ -37,7 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // 2. DADOS DA GALERIA (Fotos e Vídeos)
 const galleryData = {
     'espacos': [
-        { img: 'assets/panmeireles.mp4', title: 'Espaço climatizado', desc: 'Conheça nosso espaço climatizado na unidade Meireles, perfeito para eventos sociais e corporativos.' },
+        { img: 'assets/panmeireles.mp4', title: `Salão varanda (Capacidade 200 pessoas)', desc: 'Texto: Ideal para Eventos Corporativos e Sociais (Recepção de Casamentos & Aniversários)
+Pode Trazer Decoração e Música para o Ambiente (Banda ou DJ)
+A partir de 50 Pessoas (Segunda à Quinta) 
+A partir de 80 Pessoas (Sexta à Domingo).` },
         { img: 'assets/e1.jpg', title: 'Lugar 1', desc: 'desc.' },
         { img: 'assets/e2.jpg', title: 'Lugar 2', desc: 'desc.' },
         { img: 'assets/e3.jpg', title: 'Lugar 3', desc: 'desc.' },
@@ -187,6 +190,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
