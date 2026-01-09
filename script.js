@@ -136,10 +136,29 @@ function updateSlide() {
             }
         }
 
-        // 4. Lógica das Logos
+        // 4. Lógica das Logos (Formato de Lista Infinita)
         if (partnersContainer) {
             if (currentCategory === 'social') {
-                partnersContainer.innerHTML = `<img src="assets/logoparceiro.png" alt="Empresas parceiras" class="partners-img">`;
+                // Aqui está sua lista de logos organizada
+                const listaLogos = [
+                    'logo1.png',
+                    'logo2.png',
+                    'logo3.png',
+                    'logo4.png',
+                    'logo5.png'
+                ];
+                
+                // Criamos a trilha e duplicamos a lista para o efeito infinito não ter "buracos"
+                let logoHTML = '<div class="logo-track">';
+                
+                // O [...listaLogos, ...listaLogos] faz a lista se repetir
+                [...listaLogos, ...listaLogos].forEach(nomeArquivo => {
+                    logoHTML += `<img src="assets/${nomeArquivo}" alt="Parceiro" class="partners-img">`;
+                });
+                
+                logoHTML += '</div>';
+                
+                partnersContainer.innerHTML = logoHTML;
                 partnersContainer.style.display = 'block';
             } else {
                 partnersContainer.innerHTML = '';
@@ -210,6 +229,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
