@@ -313,10 +313,13 @@ header p {
 .slide-info h2 {
     font-family: 'Cinzel', serif;
     color: var(--color-gold);
-    font-size: 2rem;
-    margin-bottom: 2px; /* Grudado na capacidade */
+    /* Ajusta entre 1.2rem e 2rem baseada na largura da tela */
+    font-size: clamp(1.2rem, 4vw, 2rem) !important; 
+    margin-bottom: 2px;
+    white-space: nowrap !important; /* Proíbe a quebra */
+    display: block;
+    width: 100%;
 }
-
 /* Capacidade idêntica ao título */
 .capacity-highlight {
     font-family: 'Cinzel', serif;
@@ -627,12 +630,15 @@ header p {
     display: none;
 }
 
-/* No computador, mantemos o título em uma linha só */
 header h1 {
     font-family: 'Cinzel', serif;
-    font-size: 3rem;
+    /* Ajusta entre 1.8rem e 3rem baseada na largura da tela */
+    font-size: clamp(1.8rem, 6vw, 3rem) !important;
     color: var(--color-gold-hover);
-    white-space: nowrap; /* Garante linha única no desktop */
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    white-space: nowrap !important; /* Proíbe a quebra */
     text-align: center;
 }
 
@@ -729,6 +735,7 @@ header h1 {
         text-align: left !important;
     }
 }
+
 
 
 
