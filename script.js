@@ -91,6 +91,7 @@ function updateSlide() {
     modalContent.classList.add('fade-out');
 
     setTimeout(() => {
+        // 1. Declaramos as variáveis apenas UMA VEZ
         const item = galleryData[currentCategory][currentIndex];
         const imageContainer = document.querySelector('.slide-image');
         const modalCap = document.getElementById('modal-cap');
@@ -98,7 +99,7 @@ function updateSlide() {
         
         if (!imageContainer) return;
 
-      // Limpa e Renderiza Imagem ou Vídeo
+        // 2. Limpa e Renderiza Imagem ou Vídeo
         imageContainer.innerHTML = '';
         if (item.img.toLowerCase().endsWith('.mp4')) {
             const video = document.createElement('video');
@@ -117,10 +118,8 @@ function updateSlide() {
             imageContainer.appendChild(img);
         }
 
-        const item = galleryData[currentCategory][currentIndex];
-        const modalCap = document.getElementById('modal-cap');
-        
-       if (modalCap) {
+        // 3. Lógica da Capacidade (Apenas usamos as variáveis já declaradas acima)
+        if (modalCap) {
             if (currentCategory === 'espacos' && item.cap) {
                 modalCap.textContent = item.cap;
                 modalCap.style.display = 'block';
@@ -129,20 +128,18 @@ function updateSlide() {
             }
         }
 
-// Lógica das Logos
-    const partnersContainer = document.getElementById('partners-logos');
-    
-    // Verifica se a categoria é corporativo ou social
-    if (currentCategory === 'social' ) {
-        // Insere a imagem das logos
-        partnersContainer.innerHTML = `<img src="assets/logoparceiro.png" alt="Empresas parceiras" class="partners-img">`;
-        partnersContainer.style.display = 'block';
-    } else {
-        // Esconde nas outras categorias
-        partnersContainer.innerHTML = '';
-        partnersContainer.style.display = 'none';
-    }
+        // 4. Lógica das Logos
+        if (partnersContainer) {
+            if (currentCategory === 'social') {
+                partnersContainer.innerHTML = `<img src="assets/logoparceiro.png" alt="Empresas parceiras" class="partners-img">`;
+                partnersContainer.style.display = 'block';
+            } else {
+                partnersContainer.innerHTML = '';
+                partnersContainer.style.display = 'none';
+            }
+        }
 
+        // 5. Atualização de textos e links
         modalTitle.textContent = item.title;
         modalDesc.textContent = item.desc;
         
@@ -205,6 +202,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
