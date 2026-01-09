@@ -144,6 +144,7 @@ header p {
 
 .btn span {
     z-index: 2;
+    white-space: nowrap;
 }
 
 .btn .icon {
@@ -668,21 +669,34 @@ header h1 {
     text-align: center;
 }
 
-/* --- CONFIGURAÇÃO APENAS PARA CELULAR --- */
+/* --- AJUSTES FINAIS MOBILE --- */
 @media (max-width: 768px) {
+    
+    /* Faz a quebra de linha aparecer no celular */
     .mobile-break {
-        display: block; /* Ativa a quebra de linha no celular */
+        display: block !important;
     }
 
+    /* Ajusta o título para aceitar as duas linhas */
     header h1 {
-        white-space: normal; /* Permite que o texto quebre */
-        font-size: 2.2rem;   /* Tamanho ajustado para mobile */
-        line-height: 1.1;    /* Aproxima o 'EVENTOS' do 'GRAND DIVINA' */
+        white-space: normal !important; /* Permite quebrar */
+        font-size: 2.2rem !important;  /* Tamanho bom para celular */
+        line-height: 1.1 !important;   /* Deixa uma linha perto da outra */
         text-align: center;
-        width: 100%;
+    }
+
+    /* Impede que o botão "Sociais e corporativos" quebre */
+    .btn span {
+        white-space: nowrap !important; /* Proíbe quebrar a linha */
+        font-size: 0.72rem !important;  /* Diminui um pouco para caber */
+        letter-spacing: 1px !important; /* Encolhe o espaço entre letras */
+    }
+    
+    /* Garante que o botão tenha largura para o texto */
+    .links {
+        max-width: 340px !important; 
     }
 }
-
 
 
 
