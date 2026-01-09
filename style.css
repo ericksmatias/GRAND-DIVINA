@@ -717,11 +717,12 @@ header h1 {
     }
 
     .capacity-highlight {
-        font-size: 0.85rem;
+        font-size: 0.55rem;
         margin-bottom: 15px;
         text-align: left !important;
     }
 }
+
 
 
 
