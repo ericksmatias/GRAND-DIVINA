@@ -642,6 +642,36 @@ header h1 {
     text-align: center;
 }
 
+/* Container principal que esconde o que sobra nas bordas */
+.partners-container {
+    margin-top: 25px;
+    width: 100%;
+    overflow: hidden; /* Corta as logos que saem da área */
+    position: relative;
+    padding: 10px 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* A faixa que segura as logos e se move */
+.logo-track {
+    display: flex;
+    width: calc(250px * 10); /* Ajuste baseado no número de logos */
+    animation: scrollLogos 20s linear infinite;
+}
+
+.logo-track img {
+    height: 40px; /* Altura das logos */
+    margin: 0 30px; /* Espaço entre elas */
+    filter: grayscale(100%) brightness(1.5);
+    opacity: 0.8;
+}
+
+/* Animação que move a faixa da direita para a esquerda */
+@keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 5)); } /* Metade do caminho para o loop */
+}
+
 /* --- BLOCO ÚNICO DE AJUSTES MOBILE --- */
 @media (max-width: 768px) {
     
@@ -758,6 +788,7 @@ header h1 {
     .next { 
         right: 10px !important; /* Traz para dentro da imagem à direita */
     }
+
 
 
 
