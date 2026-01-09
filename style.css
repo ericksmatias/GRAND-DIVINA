@@ -598,7 +598,27 @@ header p {
     .slide-info p {
         font-size: 0.85rem;
     }
+
+        /* Destaque para a Capacidade */
+    .capacity-highlight {
+        color: var(--color-gold);
+        font-size: 0.85rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        text-align: left !important; /* Força alinhamento à esquerda para evitar buracos */
+    }
+    
+    /* Ajuste na descrição para ser justificada apenas em blocos grandes */
+    #modal-desc {
+        text-align: justify;
+        text-justify: inter-word;
+        white-space: pre-line;
+    }
 }
+
+
 
 .partners-container {
     margin-top: 30px; /* Espaço abaixo do botão */
@@ -621,6 +641,7 @@ header p {
     opacity: 1; /* Ganha cor/brilho ao passar o mouse */
     filter: none;
 }
+
 
 
 
