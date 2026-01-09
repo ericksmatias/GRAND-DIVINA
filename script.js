@@ -38,8 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const galleryData = {
     'espacos': [
         { img: 'assets/panmeireles.mp4', title: 'Salão varanda', cap: 'Capacidade para até 200 pessoas', 
-         desc: `Corporativos (Treinamentos e Confraternizações) 
-Sociais (Recepção de Casamentos & Aniversários)
+         desc: `Corporativos (Treinamentos e Confraternizações), Sociais (Recepção de Casamentos & Aniversários).
 Estrutura para receber decoração e música
 
 A partir de 50 Pessoas (Segunda à Quinta)
@@ -204,6 +203,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
