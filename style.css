@@ -1,67 +1,8 @@
-/* Ajuste na TAG principal */
-.version-tag {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    background: rgba(94, 11, 21, 0.9); 
-    color: #d4af37;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    padding: 6px 10px;
-    border: 1px solid #d4af37;
-    border-radius: 4px;
-    z-index: 9999;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: help; /* Muda o mouse para um sinal de interrogação */
-    pointer-events: auto; /* IMPORTANTE: Ativar para o mouse detectar a tag */
-}
-
-/* O Balão de Texto (Tooltip) */
-.version-tag .tooltip-text {
-    visibility: hidden;
-    width: 180px;
-    background-color: #1a1a1a;
-    color: #fff;
-    text-align: center;
-    border: 1px solid var(--color-gold);
-    border-radius: 4px;
-    padding: 8px;
-    position: absolute;
-    z-index: 1;
-    bottom: 150%; /* Aparece acima da tag */
-    right: 0;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 11px;
-    text-transform: none; /* Texto normal, sem ser tudo maiúsculo */
-    line-height: 1.4;
-    pointer-events: none;
-}
-
-/* Seta do balão */
-.version-tag .tooltip-text::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    right: 20px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--color-gold) transparent transparent transparent;
-}
-
-/* Mostrar ao passar o mouse ou clicar */
-.version-tag:hover .tooltip-text, 
-.version-tag:active .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* Variáveis de Cores */
+/* --- 1. VARIÁVEIS E CONFIGURAÇÕES GERAIS --- */
 :root {
     --color-black: #0a0a0a;
-    --color-wine: #5e0b15;    /* Tom de vinho profundo */
-    --color-gold: #d4af37;    /* Dourado clássico */
+    --color-wine: #5e0b15;
+    --color-gold: #d4af37;
     --color-white: #ffffff;
     --color-gold-hover: #f1d06e;
 }
@@ -76,57 +17,47 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: var(--color-white);
     height: 100vh;
-    overflow: hidden; /* Evita rolagem desnecessária */
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--color-black);
 }
 
-/* --- Configuração do Background Slider --- */
+/* --- 2. BACKGROUND SLIDER E OVERLAY --- */
 .background-slider {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     z-index: -1;
 }
 
 .background-slider img {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 1.5s ease-in-out; /* Suavidade na troca */
+    transition: opacity 1.5s ease-in-out;
 }
 
-.background-slider img.active {
-    opacity: 1;
-}
+.background-slider img.active { opacity: 1; }
 
-/* Overlay escuro para garantir leitura */
 .overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(94, 11, 21, 0.6)); /* Degradê Preto para Vinho */
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(94, 11, 21, 0.6));
 }
 
-/* --- Conteúdo Principal --- */
+/* --- 3. CONTEÚDO PRINCIPAL E TÍTULOS --- */
 .container {
     text-align: center;
     width: 95%;
-    max-width: 500px; /* Largura ideal para não apertar o título */
+    max-width: 500px;
     z-index: 10;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center;     /* Centraliza horizontalmente */
-    min-height: 100vh;       /* Ocupa a altura toda da tela */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     margin: 0 auto;
 }
 
@@ -137,7 +68,7 @@ header h1 {
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    white-space: nowrap; /* Mantém linha única no PC */
+    white-space: nowrap;
     text-align: center;
 }
 
@@ -149,45 +80,40 @@ header p {
     color: #ddd;
 }
 
-/* --- Botões --- */
+/* --- 4. BOTÕES DA PÁGINA INICIAL --- */
 .links {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espaçamento elegante entre botões */
+    gap: 15px;
     width: 100%;
-    max-width: 380px; /* Largura dos botões igual à da referência */
+    max-width: 440px;
+    margin: 0 auto;
+    align-items: center;
 }
 
 .btn {
     text-decoration: none;
     color: var(--color-white);
     border: 1px solid var(--color-gold);
-    padding: 15px 20px;
-    border-radius: 2px; /* Bordas mais retas para parecer mais luxuoso */
+    padding: 15px 50px 15px 20px !important;
+    border-radius: 2px;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px);
     transition: all 0.3s ease;
     display: flex;
-    justify-content: center; /* Centraliza o texto dentro do botão */
+    justify-content: center;
     align-items: center;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     position: relative;
     cursor: pointer;
-}
-
-/* Efeito Hover (Mouse em cima) */
-.btn:hover {
-    background: var(--color-wine);
-    border-color: var(--color-gold-hover);
-    transform: translateY(-3px); /* Levanta levemente */
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2); /* Sombra dourada */
+    width: 100%;
+    overflow: hidden;
 }
 
 .btn span {
     z-index: 2;
     white-space: nowrap;
+    text-align: center;
+    width: 100%;
 }
 
 .btn .icon {
@@ -197,74 +123,48 @@ header p {
     font-size: 0.8rem;
 }
 
-
-/* Remove qualquer estilo padrão de link (cor azul, sublinhado) */
-.footer-discreto {
-    text-decoration: none;
-    color: inherit; /* Herda a cor cinza que você já definiu no footer */
-    cursor: default; /* Mantém a seta normal em vez da mãozinha, se preferir */
+/* Animação Shine nos Botões */
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
 }
 
-.footer-fixed {
-    position: fixed;
-    bottom: 20px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    z-index: 100;
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.4), transparent);
+    transform: skewX(-25deg);
+    animation: shine 10s infinite ease-in-out;
 }
 
-.footer-fixed p {
-    margin: 0;
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.5); /* Sua cor original */
-    letter-spacing: 1px;
-}
-
-/* --- Animações de Entrada --- */
+/* Atrasos das Animações */
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
-
-/* Atrasos para criar efeito cascata */
 .delay-1 { animation-delay: 0.3s; }
 .delay-2 { animation-delay: 0.6s; }
 
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-/* --- ESTILO DA GALERIA MODAL (NOVO) --- */
-.cursor-pointer { cursor: pointer; }
-
+/* --- 5. MODAL DA GALERIA --- */
 .modal {
     display: none;
     position: fixed;
     z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    /* Fundo semi-transparente para o vidro aparecer */
-    background-color: rgba(0, 0, 0, 0.3); 
-    /* Efeito de desfoque (Blur) */
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(20px) saturate(150%);
-    -webkit-backdrop-filter: blur(20px) saturate(150%);
     justify-content: center;
     align-items: center;
     opacity: 0;
     transition: opacity 0.5s ease;
 }
 
-.modal.show {
-    display: flex;
-    opacity: 1;
-}
+.modal.show { display: flex; opacity: 1; }
 
 .modal-content {
     position: relative;
@@ -275,33 +175,34 @@ header p {
     align-items: center;
     justify-content: center;
     border: 1px solid rgba(212, 175, 55, 0.3);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-    background: rgba(15, 15, 15, 0.75); 
+    background: rgba(15, 15, 15, 0.75);
     border-radius: 8px;
-    overflow: visible !important; /* Mude para visible para a seta aparecer fora */
+    overflow: visible !important;
 }
 
-/* O Slide (Imagem + Texto) */
 .gallery-slide {
     display: flex;
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.gallery-slide.fade-out { opacity: 0; }
+
+.slide-image {
+    flex: 1.5;
+    position: relative;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
 }
 
-/* Lado Esquerdo: Imagem */
-.slide-image {
-    flex: 1.5; /* Ocupa mais espaço */
-    position: relative;
-}
-
-.slide-image img {
-    width: 100%;
-    height: 100%;
+.slide-image img, .slide-image video {
+    width: 100%; height: 100%;
     object-fit: cover;
 }
 
-/* Lado Direito: Texto */
 .slide-info {
     flex: 1;
     padding: 40px;
@@ -315,23 +216,18 @@ header p {
 .slide-info h2 {
     font-family: 'Cinzel', serif;
     color: var(--color-gold);
-    /* Ajusta entre 1.2rem e 2rem baseada na largura da tela */
-    font-size: clamp(1.2rem, 4vw, 2rem) !important; 
+    font-size: clamp(1.2rem, 4vw, 2rem) !important;
     margin-bottom: 2px;
-    white-space: nowrap !important; /* Proíbe a quebra */
-    display: block;
-    width: 100%;
+    white-space: nowrap;
 }
-/* Capacidade idêntica ao título */
+
 .capacity-highlight {
     font-family: 'Cinzel', serif;
     color: var(--color-gold);
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px; /* Espaço até a descrição começar */
-    display: block;
+    margin-bottom: 20px;
 }
 
 .slide-info p {
@@ -343,406 +239,175 @@ header p {
     white-space: pre-line;
 }
 
-/* Botão de WhatsApp dentro do Slide */
-.cta-btn {
-    display: inline-block;
-    padding: 12px 20px;
-    background: var(--color-wine);
-    color: white;
-    text-decoration: none;
-    border: 1px solid var(--color-gold);
-    text-align: center;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: 0.3s;
-    width: fit-content;
-    flex-shrink: 0 !important;   
-    min-height: 45px !important;
-}
-
-.cta-btn:hover {
-    background: var(--color-gold);
-    color: black;
-}
-
-/* Regra unificada para as setas no Computador */
-.nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--color-gold);
-    color: var(--color-gold);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 2000 !important;
-    transition: 0.3s;
-    font-size: 1.5rem;
-}
-
-.prev { left: -75px !important; } /* Afasta para a esquerda fora da caixa */
-.next { right: -75px !important; } /* Afasta para a direita fora da caixa */
-
-.nav-btn:hover { 
-    background: var(--color-wine); 
-    color: #fff; 
-    transform: translateY(-50%) scale(1.1);
-}
-
-/* Botão Fechar (X) */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1100;
-}
-
-/* Garante que o container da imagem/vídeo limpe o conteúdo anterior */
-.slide-image {
-    flex: 1.5;
-    position: relative;
-    background: #000;
-    overflow: hidden;
-    display: flex; /* Centraliza o conteúdo */
-    align-items: center;
-    justify-content: center;
-}
-
-/* Regra para Imagens E Vídeos dentro da galeria */
-.slide-image img, 
-.slide-image video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Faz o vídeo preencher todo o espaço sem distorcer */
-    display: block;
-}
-
-/* Animação da luz */
-@keyframes shine {
-    0% { left: -100%; }
-    20% { left: 100%; }
-    100% { left: 100%; }
-}
-
-.btn {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-        to right, 
-        transparent, 
-        rgba(212, 175, 55, 0.4), 
-        transparent
-    );
-    transform: skewX(-25deg);
-    animation: shine 10s infinite ease-in-out; /* Aumentei para 4s para ser mais sutil */
-}
-
-.links .btn:nth-child(1)::after { animation-delay: 0s; }
-.links .btn:nth-child(2)::after { animation-delay: 0,2,5s; }
-.links .btn:nth-child(3)::after { animation-delay: 0,5s; }
-.links .btn:nth-child(3)::after { animation-delay: 0,7,5s; }
-
-/* 1. Definimos a animação da 'mancha' girando */
+/* Botão Neon WhatsApp */
 @keyframes liquidGlow {
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* 2. Configuramos o botão da galeria */
 .cta-btn {
     position: relative;
-    overflow: hidden; /* Garante que a mancha não saia do botão */
-    background: var(--color-wine); /* Cor de fundo sólida */
-    z-index: 1;
+    overflow: hidden;
+    background: var(--color-wine);
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
     border: 1px solid var(--color-gold);
-    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 1;
+    transition: 0.3s;
 }
 
-/* 3. Criamos a mancha de luz neon */
 .cta-btn::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 150%; /* Maior que o botão para a luz 'sobrar' nas bordas */
-    height: 300%;
-    background: radial-gradient(
-        circle, 
-        rgba(212, 175, 55, 0.8) 0%, 
-        transparent 50%
-    );
+    top: 50%; left: 50%; width: 150%; height: 300%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.8) 0%, transparent 50%);
     animation: liquidGlow 4s linear infinite;
-    z-index: -1; /* Fica atrás do texto do botão */
+    z-index: -1;
 }
 
-/* 4. Overlay interno para o texto não sumir */
 .cta-btn::after {
     content: '';
     position: absolute;
-    inset: 2px; /* Pequena margem para a luz aparecer na borda */
+    inset: 2px;
     background: var(--color-wine);
     z-index: -1;
     transition: background 0.3s;
 }
 
-/* 5. Efeito ao passar o mouse */
-.cta-btn:hover::after {
-    background: transparent; /* A mancha toma conta de todo o fundo */
+.cta-btn:hover::after { background: transparent; }
+.cta-btn:hover { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); transform: scale(1.05); }
+
+/* Setas de Navegação */
+.nav-btn {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 2000;
+    transition: 0.3s;
 }
 
-.cta-btn:hover {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-    transform: scale(1.05);
+.prev { left: -75px !important; }
+.next { right: -75px !important; }
 
+.close-btn {
+    position: absolute;
+    top: 20px; right: 30px;
+    color: white; font-size: 40px;
+    cursor: pointer; z-index: 1100;
 }
 
-/* Container que agrupa a imagem e o texto */
-.gallery-slide {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    transition: opacity 0.4s ease-in-out; /* Velocidade do sumiço/surgimento */
-}
-
-/* Classe que o JS vai usar para "apagar" o conteúdo */
-.gallery-slide.fade-out {
-    opacity: 0;
-}
-
-/* Garante que a imagem e vídeo ocupem o espaço corretamente */
-.slide-image img, 
-.slide-image video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* O segredo para o fade total */
-.modal-content {
-    transition: opacity 0.4s ease-in-out;
-}
-
-.fade-out {
-    opacity: 0;
-}
-
-/* Garante que o container de imagem não tenha transições conflitantes */
-.slide-image {
-    opacity: 1 !important; 
-    transition: none !important;
-}
-
+/* --- 6. PARCEIROS E FOOTER --- */
 .partners-container {
-    margin-top: 30px; /* Espaço abaixo do botão */
+    margin-top: 30px;
     width: 100%;
-    text-align: center;
-    border-top: 1px solid rgba(212, 175, 55, 0.2); /* Linha divisória fina */
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
     padding-top: 15px;
 }
 
 .partners-img {
-    width: 100%; /* Ela ocupa a largura do menu lateral */
-    max-height: 80px; /* Limita a altura para não roubar a cena */
-    object-fit: contain; /* Garante que as logos não estiquem */
-    filter: grayscale(100%) brightness(1.5); /* Opcional: deixa as logos em P&B para ficar elegante */
-    opacity: 0.7; /* Deixa mais discreto no fundo */
+    width: 100%; max-height: 80px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(1.5);
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.partners-img:hover { filter: none; opacity: 1; }
+
+.footer-fixed {
+    position: fixed;
+    bottom: 20px; left: 0; width: 100%;
+    text-align: center; z-index: 100;
+}
+
+.footer-fixed p {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+}
+
+.footer-discreto { text-decoration: none; color: inherit; }
+
+/* --- 7. TAG DE VERSÃO --- */
+.version-tag {
+    position: fixed;
+    bottom: 15px; right: 15px;
+    background: rgba(94, 11, 21, 0.9);
+    color: #d4af37;
+    font-size: 10px;
+    padding: 6px 10px;
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+    z-index: 9999;
+    text-transform: uppercase;
+    cursor: help;
+}
+
+.version-tag .tooltip-text {
+    visibility: hidden;
+    width: 180px;
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 1px solid var(--color-gold);
+    padding: 8px;
+    position: absolute;
+    bottom: 150%; right: 0;
+    opacity: 0;
     transition: opacity 0.3s;
+    font-size: 11px;
+    line-height: 1.4;
+    pointer-events: none;
+    text-transform: none;
 }
 
-.partners-img:hover {
-    opacity: 1; /* Ganha cor/brilho ao passar o mouse */
-    filter: none;
-}
+.version-tag:hover .tooltip-text { visibility: visible; opacity: 1; }
 
-/* No computador, a quebra de linha fica escondida */
-.mobile-break {
-    display: none;
-}
-
-header h1 {
-    font-family: 'Cinzel', serif;
-    /* Ajusta entre 1.8rem e 3rem baseada na largura da tela */
-    font-size: clamp(1.8rem, 6vw, 3rem) !important;
-    color: var(--color-gold-hover);
-    letter-spacing: 2px;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    white-space: nowrap
-    text-align: center;
-}
-
-/* --- BLOCO ÚNICO DE AJUSTES MOBILE --- */
+/* --- 8. RESPONSIVIDADE (MOBILE) --- */
 @media (max-width: 768px) {
-    
-    /* 1. TÍTULO: Faz a quebra de linha funcionar */
-    .mobile-break {
-        display: block !important;
-    }
+    .mobile-break { display: block !important; }
 
     header h1 {
-        font-family: 'Cinzel', serif;
-        font-size: 2.2rem !important; 
-        line-height: 1.1 !important;
-        white-space: normal !important; /* PERMITE A QUEBRA NO CELULAR */
-        text-align: center;
-        width: 100%;
-        max-width: 300px; /* Força a quebra baseada na largura */
+        white-space: normal !important;
+        font-size: 2.2rem !important;
+        line-height: 1.1;
+        max-width: 300px;
         margin: 0 auto 0.5rem auto;
-        display: block;
     }
 
-    header p {
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-        margin-bottom: 2rem;
-        padding: 0 10px;
-    }
-
-    /* 2. CONTAINER: Empurra o conteúdo para baixo como você queria */
     .container {
-        width: 100%;
-        padding: 0 20px;
-        justify-content: flex-end; 
-        padding-bottom: 100px; 
-        min-height: 100vh;
+        justify-content: center;
+        padding-bottom: 50px;
     }
 
-    /* 3. BOTÕES: Ajuste para o texto NÃO VAZAR (Conforme seu print) */
-   .links {
-        width: 100% !important;
-        /* Aumentamos de 350px para 420px ou 90% para dar fôlego ao texto */
-        max-width: 420px !important; 
-        gap: 12px;
-        margin: 0 auto;
-    }
+    .links { width: 100%; max-width: 400px; }
 
-    .btn {
-        text-decoration: none;
-        color: var(--color-white);
-        border: 1px solid var(--color-gold);
-        /* 45px na direita garante que o texto pare ANTES de chegar na seta */
-        padding: 15px 45px 15px 20px !important; 
-        border-radius: 2px;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(8px);
-        transition: all 0.3s ease;
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        position: relative;
-        cursor: pointer;
-        width: 100%;
-    }
+    .btn { padding: 15px 45px 15px 20px !important; }
+    .btn span { font-size: 0.75rem !important; }
 
-    .btn span {
-        z-index: 2;
-        white-space: nowrap !important;
-        /* Ajustamos o clamp para a fonte não ficar minúscula, mas caber na largura */
-        font-size: clamp(0.7rem, 3vw, 0.85rem) !important;
-        text-align: center;
-        width: 100%;
-        letter-spacing: 1px !important;
-    }
-
-    .btn .icon {
-        position: absolute;
-        right: 15px; /* Mantém a seta no lugar original */
-        color: var(--color-gold);
-        font-size: 0.8rem;
-    }
-    /* 4. RODAPÉ E VERSION-TAG */
-    .footer-fixed {
-        bottom: 15px;
-    }
-
-    .footer-fixed p {
-        font-size: 0.52rem;
-        white-space: nowrap;
-        letter-spacing: 0.5px;
-        opacity: 0.7;
-    }
-
-    /* Ajuste da Tag de Versão para não sumir */
-    .version-tag {
-        bottom: 5px;
-        right: 5px;
-        padding: 2px 5px;
-        font-size: 8px;
-    }
-
-/* 5. MODAL DA GALERIA */
-    .modal-content {
-        overflow: hidden !important; /* Mantém tudo dentro da caixa no celular */
-    }
-
-    .slide-info h2 {
-        /* Ajusta o tamanho da fonte automaticamente para não quebrar */
-        font-size: clamp(1.1rem, 5vw, 1.4rem) !important;
-        white-space: nowrap !important; 
-        margin-bottom: 5px;
-        width: 100%;
+    .modal-content { 
+        height: auto; 
+        flex-direction: column; 
+        overflow: hidden !important; 
     }
     
-    .slide-info p {
-        font-size: 0.85rem;
-    }
-
-    .capacity-highlight {
-        font-size: 0.55rem;
-        margin-bottom: 15px;
-        text-align: left !important;
-    }
-
-    /* 5 FORÇAR AS SETAS A APARECEREM DENTRO DA TELA NO MOBILE */
-    .nav-btn {
-        width: 40px !important;
-        height: 40px !important;
-        background: rgba(0, 0, 0, 0.6) !important; /* Fundo escuro para dar contraste */
-        z-index: 2001 !important; /* Garante que fiquem acima de tudo */
-        display: flex !important;
-    }
-
-    .prev { 
-        left: 10px !important; /* Traz para dentro da imagem à esquerda */
-    }
-
-    .next { 
-        right: 10px !important; /* Traz para dentro da imagem à direita */
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .gallery-slide { flex-direction: column; }
+    .slide-info { padding: 20px; border-left: none; border-top: 2px solid var(--color-wine); }
+    
+    .nav-btn { width: 40px; height: 40px; }
+    .prev { left: 10px !important; }
+    .next { right: 10px !important; }
+    
+    .footer-fixed p { font-size: 0.52rem; }
+    .version-tag { bottom: 5px; right: 5px; padding: 2px 5px; font-size: 8px; }
+}
 
 
 
