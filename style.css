@@ -1,19 +1,60 @@
-/* TAG DE VERSÃO - REMOVER QUANDO FINALIZAR */
+/* Ajuste na TAG principal */
 .version-tag {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(94, 11, 21, 0.8); /* Cor Vinho */
-    color: #d4af37; /* Cor Ouro */
+    bottom: 15px;
+    right: 15px;
+    background: rgba(94, 11, 21, 0.9); 
+    color: #d4af37;
     font-family: 'Montserrat', sans-serif;
     font-size: 10px;
-    padding: 4px 8px;
+    padding: 6px 10px;
     border: 1px solid #d4af37;
     border-radius: 4px;
-    z-index: 9999; /* Fica acima de tudo */
-    pointer-events: none; /* Não atrapalha os cliques no site */
+    z-index: 9999;
     letter-spacing: 1px;
     text-transform: uppercase;
+    cursor: help; /* Muda o mouse para um sinal de interrogação */
+    pointer-events: auto; /* IMPORTANTE: Ativar para o mouse detectar a tag */
+}
+
+/* O Balão de Texto (Tooltip) */
+.version-tag .tooltip-text {
+    visibility: hidden;
+    width: 180px;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    border: 1px solid var(--color-gold);
+    border-radius: 4px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%; /* Aparece acima da tag */
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 11px;
+    text-transform: none; /* Texto normal, sem ser tudo maiúsculo */
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+/* Seta do balão */
+.version-tag .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--color-gold) transparent transparent transparent;
+}
+
+/* Mostrar ao passar o mouse ou clicar */
+.version-tag:hover .tooltip-text, 
+.version-tag:active .tooltip-text {
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Variáveis de Cores */
@@ -697,6 +738,7 @@ header h1 {
         max-width: 340px !important; 
     }
 }
+
 
 
 
