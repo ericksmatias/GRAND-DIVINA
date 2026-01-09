@@ -275,19 +275,19 @@ header p {
     font-family: 'Cinzel', serif;
     color: var(--color-gold);
     font-size: 2rem;
-    margin-bottom: 2px; /* QUASE ZERO PARA COLAR O TEXTO ABAIXO */
+    margin-bottom: 2px; /* Grudado na capacidade */
 }
 
-/* NOVA REGRA: Capacidade idêntica ao título mas menor */
+/* Capacidade idêntica ao título */
 .capacity-highlight {
     font-family: 'Cinzel', serif;
     color: var(--color-gold);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 20px; /* ESPAÇO ATÉ A DESCRIÇÃO */
-    text-align: left !important;
+    margin-bottom: 20px; /* Espaço até a descrição começar */
+    display: block;
 }
 
 .slide-info p {
@@ -296,7 +296,6 @@ header p {
     color: #ccc;
     margin-bottom: 30px;
     text-align: justify;
-    text-justify: inter-word;
     white-space: pre-line;
 }
 
@@ -656,6 +655,7 @@ header p {
     opacity: 1; /* Ganha cor/brilho ao passar o mouse */
     filter: none;
 }
+
 
 
 
