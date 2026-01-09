@@ -153,7 +153,7 @@ header p {
     flex-direction: column;
     gap: 15px; /* Espaçamento elegante entre botões */
     width: 100%;
-    max-width: 380px; /* Largura dos botões igual à da referência */
+    max-width: 450px; /* Largura dos botões igual à da referência */
 }
 
 .btn {
@@ -758,6 +758,7 @@ header h1 {
     .next { 
         right: 10px !important; /* Traz para dentro da imagem à direita */
     }
+
 
 
 
