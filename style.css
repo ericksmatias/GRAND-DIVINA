@@ -593,87 +593,6 @@ header p {
     transition: none !important;
 }
 
-/* --- AJUSTE FINO PARA MOBILE (VERSÃO FINAL) --- */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 1.9rem; /* Reduzi levemente para garantir espaço */
-        letter-spacing: 1px;
-        white-space: nowrap;
-        width: 100%;
-        margin-bottom: 0.2rem;
-    }
-
-    header p {
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-        margin-bottom: 2rem;
-        padding: 0 10px;
-    }
-
-    .container {
-        width: 100%;
-        padding: 0 20px;
-        /* MUDANÇA AQUI: Empurra o conteúdo para perto do rodapé */
-        justify-content: flex-end; 
-        padding-bottom: 100px; /* Distância segura do rodapé */
-        min-height: 100vh;
-    }
-
-    .links {
-        width: 100%;
-        max-width: 300px; /* Botões um pouco mais estreitos no celular */
-        gap: 12px;
-    }
-
-    .btn {
-        padding: 12px 15px; /* Botões menos altos */
-        font-size: 0.75rem;
-    }
-
-    /* RODAPÉ EM UMA LINHA SÓ */
-    .footer-fixed {
-        bottom: 15px; /* Um pouco mais perto da borda */
-    }
-
-    .footer-fixed p {
-        font-size: 0.52rem; /* Tamanho calculado para caber em telas pequenas */
-        white-space: nowrap; /* Força linha única */
-        letter-spacing: 0.5px;
-        width: 100%;
-        opacity: 0.7;
-    }
-
-    /* Ajuste do Modal no Celular para não cortar o conteúdo */
-    .slide-info h2 {
-        font-size: 1.4rem;
-    }
-    
-    .slide-info p {
-        font-size: 0.85rem;
-    }
-
-       /* Ajuste do Título para remover espaço de baixo */
-    .slide-info h2 {
-        font-family: 'Cinzel', serif;
-        color: var(--color-gold);
-        font-size: 2rem;
-        margin-bottom: 5px; /* Reduzido de 20px para 5px */
-    }
-    
-    /* Capacidade: Mesma cor e fonte do título, mas menor */
-    .capacity-highlight {
-        font-family: 'Cinzel', serif; /* Mesma fonte do título */
-        color: var(--color-gold-hover); /* Dourado mais brilhante */
-        font-size: 0.9rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 20px; /* Espaço para a descrição começar */
-        text-align: left !important;
-        display: block;
-    }
-}
-
 .partners-container {
     margin-top: 30px; /* Espaço abaixo do botão */
     width: 100%;
@@ -710,32 +629,97 @@ header h1 {
     text-align: center;
 }
 
-/* --- AJUSTES FINAIS MOBILE --- */
+/* --- BLOCO ÚNICO DE AJUSTES MOBILE --- */
 @media (max-width: 768px) {
     
-    /* Faz a quebra de linha aparecer no celular */
+    /* 1. TÍTULO: Faz a quebra de linha funcionar */
     .mobile-break {
         display: block !important;
     }
 
-    /* Ajusta o título para aceitar as duas linhas */
     header h1 {
-        white-space: normal !important; /* Permite quebrar */
-        font-size: 2.2rem !important;  /* Tamanho bom para celular */
-        line-height: 1.1 !important;   /* Deixa uma linha perto da outra */
+        font-family: 'Cinzel', serif;
+        font-size: 2.2rem !important; 
+        line-height: 1.1 !important;
+        white-space: normal !important; /* Permite a quebra do <br> */
         text-align: center;
+        width: 100%;
+        margin-bottom: 0.5rem;
     }
 
-    /* Impede que o botão "Sociais e corporativos" quebre */
+    header p {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        margin-bottom: 2rem;
+        padding: 0 10px;
+    }
+
+    /* 2. CONTAINER: Empurra o conteúdo para baixo como você queria */
+    .container {
+        width: 100%;
+        padding: 0 20px;
+        justify-content: flex-end; 
+        padding-bottom: 100px; 
+        min-height: 100vh;
+    }
+
+    /* 3. BOTÕES: Ajuste para o texto NÃO VAZAR (Conforme seu print) */
+    .links {
+        width: 100% !important;
+        max-width: 350px !important; /* Aumentei para 350px para dar espaço */
+        gap: 12px;
+        margin: 0 auto;
+    }
+
+    .btn {
+        padding: 12px 10px !important; /* Menos padding lateral = mais espaço pro texto */
+    }
+
     .btn span {
-        white-space: nowrap !important; /* Proíbe quebrar a linha */
-        font-size: 0.72rem !important;  /* Diminui um pouco para caber */
-        letter-spacing: 1px !important; /* Encolhe o espaço entre letras */
+        font-size: 0.7rem !important;  /* Fonte menor para caber tudo */
+        white-space: nowrap !important; /* Proíbe quebrar a palavra */
+        letter-spacing: 0.5px !important;
+    }
+
+    .btn .icon {
+        right: 10px !important;
+        font-size: 0.7rem !important;
+    }
+
+    /* 4. RODAPÉ E VERSION-TAG */
+    .footer-fixed {
+        bottom: 15px;
+    }
+
+    .footer-fixed p {
+        font-size: 0.52rem;
+        white-space: nowrap;
+        letter-spacing: 0.5px;
+        opacity: 0.7;
+    }
+
+    /* Ajuste da Tag de Versão para não sumir */
+    .version-tag {
+        bottom: 5px;
+        right: 5px;
+        padding: 2px 5px;
+        font-size: 8px;
+    }
+
+    /* 5. MODAL DA GALERIA */
+    .slide-info h2 {
+        font-size: 1.4rem;
+        margin-bottom: 5px;
     }
     
-    /* Garante que o botão tenha largura para o texto */
-    .links {
-        max-width: 340px !important; 
+    .slide-info p {
+        font-size: 0.85rem;
+    }
+
+    .capacity-highlight {
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+        text-align: left !important;
     }
 }
 
