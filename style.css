@@ -599,22 +599,25 @@ header p {
         font-size: 0.85rem;
     }
 
-        /* Destaque para a Capacidade */
-    .capacity-highlight {
+       /* Ajuste do Título para remover espaço de baixo */
+    .slide-info h2 {
+        font-family: 'Cinzel', serif;
         color: var(--color-gold);
-        font-size: 0.85rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 15px;
-        text-align: left !important; /* Força alinhamento à esquerda para evitar buracos */
+        font-size: 2rem;
+        margin-bottom: 5px; /* Reduzido de 20px para 5px */
     }
     
-    /* Ajuste na descrição para ser justificada apenas em blocos grandes */
-    #modal-desc {
-        text-align: justify;
-        text-justify: inter-word;
-        white-space: pre-line;
+    /* Capacidade: Mesma cor e fonte do título, mas menor */
+    .capacity-highlight {
+        font-family: 'Cinzel', serif; /* Mesma fonte do título */
+        color: var(--color-gold-hover); /* Dourado mais brilhante */
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px; /* Espaço para a descrição começar */
+        text-align: left !important;
+        display: block;
     }
 }
 
@@ -641,6 +644,7 @@ header p {
     opacity: 1; /* Ganha cor/brilho ao passar o mouse */
     filter: none;
 }
+
 
 
 
