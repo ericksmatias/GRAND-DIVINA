@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // 2. DADOS DA GALERIA (Fotos e Vídeos)
 const galleryData = {
     'espacos': [
-        { img: 'assets/panmeireles.mp4', title: `Salão varanda (Capacidade 200 pessoas)', desc: 'Texto: Ideal para Eventos Corporativos e Sociais (Recepção de Casamentos & Aniversários)
+        { img: 'assets/panmeireles.mp4', title: 'Salão varanda (Capacidade 200 pessoas)', desc: `Texto: Ideal para Eventos Corporativos e Sociais (Recepção de Casamentos & Aniversários)
 Pode Trazer Decoração e Música para o Ambiente (Banda ou DJ)
 A partir de 50 Pessoas (Segunda à Quinta) 
 A partir de 80 Pessoas (Sexta à Domingo).` },
@@ -190,6 +190,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
