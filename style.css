@@ -131,12 +131,14 @@ body {
 }
 
 header h1 {
-    font-family: 'Cinzel', serif; /* Fonte estilo Luxo */
-    font-size: 3rem;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 6vw, 3rem) !important;
     color: var(--color-gold-hover);
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    white-space: nowrap; /* Mantém linha única no PC */
+    text-align: center;
 }
 
 header p {
@@ -654,10 +656,12 @@ header h1 {
         font-family: 'Cinzel', serif;
         font-size: 2.2rem !important; 
         line-height: 1.1 !important;
-        white-space: normal !important; /* Permite a quebra do <br> */
+        white-space: normal !important; /* PERMITE A QUEBRA NO CELULAR */
         text-align: center;
         width: 100%;
-        margin-bottom: 0.5rem;
+        max-width: 300px; /* Força a quebra baseada na largura */
+        margin: 0 auto 0.5rem auto;
+        display: block;
     }
 
     header p {
@@ -684,21 +688,42 @@ header h1 {
         margin: 0 auto;
     }
 
-    .btn {
-        padding: 12px 10px !important; /* Menos padding lateral = mais espaço pro texto */
+        .btn {
+        text-decoration: none;
+        color: var(--color-white);
+        border: 1px solid var(--color-gold);
+        /* Aumentei o padding da direita para 50px para proteger a seta */
+        padding: 15px 50px 15px 20px; 
+        border-radius: 2px;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden; /* Garante que o brilho não escape */
     }
-
+    
     .btn span {
-        font-size: 0.7rem !important;  /* Fonte menor para caber tudo */
-        white-space: nowrap !important; /* Proíbe quebrar a palavra */
-        letter-spacing: 0.5px !important;
+        z-index: 2;
+        white-space: nowrap !important;
+        /* Fonte flexível: ela diminui se a tela apertar ou o texto for longo */
+        font-size: clamp(0.65rem, 2vw, 0.85rem) !important;
+        text-align: center;
+        width: 100%;
     }
-
+    
     .btn .icon {
-        right: 10px !important;
-        font-size: 0.7rem !important;
+        position: absolute;
+        right: 15px; /* Fixa a seta na ponta direita */
+        color: var(--color-gold);
+        font-size: 0.8rem;
     }
-
     /* 4. RODAPÉ E VERSION-TAG */
     .footer-fixed {
         bottom: 15px;
@@ -758,6 +783,7 @@ header h1 {
     .next { 
         right: 10px !important; /* Traz para dentro da imagem à direita */
     }
+
 
 
 
