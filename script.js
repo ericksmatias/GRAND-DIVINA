@@ -50,13 +50,13 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
          desc: `Um linda vista para eventos mais intimistas ao ar livre!
 
 Ideal para Eventos Corporativos e Sociais
-Pode trazer Decoração e Música (Banda ou DJ)`' },
+Pode trazer Decoração e Música (Banda ou DJ)` },
         { img: 'assets/fooftop 2.jpeg', 
          title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
          desc: `Um linda vista para eventos mais intimistas ao ar livre!
 
 Ideal para Eventos Corporativos e Sociais
-Pode trazer Decoração e Música (Banda ou DJ)`' },
+Pode trazer Decoração e Música (Banda ou DJ)` },
     ],
     'corporativo': [
         { img: 'assets/corp1.jpg', title: 'Casamento 1', desc: 'Descrição.' },
@@ -210,6 +210,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
