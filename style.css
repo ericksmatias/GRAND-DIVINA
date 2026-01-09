@@ -632,8 +632,6 @@ header p {
     }
 }
 
-
-
 .partners-container {
     margin-top: 30px; /* Espaço abaixo do botão */
     width: 100%;
@@ -656,6 +654,34 @@ header p {
     filter: none;
 }
 
+/* No computador, a quebra de linha fica escondida */
+.mobile-break {
+    display: none;
+}
+
+/* No computador, mantemos o título em uma linha só */
+header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    color: var(--color-gold-hover);
+    white-space: nowrap; /* Garante linha única no desktop */
+    text-align: center;
+}
+
+/* --- CONFIGURAÇÃO APENAS PARA CELULAR --- */
+@media (max-width: 768px) {
+    .mobile-break {
+        display: block; /* Ativa a quebra de linha no celular */
+    }
+
+    header h1 {
+        white-space: normal; /* Permite que o texto quebre */
+        font-size: 2.2rem;   /* Tamanho ajustado para mobile */
+        line-height: 1.1;    /* Aproxima o 'EVENTOS' do 'GRAND DIVINA' */
+        text-align: center;
+        width: 100%;
+    }
+}
 
 
 
