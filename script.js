@@ -37,11 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // 2. DADOS DA GALERIA (Fotos e Vídeos)
 const galleryData = {
     'espacos': [
-        { img: 'assets/panmeireles.mp4', title: 'Salão varanda', cap: 'Capacidade para até 200 pessoas', desc: `Corporativos (Palestras | Treinamentos | Confraternizações) 
+        { img: 'assets/panmeireles.mp4', title: 'Salão varanda', cap: 'Capacidade para até 200 pessoas', desc: `Corporativos (Treinamentos e Confraternizações) 
 Sociais (Recepção de Casamentos & Aniversários)
-Estrutura para receber decoração e música (Banda ou DJ)
+Estrutura para receber decoração e música
 A partir de 50 Pessoas (Segunda à Quinta)
-A partir de 80 Pessoas (Sexta à Domingo).` },
+A partir de 80 Pessoas (Sexta à Domingo) ` },
         { img: 'assets/e1.jpg', title: 'Lugar 1', desc: 'desc.' },
         { img: 'assets/e2.jpg', title: 'Lugar 2', desc: 'desc.' },
         { img: 'assets/e3.jpg', title: 'Lugar 3', desc: 'desc.' },
@@ -202,6 +202,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
