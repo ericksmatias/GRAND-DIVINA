@@ -93,10 +93,12 @@ function updateSlide() {
     setTimeout(() => {
         const item = galleryData[currentCategory][currentIndex];
         const imageContainer = document.querySelector('.slide-image');
-        const modalCap = document.getElementById('modal-cap'); 
+        const modalCap = document.getElementById('modal-cap');
+        const partnersContainer = document.getElementById('partners-logos');
         
         if (!imageContainer) return;
 
+      // Limpa e Renderiza Imagem ou Vídeo
         imageContainer.innerHTML = '';
         if (item.img.toLowerCase().endsWith('.mp4')) {
             const video = document.createElement('video');
@@ -108,7 +110,6 @@ function updateSlide() {
             video.setAttribute('preload', 'auto');
             video.load(); 
             video.play().catch(e => console.log("Erro ao dar play:", e));
-            
             imageContainer.appendChild(video);
         } else {
             const img = document.createElement('img');
@@ -119,13 +120,13 @@ function updateSlide() {
         const item = galleryData[currentCategory][currentIndex];
         const modalCap = document.getElementById('modal-cap');
         
-        // LÓGICA CORRIGIDA: Só exibe se houver 'cap' E se a categoria for 'espacos'
-        if (currentCategory === 'espacos' && item.cap) {
-            modalCap.textContent = item.cap;
-            modalCap.style.display = 'block';
-        } else {
-            modalCap.textContent = '';
-            modalCap.style.display = 'none';
+       if (modalCap) {
+            if (currentCategory === 'espacos' && item.cap) {
+                modalCap.textContent = item.cap;
+                modalCap.style.display = 'block';
+            } else {
+                modalCap.style.display = 'none';
+            }
         }
 
 // Lógica das Logos
@@ -204,6 +205,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
