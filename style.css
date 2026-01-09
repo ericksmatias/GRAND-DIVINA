@@ -638,7 +638,7 @@ header h1 {
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    white-space: nowrap !important; /* Proíbe a quebra */
+    white-space: nowrap
     text-align: center;
 }
 
@@ -758,6 +758,7 @@ header h1 {
     .next { 
         right: 10px !important; /* Traz para dentro da imagem à direita */
     }
+
 
 
 
