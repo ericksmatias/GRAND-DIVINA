@@ -719,10 +719,17 @@ header h1 {
         font-size: 8px;
     }
 
-    /* 5. MODAL DA GALERIA */
+/* 5. MODAL DA GALERIA */
+    .modal-content {
+        overflow: hidden !important; /* Mantém tudo dentro da caixa no celular */
+    }
+
     .slide-info h2 {
-        font-size: 1.4rem;
+        /* Ajusta o tamanho da fonte automaticamente para não quebrar */
+        font-size: clamp(1.1rem, 5vw, 1.4rem) !important;
+        white-space: nowrap !important; 
         margin-bottom: 5px;
+        width: 100%;
     }
     
     .slide-info p {
@@ -734,7 +741,23 @@ header h1 {
         margin-bottom: 15px;
         text-align: left !important;
     }
-}
+
+    /* 5 FORÇAR AS SETAS A APARECEREM DENTRO DA TELA NO MOBILE */
+    .nav-btn {
+        width: 40px !important;
+        height: 40px !important;
+        background: rgba(0, 0, 0, 0.6) !important; /* Fundo escuro para dar contraste */
+        z-index: 2001 !important; /* Garante que fiquem acima de tudo */
+        display: flex !important;
+    }
+
+    .prev { 
+        left: 10px !important; /* Traz para dentro da imagem à esquerda */
+    }
+
+    .next { 
+        right: 10px !important; /* Traz para dentro da imagem à direita */
+    }
 
 
 
