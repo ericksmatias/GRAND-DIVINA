@@ -285,6 +285,7 @@ header p {
     margin-bottom: 30px;
     text-align: justify;
     text-justify: inter-word;
+    white-space: pre-line;
 }
 
 /* Botão de WhatsApp dentro do Slide */
@@ -620,6 +621,7 @@ header p {
     opacity: 1; /* Ganha cor/brilho ao passar o mouse */
     filter: none;
 }
+
 
 
 
