@@ -264,7 +264,7 @@ header p {
     opacity: 1;
 }
 
-/* Container do Conteúdo */
+/* Localize sua regra .modal-content e COMENTE ou REMOVA o overflow: hidden */
 .modal-content {
     position: relative;
     width: 90%;
@@ -273,13 +273,10 @@ header p {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Borda dourada sutil com transparência */
     border: 1px solid rgba(212, 175, 55, 0.3);
     box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-    /* Fundo escuro levemente transparente */
     background: rgba(15, 15, 15, 0.75); 
-    overflow: hidden;
-    border-radius: 8px; /* Opcional: deixa as pontas levemente arredondadas */
+    border-radius: 8px;
 }
 
 /* O Slide (Imagem + Texto) */
@@ -363,24 +360,30 @@ header p {
     color: black;
 }
 
-/* Botões de Navegação (Setas) */
 .nav-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    border: none;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-gold);
     color: var(--color-gold);
-    font-size: 2rem;
-    padding: 10px 15px;
+    width: 50px; /* Tamanho fixo para ser circular */
+    height: 50px;
+    border-radius: 50%; /* Torna a seta um círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    z-index: 10;
     transition: 0.3s;
+    font-size: 1.5rem;
 }
 
-.nav-btn:hover { background: var(--color-wine); }
-.prev { left: -80px; }
-.next { right: -80px; }
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2000 !important; /* Valor alto para garantir que fique acima do fundo */
+}
 
 /* Botão Fechar (X) */
 .close-btn {
@@ -722,6 +725,7 @@ header h1 {
         text-align: left !important;
     }
 }
+
 
 
 
