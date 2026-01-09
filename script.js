@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 1; i <= totalPhotos; i++) {
         const img = document.createElement('img');
         
-        // Se for mobile, busca "mobile X.jpeg", se for desktop busca "foto X.jpeg"
-        // Note: usei o padrão de espaço "foto 2" que você confirmou antes
+        // "mobile X.jpeg", se for desktop busca "foto X.jpeg"
+        // Note: padrão de espaço "foto 2"
         const fileName = isMobile ? `mobile ${i}.jpeg` : (i === 1 ? `foto1.jpeg` : `foto ${i}.jpeg`);
         
         img.src = `assets/${fileName}`;
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }, 4000); // Aumentei para 4s para ficar mais elegante
+        }, 4000);
     }
 });
 
@@ -65,8 +65,6 @@ const modalTitle = document.getElementById('modal-title');
 const modalDesc = document.getElementById('modal-desc');
 const modalCta = document.getElementById('modal-cta');
 
-// ... (mantenha a parte 1 e 2 do seu código original igual)
-
 // 3. FUNÇÕES DA GALERIA
 
 function openGallery(category) {
@@ -74,11 +72,11 @@ function openGallery(category) {
     currentCategory = category;
     currentIndex = 0;
     
-    // Mostra o modal
+    // Modal
     modal.style.display = 'flex';
     setTimeout(() => { modal.classList.add('show'); }, 10);
     
-    // TRUQUE DO BOTÃO VOLTAR: Adiciona um estado no histórico do navegador
+    // Botão voltar
     history.pushState({ modalOpen: true }, '');
 
     updateSlide(); 
@@ -113,16 +111,16 @@ function updateSlide() {
             imageContainer.appendChild(img);
         }
 
-// Lógica das Logos de Parceiros
+// Lógica das Logos
     const partnersContainer = document.getElementById('partners-logos');
     
     // Verifica se a categoria é corporativo ou social
     if (currentCategory === 'social' ) {
-        // Insere a imagem das logos (substitua pelo nome correto do seu arquivo)
+        // Insere a imagem das logos
         partnersContainer.innerHTML = `<img src="assets/logoparceiro.png" alt="Empresas parceiras" class="partners-img">`;
         partnersContainer.style.display = 'block';
     } else {
-        // Esconde nas outras categorias (como 'espacos')
+        // Esconde nas outras categorias
         partnersContainer.innerHTML = '';
         partnersContainer.style.display = 'none';
     }
@@ -142,7 +140,6 @@ function closeGallery() {
     modal.classList.remove('show');
     setTimeout(() => { modal.style.display = 'none'; }, 400);
 
-    // Se o modal foi fechado manualmente (no X ou fora), removemos o estado do histórico
     if (history.state && history.state.modalOpen) {
         history.back();
     }
@@ -154,7 +151,6 @@ function changeSlide(direction) {
     updateSlide();
 }
 
-// Fechar ao clicar fora do conteúdo
 window.onclick = function(event) {
     if (event.target == modal) {
         closeGallery();
@@ -191,6 +187,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
