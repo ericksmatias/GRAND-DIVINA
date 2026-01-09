@@ -54,7 +54,7 @@ A partir de 80 Pessoas (Sexta à Domingo).` },
         { img: 'assets/corp2.jpg', title: 'Casamento 2', desc: 'Descrição.' }
     ],
     'social': [
-        { img: 'assets/bianchi2025.mp4', title: 'Eventos corporativos', desc: 'No Grand Divina Eventos dispomos de espaços modernos com capacidade para até 200 pessoas,  ideal para eventos corporativos: reuniões, treinamentos, jantar de negócios, palestras e confraternizações de empresa.  Nosso experiente time tem atendimento personalizado o que garante um serviço de alto padrão. Para completar nossa gastronomia é um dos grandes diferenciais com cardápios exclusivos e adaptados a necessidade do seu evento, unindo sabor e qualidade elevando o nível de seu evento e garantindo o destaque que ele merece.' },
+        { img: 'assets/bianchi2025.mp4', title: 'Eventos corporativos', desc: 'No 𝐆𝐫𝐚𝐧𝐝 𝐃𝐢𝐯𝐢𝐧𝐚 𝐄𝐯𝐞𝐧𝐭𝐨𝐬 dispomos de espaços modernos com capacidade para até 200 pessoas,  ideal para eventos corporativos: reuniões, treinamentos, jantar de negócios, palestras e confraternizações de empresa.  Nosso experiente time tem atendimento personalizado o que garante um serviço de alto padrão. Para completar nossa gastronomia é um dos grandes diferenciais com cardápios exclusivos e adaptados a necessidade do seu evento, unindo sabor e qualidade elevando o nível de seu evento e garantindo o destaque que ele merece.' },
         { img: 'assets/social2.jpg', title: 'Evento tal kkk (testando)', desc: 'Social descrição.' }
     ]
 };
@@ -190,6 +190,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
