@@ -379,8 +379,8 @@ header p {
 }
 
 .nav-btn:hover { background: var(--color-wine); }
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev { left: -80px; }
+.next { right: -80px; }
 
 /* Botão Fechar (X) */
 .close-btn {
@@ -722,6 +722,7 @@ header h1 {
         text-align: left !important;
     }
 }
+
 
 
 
