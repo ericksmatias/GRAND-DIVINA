@@ -312,23 +312,35 @@ header p {
     padding: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Alinha do topo para baixo */
+    /* justify-content: flex-start garante que o topo fique fixo e o resto desça */
+    justify-content: flex-start; 
     background: linear-gradient(135deg, #1a0508, #000);
     border-left: 2px solid var(--color-wine);
-    overflow-y: auto; /* Se o texto crescer, rola só aqui */
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
 .slide-info h2 {
     font-family: 'Cinzel', serif;
     color: var(--color-gold);
-    /* Ajusta entre 1.2rem e 2rem baseada na largura da tela */
-    font-size: clamp(1.2rem, 4vw, 2rem) !important; 
-    margin-bottom: 2px;
-    white-space: nowrap !important; /* Proíbe a quebra */
+    font-size: clamp(1.2rem, 3vw, 1.8rem) !important;
+    margin-bottom: 10px;
+    white-space: normal !important; /* CORREÇÃO: Permite quebra de linha */
+    line-height: 1.2;
     display: block;
+}
+
+#partners-logos {
+    margin-top: auto; /* Empurra para o fundo */
+    padding-top: 20px;
     width: 100%;
 }
+
+.cta-btn {
+    margin-bottom: 20px; /* Espaço entre botão e logos */
+    flex-shrink: 0;
+}
+
 /* Capacidade idêntica ao título */
 .capacity-highlight {
     font-family: 'Cinzel', serif;
@@ -686,15 +698,13 @@ header h1 {
     display: flex;
     align-items: center;
     width: max-content;
-    animation: scrollLogos 25s linear infinite; /* Mais lento = mais elegante */
+    animation: scrollLogos 20s linear infinite;
 }
 
 .logo-track img {
-    height: 35px; 
-    margin: 0 12px; /* DISTÂNCIA DIMINUÍDA */
-    object-fit: contain;
-    filter: none !important; /* SEMPRE COLORIDO */
-    opacity: 1 !important;   /* SEMPRE NÍTIDO */
+    height: 30px;
+    margin: 0 15px;
+    filter: brightness(1.2);
 }
 
 /* Animação que move a faixa da direita para a esquerda */
@@ -706,29 +716,34 @@ header h1 {
 /* --- BLOCO ÚNICO DE AJUSTES MOBILE --- */
 @media (max-width: 768px) {
     .modal-content {
-        flex-direction: column;
-        height: 90vh;
-        width: 90%;
-        overflow-y: auto !important; /* Scroll vertical apenas */
-        overflow-x: hidden !important; /* Mata o bug lateral */
-    }
-
-    .gallery-slide {
-        flex-direction: column;
-        height: auto;
+        height: 90vh !important;
+        flex-direction: column !important;
+        overflow-y: auto !important;
+        background: #000 !important;
     }
 
     .slide-image {
-        flex: 0 0 300px !important; /* Altura fixa para o vídeo no celular */
+        flex: 0 0 40% !important; /* Imagem/Vídeo ocupa 40% da tela */
         width: 100% !important;
     }
 
     .slide-info {
-        flex: 1 0 auto !important;
+        flex: 1 0 auto !important; /* Ocupa o resto e cresce se precisar */
         width: 100% !important;
-        padding: 20px;
-        border-left: none;
+        padding: 20px !important;
+        border-left: none !important;
         border-top: 2px solid var(--color-wine);
+        justify-content: flex-start !important;
+    }
+
+    .slide-info h2 {
+        font-size: 1.4rem !important;
+        text-align: left;
+    }
+
+    .slide-info p {
+        margin-bottom: 20px;
+        text-align: left;
     }
 
     .nav-btn {
@@ -850,6 +865,7 @@ header h1 {
     .next { 
         right: 10px !important; /* Traz para dentro da imagem à direita */
     }
+
 
 
 
