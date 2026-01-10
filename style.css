@@ -240,54 +240,56 @@ header p {
    ========================================= */
 @media (max-width: 768px) {
     .modal {
-        padding: 10px;
-        overflow: hidden !important; /* No mobile evita scrolls indesejados */
+        padding: 0;
+        overflow: hidden !important; /* Evita scroll na tela toda */
     }
 
     .modal-content {
         flex-direction: column !important;
-        height: 90vh !important;
+        height: 100vh !important; /* Ocupa a tela toda no mobile */
         width: 100% !important;
-        overflow-y: auto !important; /* Essencial para ver o texto todo */
-        overflow-x: hidden !important;
+        border: none;
+        border-radius: 0;
+        overflow-y: auto !important; /* Permite rolar o texto */
     }
 
-    .gallery-slide { 
-        flex-direction: column; 
-        height: auto; 
+    .gallery-slide {
+        flex-direction: column;
+        height: auto;
     }
 
     .slide-image {
-        flex: 0 0 280px !important; /* Aumentei um pouco a altura da imagem */
+        flex: 0 0 280px !important; /* Altura fixa da imagem */
         width: 100% !important;
+        position: relative;
     }
 
     .slide-info {
         width: 100% !important;
-        padding: 20px !important;
+        padding: 25px !important;
         border-left: none;
         border-top: 2px solid var(--color-wine);
     }
 
-    /* POSICIONAMENTO DO X NO MOBILE */
+    /* CORREÇÃO DO X NO MOBILE */
     .close-btn {
-        top: 10px !important;
+        top: 15px !important;
         right: 15px !important;
-        font-size: 30px;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 0, 0, 0.5);
         width: 40px;
         height: 40px;
-        display: flex;
+        border-radius: 50%;
+        display: flex !important;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
+        font-size: 30px;
     }
 
     /* SETAS DENTRO DA IMAGEM NO MOBILE */
     .nav-btn {
         width: 45px !important;
         height: 45px !important;
-        top: 140px !important; /* Meio da área da imagem */
+        top: 140px !important; /* Metade dos 280px da imagem */
     }
     .prev { left: 10px !important; }
     .next { right: 10px !important; }
