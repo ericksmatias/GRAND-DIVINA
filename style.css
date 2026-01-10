@@ -507,9 +507,9 @@ header p {
 }
 
 .links .btn:nth-child(1)::after { animation-delay: 0s; }
-.links .btn:nth-child(2)::after { animation-delay: 0,2,5s; }
-.links .btn:nth-child(3)::after { animation-delay: 0,5s; }
-.links .btn:nth-child(3)::after { animation-delay: 0,7,5s; }
+.links .btn:nth-child(2)::after { animation-delay: 0.25s; }
+.links .btn:nth-child(3)::after { animation-delay: 0.5s; }
+.links .btn:nth-child(4)::after { animation-delay: 0.75s; }
 
 /* 1. Definimos a animação da 'mancha' girando */
 @keyframes liquidGlow {
@@ -642,26 +642,31 @@ header h1 {
     text-align: center;
 }
 
-/* Container principal que esconde o que sobra nas bordas */
+/* Container das logos no rodapé do texto */
 .partners-container {
-    margin-top: 25px;
+    margin-top: auto; /* Empurra as logos para o fim da coluna de texto */
+    padding-top: 20px;
     width: 100%;
-    overflow: hidden; /* Corta as logos que saem da área */
+    overflow: hidden;
     position: relative;
-    padding: 10px 0;
     border-top: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(0,0,0,0.2);
+    min-height: 80px; /* Garante espaço mesmo sem imagem */
 }
 
-/* A faixa que segura as logos e se move */
+/* Faixa que corre */
 .logo-track {
     display: flex;
-    width: calc(250px * 10); /* Ajuste baseado no número de logos */
+    align-items: center;
+    width: max-content; /* Se ajusta ao tamanho das imagens */
     animation: scrollLogos 20s linear infinite;
 }
 
 .logo-track img {
-    height: 40px; /* Altura das logos */
-    margin: 0 30px; /* Espaço entre elas */
+    height: 35px; /* Tamanho ideal para o modal */
+    width: auto;
+    margin: 0 25px;
+    object-fit: contain;
     filter: grayscale(100%) brightness(1.5);
     opacity: 0.8;
 }
@@ -788,6 +793,7 @@ header h1 {
     .next { 
         right: 10px !important; /* Traz para dentro da imagem à direita */
     }
+
 
 
 
