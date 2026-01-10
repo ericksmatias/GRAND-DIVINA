@@ -165,7 +165,7 @@ function closeGallery() {
         modal.style.display = 'none'; 
         // Limpa a mídia ao fechar para não continuar tocando áudio/vídeo em background
         document.querySelector('.slide-image').innerHTML = '';
-    }, 500);
+    }, 800);
 
     if (history.state && history.state.modalOpen) {
         history.back();
