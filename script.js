@@ -212,21 +212,22 @@ function preloadGalleryAssets() {
             const path = item.img.toLowerCase();
 
             if (path.endsWith('.mp4')) {
-                // LOGICA PARA VÍDEOS: Força o download dos dados
-                const videoPreload = document.createElement('video');
-                videoPreload.src = item.img;
-                videoPreload.preload = 'auto';
-                videoPreload.muted = true;
-                videoPreload.load(); 
+                // Cria um link no HEAD para priorizar o download do vídeo
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'video';
+                link.href = item.img;
+                link.type = 'video/mp4';
+                document.head.appendChild(link);
             } else {
-                // LOGICA PARA FOTOS: Cria um objeto de imagem na memória
                 const imgPreload = new Image();
                 imgPreload.src = item.img;
             }
         });
     });
-    console.log("Galeria 100% em cache (Fotos e Vídeos).");
+    console.log("Sistema de Cache: Vídeos priorizados e Imagens carregadas.");
 }
+
 
 // Ativar setas do teclado e tecla ESC
 document.addEventListener('keydown', (e) => {
