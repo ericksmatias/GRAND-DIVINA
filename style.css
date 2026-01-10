@@ -63,10 +63,9 @@ body {
     z-index: 10;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Garante centro vertical */
-    align-items: center;     /* Garante centro horizontal */
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
-    /* Removido o min-height que causava o pulo no mobile */
 }
 
 header h1 {
@@ -76,7 +75,7 @@ header h1 {
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    white-space: normal; /* Permite quebra se necessário */
+    white-space: normal;
     text-align: center;
     line-height: 1.2;
 }
@@ -101,13 +100,13 @@ header p {
     text-decoration: none;
     color: var(--color-white);
     border: 1px solid var(--color-gold);
-    padding: 15px 20px; /* Ajustado para centralizar */
+    padding: 15px 20px;
     border-radius: 2px;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px);
     transition: all 0.3s ease;
     display: flex;
-    justify-content: center; /* Centralização real */
+    justify-content: center;
     align-items: center;
     font-weight: 400;
     text-transform: uppercase;
@@ -116,7 +115,6 @@ header p {
     cursor: pointer;
     overflow: hidden;
 }
-
 
 .btn:hover {
     background: var(--color-wine);
@@ -161,7 +159,7 @@ header p {
 @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
 /* =========================================
-   4. MODAL DA GALERIA (CORRIGIDO)
+   4. MODAL DA GALERIA
    ========================================= */
 .modal {
     display: none;
@@ -180,6 +178,17 @@ header p {
 
 .modal.show { display: flex; opacity: 1; }
 
+/* Estilo do botão fechar para PC (que estava faltando) */
+.close-btn {
+    position: absolute;
+    top: -45px;
+    right: 0;
+    color: #fff;
+    font-size: 35px;
+    cursor: pointer;
+    z-index: 10001;
+}
+
 .modal-content {
     position: relative;
     width: 95%;
@@ -192,14 +201,10 @@ header p {
     background: rgba(15, 15, 15, 0.95);
     border-radius: 8px;
     transition: opacity 0.4s ease-in-out;
-    /* A ÚNICA REGRA DE OVERFLOW DEVE SER ESTA: */
     overflow: visible !important; 
 }
 
-/* Adicione este bloco novo logo abaixo para garantir o sumiço total */
-.modal-content.fade-out {
-    opacity: 0 !important;
-}
+.modal-content.fade-out { opacity: 0 !important; }
 
 .gallery-slide {
     display: flex;
@@ -208,7 +213,6 @@ header p {
     flex-direction: row;
 }
 
-/* LADO ESQUERDO: IMAGEM (60%) */
 .slide-image {
     flex: 0 0 60% !important;
     width: 60% !important;
@@ -221,27 +225,19 @@ header p {
 }
 
 .slide-image img, .slide-image video {
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    display: block;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transform: translateZ(0); 
+    width: 100%; height: 100%; object-fit: cover; display: block;
 }
 
-
-/* LADO DIREITO: TEXTO (40%) */
 .slide-info {
     flex: 0 0 40% !important;
     width: 40% !important;
     padding: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Alinha no topo */
+    justify-content: flex-start;
     background: linear-gradient(135deg, #1a0508, #000);
     border-left: 2px solid var(--color-wine);
-    overflow-y: auto; /* Scroll apenas no texto */
+    overflow-y: auto; 
     overflow-x: hidden;
 }
 
@@ -250,7 +246,6 @@ header p {
     color: var(--color-gold);
     font-size: clamp(1.2rem, 3vw, 1.8rem);
     margin-bottom: 10px;
-    white-space: nowrap; /* Quebra linha */
     line-height: 1.2;
 }
 
@@ -274,7 +269,6 @@ header p {
     white-space: pre-line;
 }
 
-/* Botão Neon */
 .cta-btn {
     display: inline-block;
     padding: 12px 20px;
@@ -297,13 +291,9 @@ header p {
 
 .cta-btn:hover { background: var(--color-gold); color: black; }
 
-/* Efeito Glow Botão */
-@keyframes liquidGlow { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
-.cta-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 150%; height: 300%; background: radial-gradient(circle, rgba(212, 175, 55, 0.8) 0%, transparent 50%); animation: liquidGlow 4s linear infinite; z-index: -1; }
 .cta-btn::after { content: ''; position: absolute; inset: 2px; background: var(--color-wine); z-index: -1; transition: background 0.3s; }
 .cta-btn:hover::after { background: transparent; }
 
-/* LOGOS (CARROSSEL) */
 #partners-logos {
     margin-top: auto;
     width: 100%;
@@ -316,18 +306,6 @@ header p {
     background: rgba(0,0,0,0.2);
 }
 
-.partners-title {
-    font-family: 'Cinzel', serif;
-    font-size: 0.7rem;
-    color: var(--color-gold);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    text-align: center;
-    display: block;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-}
-
 .logo-track {
     display: flex;
     align-items: center;
@@ -335,13 +313,7 @@ header p {
     animation: scrollLogos 25s linear infinite;
 }
 
-.logo-track img {
-    height: 35px;
-    margin: 0 15px;
-    object-fit: contain;
-    filter: none;
-    opacity: 1;
-}
+.logo-track img { height: 35px; margin: 0 15px; object-fit: contain; }
 
 @keyframes scrollLogos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
@@ -359,76 +331,51 @@ header p {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    
-    /* Z-INDEX ALTÍSSIMO: */
     z-index: 99999 !important; 
-    
     transition: all 0.3s ease;
 }
 
-/* Agora sim, jogue para fora: */
 .prev { left: -80px !important; }
 .next { right: -80px !important; }
 
-.nav-btn:hover {
-    background: var(--color-gold) !important;
-    color: black !important;
-    transform: translateY(-50%) scale(1.1) !important;
-}
-
 /* =========================================
-   5. RESPONSIVIDADE MOBILE (CORRIGIDO)
+   5. RESPONSIVIDADE MOBILE
    ========================================= */
 @media (max-width: 768px) {
-        .container {
+    .container {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: center !important; /* Força o centro vertical */
-        align-items: center !important;     /* Força o centro horizontal */
-        min-height: 100vh !important;       /* Ocupa a tela toda */
-        padding-bottom: 0 !important;       /* Remove paddings antigos */
+        justify-content: flex-end !important; /* Ajuste para não tapar rostos */
+        align-items: center !important;
+        min-height: 100vh !important;
+        padding-bottom: 110px !important;
         margin: 0 auto !important;
     }
     
-    /* Modal Mobile */
     .modal-content {
         flex-direction: column !important;
         height: 90vh !important;
         width: 95% !important;
-        position: relative !important; /* ESSENCIAL para o X se orientar */
+        position: relative !important;
         background: #000 !important;
         overflow-y: auto !important;
         display: flex !important;
     }
 
     .gallery-slide { flex-direction: column; height: auto; }
+    .slide-image { flex: 0 0 250px !important; width: 100% !important; order: 1; }
+    .slide-info { flex: 1 0 auto !important; width: 100% !important; padding: 20px !important; border-left: none; border-top: 2px solid var(--color-wine); order: 2; }
 
-    .slide-image {
-        flex: 0 0 250px !important;
-        width: 100% !important;
-        order: 1;
-    }
-
-    .slide-info {
-        flex: 1 0 auto !important;
-        width: 100% !important;
-        padding: 20px !important;
-        border-left: none;
-        border-top: 2px solid var(--color-wine);
-        order: 2;
-    }
-
-    /* O X que estava no meio agora vai para o canto */
     .close-btn {
         position: absolute !important;
         top: 15px !important;
         right: 15px !important;
-        left: auto !important; /* Remove qualquer interferência da esquerda */
+        left: auto !important;
         width: 40px !important;
         height: 40px !important;
         display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+        align-items: center;
+        justify-content: center;
         background: rgba(0, 0, 0, 0.7) !important;
         border-radius: 50% !important;
         z-index: 9999 !important;
@@ -436,29 +383,23 @@ header p {
         color: #fff !important;
     }
 
-        .nav-btn {
-        top: 125px !important; /* Ajustado para o meio da imagem de 250px */
-        width: 45px !important;
-        height: 45px !important;
-        z-index: 9998 !important;
-    }
+    .nav-btn { top: 125px !important; width: 45px !important; height: 45px !important; }
     .prev { left: 10px !important; }
     .next { right: 10px !important; }
-
+} /* <--- AQUI ESTAVA O ERRO: CHAVE FECHADA CORRETAMENTE AGORA */
 
 /* =========================================
-   6. RODAPÉ E EXTRAS (RESTAURADO)
+   6. RODAPÉ E EXTRAS
    ========================================= */
 .footer-fixed {
     position: fixed; 
-    bottom: 25px; /* Sobe um pouco para não colar no fundo da tela */
+    bottom: 25px; 
     left: 0; 
     width: 100%;
     text-align: center; 
     z-index: 100;
 }
 
-/* Força a cor cinza e tira o azul do link */
 .footer-fixed p, 
 .footer-fixed a {
     font-size: 0.45rem !important; 
@@ -469,14 +410,13 @@ header p {
     border: none !important;
 }
 
-/* Garante que a tag de versão apareça e não suma */
 .version-tag {
     position: fixed !important; 
     bottom: 5px !important; 
     right: 5px !important;
     background: rgba(94, 11, 21, 0.9) !important; 
     color: #d4af37 !important;
-    font-size: 7px !important; /* Bem pequena */
+    font-size: 7px !important;
     padding: 2px 6px !important;
     border: 1px solid #d4af37; 
     z-index: 10002 !important;
