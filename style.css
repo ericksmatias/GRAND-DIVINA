@@ -249,7 +249,7 @@ header p {
     color: var(--color-gold);
     font-size: clamp(1.2rem, 3vw, 1.8rem);
     margin-bottom: 10px;
-    white-space: normal; /* Quebra linha */
+    white-space: nowrap; /* Quebra linha */
     line-height: 1.2;
 }
 
@@ -363,8 +363,8 @@ header p {
     transition: 0.3s;
 }
 
-.prev { left: 10px !important; } 
-.next { right: 10px !important; }
+.prev { left: -20px !important; } 
+.next { right: -20px !important; }
 .nav-btn:hover { background: var(--color-wine); color: #fff; transform: translateY(-50%) scale(1.1); }
 
 .close-btn {
