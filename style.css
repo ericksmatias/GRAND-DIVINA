@@ -199,8 +199,9 @@ header p {
 }
 
 .footer-fixed p {
+    white-space: nowrap !important;
     margin: 0;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: rgba(255,255,255,0.5);
     letter-spacing: 1px;
 }
@@ -424,12 +425,12 @@ header p {
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
-    z-index: 2000 !important;
+    z-index: 3000 !important;
     transition: 0.3s;
     font-size: 1.5rem;
 }
-.prev { left: -75px !important; }
-.next { right: -75px !important; }
+.prev { left: 15px !important; }
+.next { right: 15px !important; }
 .nav-btn:hover { background: var(--color-wine); color: #fff; transform: translateY(-50%) scale(1.1); }
 
 .close-btn {
@@ -492,6 +493,11 @@ header p {
    8. RESPONSIVIDADE (MOBILE)
    ========================================= */
 @media (max-width: 768px) {
+    .container {
+        /* Isso joga o conteúdo (título e botões) para o rodapé */
+        justify-content: flex-end !important; 
+        padding-bottom: 80px !important; /* Espaço para não colar no chão */
+    }
     /* Ajustes Gerais */
     .mobile-break { display: block !important; }
     
@@ -567,6 +573,7 @@ header p {
     
     .close-btn { top: 10px; right: 10px; font-size: 30px; }
 }
+
 
 
 
