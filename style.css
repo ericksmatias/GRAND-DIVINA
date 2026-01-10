@@ -1,5 +1,5 @@
 /* =========================================
-   1. CONFIGURAÇÕES GERAIS E CORES
+   1. VARIÁVEIS E RESET
    ========================================= */
 :root {
     --color-black: #0a0a0a;
@@ -19,12 +19,15 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: var(--color-white);
     height: 100vh;
-    overflow: hidden; /* Trava a rolagem da home */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--color-black);
 }
 
 /* =========================================
-   2. BACKGROUND SLIDER (JS DYNAMIC)
+   2. BACKGROUND SLIDER
    ========================================= */
 .background-slider {
     position: fixed;
@@ -47,51 +50,52 @@ body {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(94, 11, 21, 0.6));
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(94, 11, 21, 0.7));
 }
 
 /* =========================================
-   3. HOME - CONTEÚDO E TÍTULO
+   3. CONTEÚDO PRINCIPAL (HOME)
    ========================================= */
 .container {
     text-align: center;
-    width: 100%;
+    width: 95%;
     max-width: 500px;
     z-index: 10;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* Centralizado no PC */
     align-items: center;
     min-height: 100vh;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 header h1 {
     font-family: 'Cinzel', serif;
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: 3rem;
     color: var(--color-gold-hover);
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    line-height: 1.1;
+    white-space: normal; 
+    text-align: center;
+    line-height: 1.2;
 }
 
 header p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     color: #ddd;
 }
 
 /* =========================================
-   4. BOTÕES DA HOME (LINKS)
+   4. BOTÕES (MENU)
    ========================================= */
 .links {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
     width: 100%;
 }
 
@@ -99,7 +103,7 @@ header p {
     text-decoration: none;
     color: var(--color-white);
     border: 1px solid var(--color-gold);
-    padding: 18px 20px;
+    padding: 14px 40px 14px 20px;
     border-radius: 2px;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px);
@@ -117,19 +121,19 @@ header p {
 .btn:hover {
     background: var(--color-wine);
     border-color: var(--color-gold-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
 }
 
-.btn span { z-index: 2; font-size: 0.75rem; font-weight: 400; }
+.btn span { z-index: 2; font-size: 0.75rem; }
 
 .btn .icon {
     position: absolute;
-    right: 20px;
+    right: 15px;
     color: var(--color-gold);
+    font-size: 0.8rem;
 }
 
-/* Brilho Animado nos Botões */
+/* Animação Shine */
 .btn::after {
     content: '';
     position: absolute;
@@ -137,21 +141,47 @@ header p {
     width: 50%; height: 100%;
     background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.3), transparent);
     transform: skewX(-25deg);
-    animation: shine 8s infinite linear;
+    animation: shine 8s infinite ease-in-out;
 }
-
 @keyframes shine {
     0% { left: -100%; }
-    15% { left: 150%; }
-    100% { left: 150%; }
+    20% { left: 120%; }
+    100% { left: 120%; }
 }
 
-.links .btn:nth-child(2)::after { animation-delay: 1s; }
-.links .btn:nth-child(3)::after { animation-delay: 2s; }
-.links .btn:nth-child(4)::after { animation-delay: 3s; }
+/* =========================================
+   5. RODAPÉ E TAG
+   ========================================= */
+.footer-fixed {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+}
+
+.footer-fixed p {
+    margin: 0;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+    white-space: nowrap; /* GARANTE UMA LINHA SÓ */
+    text-transform: uppercase;
+}
+
+.version-tag {
+    position: fixed;
+    bottom: 15px; right: 15px;
+    background: rgba(94, 11, 21, 0.9); 
+    color: #d4af37;
+    font-size: 9px; padding: 4px 8px;
+    border: 1px solid #d4af37;
+    z-index: 9999;
+}
 
 /* =========================================
-   5. MODAL DA GALERIA (AQUI ESTÃO AS CORREÇÕES)
+   6. MODAL (CORREÇÕES DE SETAS E TEXTO)
    ========================================= */
 .modal {
     display: none;
@@ -159,8 +189,8 @@ header p {
     z-index: 2000;
     left: 0; top: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.85);
-    backdrop-filter: blur(15px);
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
     justify-content: center;
     align-items: center;
     opacity: 0;
@@ -172,212 +202,131 @@ header p {
 .modal-content {
     position: relative;
     width: 90%;
-    max-width: 1100px;
-    height: 85vh;
-    background: #000;
+    max-width: 1050px;
+    height: 80vh; 
     display: flex;
+    background: #000;
     border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 4px;
-}
-
-/* Área da Mídia (Esquerda) */
-.slide-image {
-    flex: 0 0 65%;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
 }
 
-.slide-image img, .slide-image video {
-    width: 100%;
+.slide-image {
+    flex: 0 0 60%;
     height: 100%;
-    object-fit: cover;
 }
 
-/* Área da Info (Direita) */
+.slide-image img, .slide-image video {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
 .slide-info {
-    flex: 0 0 35%;
+    flex: 0 0 40%;
     padding: 40px;
-    background: linear-gradient(180deg, #1a0508 0%, #000 100%);
     display: flex;
     flex-direction: column;
-    border-left: 1px solid var(--color-wine);
-    overflow-y: auto; /* IMPORTANTE: Ativa o scroll se o texto for grande */
+    background: linear-gradient(180deg, #1a0508, #000);
+    overflow-y: auto;
 }
 
 .slide-info h2 {
     font-family: 'Cinzel', serif;
     color: var(--color-gold);
     font-size: 1.8rem;
-    margin-bottom: 5px;
-    line-height: 1.2;
-    white-space: normal; /* Permite quebrar o título */
-}
-
-.capacity-highlight {
-    font-size: 0.8rem;
-    color: var(--color-gold);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .slide-info p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     color: #ccc;
-    margin-bottom: 30px;
-    white-space: pre-line;
+    text-align: justify; /* TEXTO ALINHADO */
+    margin-bottom: 20px;
 }
 
-/* Botão do Modal (Neon) */
 .cta-btn {
-    padding: 15px 25px;
+    padding: 12px 25px;
     background: var(--color-wine);
-    color: #fff;
+    color: white;
     text-decoration: none;
     border: 1px solid var(--color-gold);
     text-align: center;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: auto; /* Empurra para baixo */
-    margin-bottom: 30px;
-    transition: 0.3s;
-    flex-shrink: 0;
+    margin-top: auto;
+    margin-bottom: 20px;
 }
 
-.cta-btn:hover {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-    background: var(--color-gold);
-    color: #000;
+/* Setas de Navegação - POSIÇÃO CORRIGIDA */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    z-index: 3000;
+}
+.prev { left: 15px; } /* Dentro da caixa do modal */
+.next { right: 15px; }
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    color: white; font-size: 35px;
+    cursor: pointer; z-index: 3100;
 }
 
-/* Logos dos Parceiros (Track) */
-.partners-container {
-    width: 100%;
-    overflow: hidden;
-    padding-top: 20px;
+/* =========================================
+   7. PARCEIROS NO MODAL
+   ========================================= */
+#partners-logos {
+    margin-top: 20px;
+    padding-top: 15px;
     border-top: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .logo-track {
     display: flex;
-    width: max-content;
+    align-items: center;
     animation: scrollLogos 20s linear infinite;
 }
 
-.logo-track img {
-    height: 30px;
-    margin-right: 30px;
-    filter: brightness(1.2);
-}
+.logo-track img { height: 25px; margin: 0 15px; }
 
 @keyframes scrollLogos {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
 
-/* Navegação e Close */
-.nav-btn {
-    position: absolute;
-    top: 50%; transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    border: 1px solid var(--color-gold);
-    color: var(--color-gold);
-    width: 45px; height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 2100;
-}
-.prev { left: -60px; }
-.next { right: -60px; }
-
-.close-btn {
-    position: absolute;
-    top: -40px; right: 0;
-    color: #fff; font-size: 35px;
-    cursor: pointer;
-}
-
 /* =========================================
-   6. RESPONSIVIDADE (MOBILE)
+   8. RESPONSIVIDADE (MOBILE)
    ========================================= */
 @media (max-width: 768px) {
-    body { overflow-y: auto; }
-    
-    .mobile-break { display: block; }
+    /* EMPURRA TUDO PARA BAIXO PARA MOSTRAR OS ROSTOS */
+    .container {
+        justify-content: flex-end;
+        padding-bottom: 80px;
+    }
 
-    .container { justify-content: flex-end; padding-bottom: 80px; }
+    header h1 { font-size: 2.2rem; }
+    
+    .footer-fixed p { font-size: 0.55rem; }
 
     /* Modal Mobile */
     .modal-content {
         flex-direction: column;
-        height: 90vh;
-        width: 92%;
-        overflow-y: auto;
+        height: 85vh;
+        width: 95%;
     }
 
-    .slide-image { flex: 0 0 40%; width: 100%; }
-    
-    .slide-info { 
-        flex: 1 0 auto; 
-        width: 100%; 
-        border-left: none; 
-        border-top: 1px solid var(--color-wine);
-        padding: 25px;
-    }
+    .slide-image { flex: 0 0 35%; width: 100%; }
+    .slide-info { flex: 1; width: 100%; padding: 20px; border-top: 2px solid var(--color-wine); }
 
-    .slide-info h2 { font-size: 1.4rem; }
-
-    .nav-btn { top: 20%; width: 40px; height: 40px; }
+    .nav-btn { top: 17.5%; } /* Centraliza na foto de cima */
     .prev { left: 10px; }
     .next { right: 10px; }
-    .close-btn { top: 10px; right: 15px; color: #fff; z-index: 2200; }
-
-    .cta-btn { width: 100%; }
 }
-
-/* =========================================
-   7. EXTRAS (TAG VERSÃO / FOOTER)
-   ========================================= */
-.version-tag {
-    position: fixed;
-    bottom: 15px; right: 15px;
-    background: rgba(94, 11, 21, 0.9);
-    color: var(--color-gold);
-    font-size: 10px; padding: 5px 10px;
-    border: 1px solid var(--color-gold);
-    z-index: 9999;
-}
-
-.version-tag .tooltip-text {
-    visibility: hidden; opacity: 0;
-    position: absolute; bottom: 130%; right: 0;
-    background: #111; padding: 10px; width: 200px;
-    border: 1px solid var(--color-gold); transition: 0.3s;
-}
-
-.version-tag:hover .tooltip-text { visibility: visible; opacity: 1; }
-
-.footer-fixed {
-    position: fixed;
-    bottom: 20px; width: 100%;
-    text-align: center; color: rgba(255,255,255,0.4);
-    font-size: 0.65rem;
-}
-
-.footer-discreto { text-decoration: none; color: inherit; }
-
-.cursor-pointer { cursor: pointer; }
-
-/* Animações de entrada */
-.fade-in-up {
-    opacity: 0; transform: translateY(20px);
-    animation: fadeInUp 0.8s ease forwards;
-}
-.delay-1 { animation-delay: 0.2s; }
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
