@@ -168,6 +168,7 @@ header p {
     position: fixed;
     z-index: 1000;
     left: 0; top: 0;
+    overflow: visible !important;
     width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(20px) saturate(150%);
@@ -184,6 +185,7 @@ header p {
     width: 95%;
     max-width: 1000px;
     height: 85vh; 
+    overflow: visible !important;
     display: flex;
     flex-direction: row;
     border: 1px solid rgba(212, 175, 55, 0.3);
@@ -344,10 +346,6 @@ header p {
 
 @keyframes scrollLogos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-.modal {
-    overflow: visible !important; 
-}
-
 .nav-btn {
     position: absolute;
     top: 50% !important;
@@ -355,26 +353,23 @@ header p {
     background: rgba(0, 0, 0, 0.8) !important;
     border: 1px solid var(--color-gold) !important;
     color: var(--color-gold) !important;
-    width: 60px !important; /* Um pouco maior no PC fica mais elegante */
+    width: 60px !important;
     height: 60px !important;
     border-radius: 50% !important;
     display: flex !important;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 9999 !important; /* Garante que fica acima de tudo */
+    
+    /* Z-INDEX ALTÍSSIMO: */
+    z-index: 99999 !important; 
+    
     transition: all 0.3s ease;
-    font-size: 1.5rem;
-    }
+}
 
-/* Posicionamento fora da caixa no Desktop */
-.prev { 
-    left: -40px !important; 
-    }
-
-.next { 
-    right: -40px !important; 
-    }
+/* Agora sim, jogue para fora: */
+.prev { left: -80px !important; }
+.next { right: -80px !important; }
 
 .nav-btn:hover {
     background: var(--color-gold) !important;
