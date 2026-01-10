@@ -494,19 +494,34 @@ header p {
    ========================================= */
 @media (max-width: 768px) {
     .container {
-        justify-content: center !important; /* Isso joga o conteúdo (título e botões) para o rodapé */ 
-        padding-bottom: 80px !important; /* Espaço para não colar no chão */
+        /* Mudamos para flex-end para garantir que tudo fique na parte de baixo */
+        justify-content: flex-end !important; 
+        /* Aumentamos o respiro inferior para 110px para proteger o copyright */
+        padding-bottom: 110px !important; 
+        min-height: 100vh;
     }
-    /* Ajustes Gerais */
-    .mobile-break { display: block !important; }
-    
+
+    /* Ajuste do Título para liberar o rosto das pessoas */
     header h1 {
         font-size: 2.2rem;
         line-height: 1.1;
         white-space: normal;
         margin-bottom: 0.5rem;
+        /* Adiciona um espaço extra no topo para empurrar o texto para baixo */
+        margin-top: 20vh; 
     }
 
+    /* --- AJUSTE MANUAL DO COPYRIGHT --- */
+    .footer-fixed p {
+        font-size: 8px !important; /* <--- MEXA AQUI: 7px, 8px, 9px etc */
+        white-space: nowrap !important; /* Mantém em uma linha só */
+        text-align: center;
+        width: 100%;
+        color: rgba(255,255,255,0.5);
+    }
+
+    /* Ajustes Gerais de Botões */
+    .mobile-break { display: block !important; }
     .links { width: 100%; max-width: 90%; }
     .btn { padding: 12px 10px; }
     .btn span { font-size: 0.7rem; letter-spacing: 0.5px; }
@@ -517,7 +532,7 @@ header p {
         flex-direction: column !important;
         height: 90vh !important;
         width: 95% !important;
-        overflow-y: auto !important; /* Scroll na página toda */
+        overflow-y: auto !important;
         overflow-x: hidden !important;
         background: #000 !important;
     }
@@ -529,19 +544,19 @@ header p {
     }
 
     .slide-image {
-        flex: 0 0 250px !important; /* Altura fixa p/ vídeo */
+        flex: 0 0 250px !important;
         width: 100% !important;
-        order: 1; /* Vídeo primeiro */
+        order: 1;
     }
 
     .slide-info {
-        flex: 1 0 auto !important; /* Resto do espaço para texto */
+        flex: 1 0 auto !important;
         width: 100% !important;
         padding: 20px !important;
         border-left: none !important;
         border-top: 2px solid var(--color-wine);
         justify-content: flex-start !important;
-        order: 2; /* Texto depois */
+        order: 2;
         overflow: visible !important;
     }
 
@@ -551,7 +566,7 @@ header p {
     }
 
     .slide-info p {
-        text-align: left;
+        text-align: justify !important; /* Texto alinhado como você pediu */
     }
 
     .cta-btn {
@@ -559,27 +574,16 @@ header p {
         margin-bottom: 30px;
     }
 
-    /* Setas dentro da foto */
+    /* Setas dentro da foto (Modal) */
     .nav-btn {
         width: 40px !important;
         height: 40px !important;
         background: rgba(0, 0, 0, 0.6) !important;
         z-index: 3000 !important;
-        top: 125px !important; /* Centralizado na altura da imagem (250px / 2) */
+        top: 125px !important;
     }
     .prev { left: 10px !important; }
     .next { right: 10px !important; }
     
     .close-btn { top: 10px; right: 10px; font-size: 30px; }
 }
-
-
-
-
-
-
-
-
-
-
-
