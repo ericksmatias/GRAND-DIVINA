@@ -387,7 +387,7 @@ header p {
     }
 
    .slide-image.fade-out {
-    opacity: 0;
+    opacity: 0 !important;
 
     }
 
@@ -430,11 +430,16 @@ header p {
     position: fixed; bottom: 20px; left: 0; width: 100%;
     text-align: center; z-index: 100;
 }
-.footer-fixed p {
-    font-size: 0.6rem; color: rgba(255,255,255,0.5);
-    letter-spacing: 1px; white-space: nowrap;
-    text-decoration: none !important;
+.footer-fixed p, 
+.footer-fixed a {
+    font-size: 0.6rem; 
+    color: rgba(255,255,255,0.5) !important;
+    letter-spacing: 1px; 
+    white-space: nowrap;
+    text-decoration: none !important; /* Remove o sublinhado */
+    border: none !important;         /* Remove bordas residuais */
 }
+
 
 .version-tag {
     position: fixed; bottom: 5px; right: 5px;
