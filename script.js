@@ -194,7 +194,7 @@ function changeSlide(direction) {
             if (modalContent) modalContent.classList.remove('fade-out');
         }, 50); 
         
-    }, 400); 
+    }, 800); 
 }
 
 // --- NOVO: CAPTURAR O BOTÃO VOLTAR DO CELULAR ---
