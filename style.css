@@ -377,12 +377,13 @@ header p {
 }
 
 /* =========================================
-   5. RESPONSIVIDADE MOBILE
+   5. RESPONSIVIDADE MOBILE (CORRIGIDO)
    ========================================= */
 @media (max-width: 768px) {
     .container {
-        justify-content: flex-end; /* Empurra para baixo */
-        padding-bottom: 100px;
+        justify-content: center !important; /* Restaurado para o centro */
+        padding-bottom: 0; /* Remove o empurrão que quebrou a home */
+        min-height: auto;
     }
 
     header h1 { font-size: 2.2rem; line-height: 1.1; margin-bottom: 0.5rem; }
@@ -394,21 +395,15 @@ header p {
         width: 95% !important;
         overflow-y: auto !important;
         background: #000 !important;
+        position: relative; /* Garante que o X saiba onde ficar */
     }
 
     .gallery-slide { flex-direction: column; height: auto; }
 
     .slide-image {
-        flex: 0 0 250px !important; /* Altura fixa */
+        flex: 0 0 250px !important;
         width: 100% !important;
         order: 1;
-        transition: opacity 0.4s ease-in-out;
-
-    }
-
-   .slide-image.fade-out {
-    opacity: 0 !important;
-
     }
 
     .slide-info {
@@ -420,52 +415,44 @@ header p {
         order: 2;
     }
 
-    .slide-info h2 { font-size: 1.4rem; text-align: left; }
-    .slide-info p { text-align: left; }
-
-    .cta-btn { width: 100%; margin-bottom: 30px; }
-
-    .btn span {
-        font-size: 0.75rem;
-        white-space: normal; /* MUDE de 'nowrap' para 'normal' */
-        text-align: center;
+    /* O X que estava no meio agora vai para o canto */
+    .close-btn { 
+        position: absolute !important;
+        top: 15px !important; 
+        right: 15px !important; 
+        left: auto !important; /* Mata o alinhamento da esquerda */
+        font-size: 30px; 
+        z-index: 10001; 
+        color: white !important;
     }
 
-    /* Setas dentro da imagem no Mobile */
     .nav-btn {
         width: 40px !important; height: 40px !important;
         background: rgba(0,0,0,0.6) !important;
-        top: 125px !important; /* Metade da altura da imagem (250px) */
+        top: 125px !important;
     }
     .prev { left: 10px !important; }
     .next { right: 10px !important; }
-    
-    .close-btn { top: 10px; right: 15px; font-size: 30px; }
 }
 
 /* =========================================
-   6. RODAPÉ E EXTRAS
+   6. RODAPÉ E EXTRAS (RESTAURADO)
    ========================================= */
 .footer-fixed {
     position: fixed; bottom: 20px; left: 0; width: 100%;
     text-align: center; z-index: 100;
 }
-.footer-fixed p, 
-.footer-fixed a {
-    font-size: 0.45rem; 
-    color: rgba(255,255,255,0.5) !important;
-    letter-spacing: 1px; 
-    white-space: nowrap;
-    text-decoration: none !important; /* Remove o sublinhado */
-    border: none !important;         /* Remove bordas residuais */
-}
 
-
+/* Garante que a tag de versão apareça e não suma */
 .version-tag {
-    position: fixed; bottom: 5px; right: 5px;
-    background: rgba(94, 11, 21, 0.9); color: #d4af37;
-    font-size: 8px; padding: 4px 8px;
-    border: 1px solid #d4af37; z-index: 9999;
+    position: fixed !important; 
+    bottom: 5px !important; 
+    right: 5px !important;
+    background: rgba(94, 11, 21, 0.9) !important; 
+    color: #d4af37 !important;
+    font-size: 8px; 
+    padding: 4px 8px;
+    border: 1px solid #d4af37; 
+    z-index: 10002 !important;
+    display: block !important;
 }
-.version-tag .tooltip-text { visibility: hidden; width: 150px; background: #111; color: #fff; position: absolute; bottom: 120%; right: 0; padding: 5px; font-size: 10px; }
-.version-tag:hover .tooltip-text { visibility: visible; }
