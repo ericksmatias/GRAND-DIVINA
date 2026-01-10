@@ -179,19 +179,25 @@ header p {
 
 .modal.show { display: flex; opacity: 1; }
 
-/* CAIXA DO MODAL */
 .modal-content {
     position: relative;
     width: 95%;
     max-width: 1000px;
     height: 85vh; 
     display: flex;
-    flex-direction: row; /* Lado a lado no PC */
+    flex-direction: row;
     border: 1px solid rgba(212, 175, 55, 0.3);
     box-shadow: 0 25px 50px rgba(0,0,0,0.6);
     background: rgba(15, 15, 15, 0.95);
     border-radius: 8px;
     overflow: hidden !important;
+    /* Adicione a linha abaixo para suavizar a troca */
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Adicione este bloco novo logo abaixo para garantir o sumiço total */
+.modal-content.fade-out {
+    opacity: 0 !important;
 }
 
 .gallery-slide {
@@ -394,7 +400,7 @@ header p {
         flex: 0 0 250px !important; /* Altura fixa */
         width: 100% !important;
         order: 1;
-        transition: opacity 0.4s ease-in-out; /.
+        transition: opacity 0.4s ease-in-out;
 
     }
 
