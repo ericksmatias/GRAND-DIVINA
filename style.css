@@ -421,11 +421,17 @@ header p {
         flex: 1; 
         height: 50%; 
     }
-    .slide-info { 
-        flex: 1; 
-        padding: 20px; 
-        justify-content: flex-start; 
-        overflow-y: auto; 
+    .slide-info {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinha do topo para baixo para não empurrar a mídia */
+    background: linear-gradient(135deg, #1a0508, #000);
+    border-left: 2px solid var(--color-wine);
+    overflow-y: auto; /* PERMITE ROLAGEM: O segredo para a foto não sumir no PC */
+    max-height: 100%;
+        
     }
     .nav-btn { 
         font-size: 1.5rem; 
@@ -642,33 +648,45 @@ header h1 {
     text-align: center;
 }
 
+.partners-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    display: block;
+    text-align: center;
+    /* Efeito Glow de Luxo */
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
 /* Container das logos no rodapé do texto */
-.partners-container {
-    margin-top: auto; /* Empurra as logos para o fim da coluna de texto */
-    padding-top: 20px;
+partners-container {
+    margin-top: 10px;
     width: 100%;
     overflow: hidden;
     position: relative;
+    padding: 15px 0;
     border-top: 1px solid rgba(212, 175, 55, 0.2);
-    background: rgba(0,0,0,0.2);
-    min-height: 80px; /* Garante espaço mesmo sem imagem */
+    background: rgba(0,0,0,0.3); /* Fundo sutil para destacar as logos */
 }
 
 /* Faixa que corre */
 .logo-track {
     display: flex;
     align-items: center;
-    width: max-content; /* Se ajusta ao tamanho das imagens */
-    animation: scrollLogos 20s linear infinite;
+    width: max-content;
+    animation: scrollLogos 25s linear infinite; /* Mais lento = mais elegante */
 }
 
 .logo-track img {
-    height: 35px; /* Tamanho ideal para o modal */
-    width: auto;
-    margin: 0 25px;
+    height: 40px; /* Tamanho levemente maior */
+    margin: 0 15px; /* DISTÂNCIA REDUZIDA (era 25px) */
     object-fit: contain;
-    filter: grayscale(100%) brightness(1.5);
-    opacity: 0.8;
+    filter: none !important; /* FORÇA FICAR COLORIDO */
+    opacity: 1 !important;   /* FORÇA FICAR TOTALMENTE VISÍVEL */
 }
 
 /* Animação que move a faixa da direita para a esquerda */
@@ -793,6 +811,7 @@ header h1 {
     .next { 
         right: 10px !important; /* Traz para dentro da imagem à direita */
     }
+
 
 
 
