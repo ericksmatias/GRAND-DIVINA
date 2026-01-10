@@ -214,8 +214,15 @@ header p {
 }
 
 .slide-image img, .slide-image video {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0); 
 }
+
 
 /* LADO DIREITO: TEXTO (40%) */
 .slide-info {
@@ -331,22 +338,27 @@ header p {
 
 @keyframes scrollLogos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* SETAS E FECHAR */
+/* Isso garante que as setas apareçam nas laterais no PC */
 .nav-btn {
     position: absolute;
-    top: 50%; transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--color-gold);
-    color: var(--color-gold);
-    width: 50px; height: 50px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
+    top: 50% !important; 
+    transform: translateY(-50%) !important;
+    background: rgba(0, 0, 0, 0.7) !important; /* Mais escuro para destacar */
+    border: 1px solid var(--color-gold) !important;
+    color: var(--color-gold) !important;
+    width: 50px !important; 
+    height: 50px !important;
+    border-radius: 50% !important;
+    display: flex !important; /* Força o display */
+    align-items: center; 
+    justify-content: center;
     cursor: pointer;
-    z-index: 3000 !important;
+    z-index: 5000 !important; /* Valor bem alto para não sumir */
     transition: 0.3s;
 }
-.prev { left: -70px !important; } /* Fora da caixa no PC */
-.next { right: -70px !important; } /* Fora da caixa no PC */
+
+.prev { left: -70px !important; } 
+.next { right: -70px !important; }
 .nav-btn:hover { background: var(--color-wine); color: #fff; transform: translateY(-50%) scale(1.1); }
 
 .close-btn {
