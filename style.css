@@ -432,7 +432,7 @@ header p {
 }
 .footer-fixed p, 
 .footer-fixed a {
-    font-size: 0.6rem; 
+    font-size: 0.5rem; 
     color: rgba(255,255,255,0.5) !important;
     letter-spacing: 1px; 
     white-space: nowrap;
