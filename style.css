@@ -174,7 +174,7 @@ header p {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.8s ease;
 }
 
 .modal.show { display: flex; opacity: 1; }
@@ -382,7 +382,7 @@ header p {
         flex: 0 0 250px !important; /* Altura fixa */
         width: 100% !important;
         order: 1;
-        transition: opacity 0.4s ease-in-out; /.
+        transition: opacity 0.8s ease-in-out; /.
 
     }
 
