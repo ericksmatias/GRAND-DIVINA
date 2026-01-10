@@ -228,6 +228,23 @@ function preloadGalleryAssets() {
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
 
+// Ativar setas do teclado e tecla ESC
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('gallery-modal');
+    
+    // Verifica se o modal existe e se está visível (com a classe 'show')
+    if (modal && modal.classList.contains('show')) {
+        if (e.key === "ArrowLeft") {
+            changeSlide(-1); // Seta Esquerda volta
+        } else if (e.key === "ArrowRight") {
+            changeSlide(1);  // Seta Direita avança
+        } else if (e.key === "Escape") {
+            closeGallery();  // Tecla Esc fecha o modal
+        }
+    }
+});
+
+
 
 
 
