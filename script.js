@@ -184,21 +184,29 @@ function closeGallery() {
 
 function changeSlide(direction) {
     const imgContainer = document.querySelector('.slide-image');
+    const modalContent = document.querySelector('.modal-content');
     
-    // 1. Aplica o fade-out (imagem some)
-    imgContainer.classList.add('fade-out');
+    // 1. Inicia o fade out (tudo some)
+    if (imgContainer) imgContainer.classList.add('fade-out');
+    if (modalContent) modalContent.classList.add('fade-out');
 
-    // 2. Espera 400ms (tempo do CSS) para trocar o conteúdo no "escuro"
+    // 2. Esperamos o tempo total da transição (500ms)
     setTimeout(() => {
         const items = galleryData[currentCategory];
         currentIndex = (currentIndex + direction + items.length) % items.length;
         
-        updateSlide(); // Troca a foto/texto
+        updateSlide(); // Troca o conteúdo no "escuro"
+
+        // 3. O SEGREDO: Esperamos um micro-tempo extra (50ms) 
+        // para o navegador processar a nova imagem/vídeo antes de tirar o fade
+        setTimeout(() => {
+            if (imgContainer) imgContainer.classList.remove('fade-out');
+            if (modalContent) modalContent.classList.remove('fade-out');
+        }, 50); 
         
-        // 3. Remove o fade-out (imagem reaparece suavemente)
-        imgContainer.classList.remove('fade-out');
-    }, 400);
+    }, 450); 
 }
+
 
 
 // --- NOVO: CAPTURAR O BOTÃO VOLTAR DO CELULAR ---
