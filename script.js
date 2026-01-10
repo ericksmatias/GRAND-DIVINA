@@ -45,13 +45,13 @@ Estrutura para receber decoração e música
 
 A partir de 50 Pessoas (Segunda à Quinta)
 A partir de 80 Pessoas (Sexta à Domingo) ` },
-        { img: 'assets/fooftop 1.jpeg', 
+        { img: 'assets/rooftop 1.jpeg', 
          title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
          desc: `Um linda vista para eventos mais intimistas ao ar livre!
 
 Ideal para Eventos Corporativos e Sociais
 Pode trazer Decoração e Música (Banda ou DJ)` },
-        { img: 'assets/fooftop 2.jpeg', 
+        { img: 'assets/rooftop 2.jpeg', 
          title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
          desc: `Um linda vista para eventos mais intimistas ao ar livre!
 
@@ -64,7 +64,7 @@ Pode trazer Decoração e Música (Banda ou DJ)` },
     ],
     'social': [
         { img: 'assets/bianchi2025.mp4', title: 'Eventos corporativos', desc: 'No 𝐆𝐫𝐚𝐧𝐝 𝐃𝐢𝐯𝐢𝐧𝐚 𝐄𝐯𝐞𝐧𝐭𝐨𝐬 dispomos de espaços modernos com capacidade para até 200 pessoas,  ideal para eventos corporativos: reuniões, treinamentos, jantar de negócios, palestras e confraternizações de empresa.  Nosso experiente time tem atendimento personalizado o que garante um serviço de alto padrão. Para completar nossa gastronomia é um dos grandes diferenciais com cardápios exclusivos e adaptados a necessidade do seu evento, unindo sabor e qualidade elevando o nível de seu evento e garantindo o destaque que ele merece.' },
-        { img: 'assets/social2.jpg', title: 'Evento tal kkk (testando)', desc: 'Social descrição.' }
+        { img: 'assets/social2.jpg', title: 'Evento 2 (testando)', desc: 'Social descrição.' }
     ]
 };
 
@@ -132,7 +132,8 @@ function updateSlide() {
         // Logos dos Parceiros (Lógica Corrigida)
         if (partnersContainer) {
             if (currentCategory === 'social') {
-                const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'Logo 7.png', 'logo 8.png', 'logo 9.png', 'logo 10.png'];
+                const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'logo 7.png', 'logo 8.png', 'logo 9.png', 'logo 10.png'
+];
                 let logoHTML = '<span class="partners-title">Empresas que realizamos eventos</span>';
                 logoHTML += '<div class="logo-track">';
                 // Duplicamos a lista para o scroll infinito
