@@ -436,14 +436,15 @@ header p {
         color: #fff !important;
     }
 
-    .nav-btn {
-        width: 40px !important; height: 40px !important;
-        background: rgba(0,0,0,0.6) !important;
-        top: 125px !important;
+        .nav-btn {
+        top: 125px !important; /* Ajustado para o meio da imagem de 250px */
+        width: 45px !important;
+        height: 45px !important;
+        z-index: 9998 !important;
     }
     .prev { left: 10px !important; }
     .next { right: 10px !important; }
-}
+
 
 /* =========================================
    6. RODAPÉ E EXTRAS (RESTAURADO)
