@@ -141,11 +141,16 @@ function updateSlide() {
             if (currentCategory === 'social') {
                 // Aqui está sua lista de logos organizada
                 const listaLogos = [
-                    'logo1.png',
-                    'logo2.png',
-                    'logo3.png',
-                    'logo4.png',
-                    'logo5.png'
+                    'logo 1.png',
+                    'logo 2.png',
+                    'logo 3.png',
+                    'logo 4.png',
+                    'logo 5.png',
+                    'logo 6.png',
+                    'logo 7.png',
+                    'logo 8.png',
+                    'logo 9.png',
+                    'logo 10.png'
                 ];
                 
                 // Criamos a trilha e duplicamos a lista para o efeito infinito não ter "buracos"
@@ -229,6 +234,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
