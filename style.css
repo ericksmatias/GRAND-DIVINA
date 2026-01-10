@@ -493,97 +493,92 @@ header p {
    8. RESPONSIVIDADE (MOBILE)
    ========================================= */
 @media (max-width: 768px) {
-    /* 1. HOME: EMPURRA TÍTULO E MENU PARA BAIXO */
-    /* Usamos o seletor 'body:not(.modal-open)' para não quebrar a galeria */
     .container {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: flex-end !important;
-        min-height: 100vh !important;
-        height: 100dvh !important; /* dVH ajuda em navegadores mobile */
-        padding-bottom: 120px !important; /* Espaço para o copyright não ser coberto */
+        /* Alinha todo o conteúdo (header e links) no final da tela */
+        justify-content: flex-end !important; 
+        /* Aumentamos para 120px para que o menu NÃO encoste no copyright */
+        padding-bottom: 120px !important; 
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
 
-    header {
-        margin-top: auto !important; /* O 'pulo do gato' para descer tudo */
-        margin-bottom: 20px !important;
-        text-align: center;
-    }
-
+    /* Removemos o margin-top que travava o título no topo */
     header h1 {
-        font-size: 1.8rem !important; /* Tamanho para não tapar o rosto */
-        line-height: 1.1 !important;
-        margin-bottom: 5px !important;
+        font-size: 1.8rem !important; /* Tamanho ajustado para não ocupar a tela toda */
+        line-height: 1.1;
+        white-space: normal;
+        margin-bottom: 0.3rem;
+        margin-top: 0 !important; 
     }
 
     header p {
-        font-size: 0.75rem !important;
-        margin-bottom: 15px !important;
+        font-size: 0.7rem !important;
+        margin-bottom: 1.5rem !important;
     }
 
-    /* 2. COPYRIGHT: FIXO NO RODAPÉ */
-    .footer-fixed {
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0;
-        width: 100% !important;
-        z-index: 1000 !important;
-        background: linear-gradient(transparent, rgba(0,0,0,0.7));
-        padding: 10px 0 !important;
-    }
-
+    /* --- AJUSTE MANUAL DO COPYRIGHT --- */
     .footer-fixed p {
-        font-size: 8px !important; /* Ajuste manual aqui */
-        white-space: nowrap !important;
-        text-align: center !important;
-        margin: 0 !important;
+        font-size: 7px !important; /* <--- MEXA AQUI (7px, 8px, etc) */
+        white-space: nowrap !important; /* Força uma linha só */
+        text-align: center;
+        width: 100%;
+        color: rgba(255,255,255,0.5);
+        /* Garante que ele fique no fundo sem ser atropelado */
+        position: relative;
+        z-index: 1;
     }
 
-    /* 3. MENU DE BOTÕES */
+    /* Ajustes dos Botões (Menu) */
     .links { 
         width: 100%; 
-        max-width: 90%; 
+        max-width: 95%; 
         gap: 8px !important; 
-        margin: 0 auto !important;
-    }
-    .btn { padding: 10px !important; }
-
-    /* 4. FIX DA GALERIA (MODAL) - RESETANDO O FLEX */
-    .modal {
-        display: none; /* Mantém o padrão do seu JS */
     }
 
+    .btn { padding: 10px 10px; }
+    .btn span { font-size: 0.65rem; }
+
+    /* --- MODAL (GALERIA) - Mantive suas correções --- */
     .modal-content {
-        display: flex !important;
         flex-direction: column !important;
-        justify-content: flex-start !important; /* Reseta o 'flex-end' da home */
         height: 90vh !important;
-        margin-top: 5vh !important;
-        padding-bottom: 0 !important; /* Remove o padding do menu */
-    }
-
-    .gallery-slide {
-        flex-direction: column !important;
-        height: auto !important;
+        width: 95% !important;
+        overflow-y: auto !important;
+        background: #000 !important;
     }
 
     .slide-image {
-        flex: 0 0 250px !important; /* Foto no topo */
+        flex: 0 0 250px !important;
         width: 100% !important;
     }
 
     .slide-info {
-        flex: 1 !important;
         padding: 20px !important;
-        text-align: left !important;
+        border-top: 1px solid var(--color-wine);
     }
+
+    .slide-info h2 { font-size: 1.4rem !important; }
 
     .slide-info p {
-        text-align: justify !important; /* Texto elegante */
-        font-size: 0.9rem !important;
+        text-align: justify !important; /* Agora o texto do meio está alinhado */
     }
 
-    /* Setas e Botão Fechar */
-    .nav-btn { top: 125px !important; z-index: 5000 !important; }
-    .close-btn { z-index: 6000 !important; }
+    .cta-btn {
+        width: 100% !important;
+        margin-bottom: 30px;
+    }
+
+    /* Setas dentro da foto (Modal) */
+    .nav-btn {
+        width: 40px !important;
+        height: 40px !important;
+        background: rgba(0, 0, 0, 0.6) !important;
+        z-index: 3000 !important;
+        top: 125px !important;
+    }
+    .prev { left: 10px !important; }
+    .next { right: 10px !important; }
+    
+    .close-btn { top: 10px; right: 10px; font-size: 30px; }
 }
