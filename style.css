@@ -363,8 +363,8 @@ header p {
     transition: 0.3s;
 }
 
-.prev { left: -70px !important; } 
-.next { right: -70px !important; }
+.prev { left: 20px !important; } 
+.next { right: 20px !important; }
 .nav-btn:hover { background: var(--color-wine); color: #fff; transform: translateY(-50%) scale(1.1); }
 
 .close-btn {
