@@ -1,5 +1,6 @@
 // 1. BACKGROUND SLIDER DINÂMICO (Desktop vs Mobile)
 document.addEventListener('DOMContentLoaded', () => {
+    preloadGalleryAssets();
     const bgSlider = document.getElementById('bg-slider');
     const isMobile = window.innerWidth <= 768;
     const totalPhotos = 17;
@@ -182,16 +183,23 @@ function closeGallery() {
 
 
 function changeSlide(direction) {
-    const items = galleryData[currentCategory];
-    currentIndex = (currentIndex + direction + items.length) % items.length;
-    updateSlide();
+    const imgContainer = document.querySelector('.slide-image');
+    
+    // 1. Aplica o fade-out (imagem some)
+    imgContainer.classList.add('fade-out');
+
+    // 2. Espera 400ms (tempo do CSS) para trocar o conteúdo no "escuro"
+    setTimeout(() => {
+        const items = galleryData[currentCategory];
+        currentIndex = (currentIndex + direction + items.length) % items.length;
+        
+        updateSlide(); // Troca a foto/texto
+        
+        // 3. Remove o fade-out (imagem reaparece suavemente)
+        imgContainer.classList.remove('fade-out');
+    }, 400);
 }
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        closeGallery();
-    }
-}
 
 // --- NOVO: CAPTURAR O BOTÃO VOLTAR DO CELULAR ---
 window.onpopstate = function(event) {
