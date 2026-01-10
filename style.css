@@ -369,11 +369,11 @@ header p {
 
 /* Posicionamento fora da caixa no Desktop */
 .prev { 
-    left: -80px !important; 
+    left: -40px !important; 
     }
 
 .next { 
-    right: -80px !important; 
+    right: -40px !important; 
     }
 
 .nav-btn:hover {
