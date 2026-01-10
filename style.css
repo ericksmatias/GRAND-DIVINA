@@ -181,7 +181,6 @@ header p {
 .modal.show { display: flex; opacity: 1; }
 
 /* CAIXA DO MODAL */
-/* CAIXA DO MODAL */
 .modal-content {
     position: relative;
     width: 95%;
@@ -328,7 +327,7 @@ header p {
     display: flex;
     align-items: center;
     width: max-content;
-    animation: scrollLogos 25s linear infinite;
+    animation: scrollLogos 20s linear infinite;
 }
 
 .logo-track img {
