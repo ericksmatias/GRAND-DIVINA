@@ -132,7 +132,7 @@ function updateSlide() {
     // 4. LOGOS DOS PARCEIROS (Sua lógica original mantida)
     if (partnersContainer) {
         if (currentCategory === 'social') {
-            const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'logo 7.png', 'logo 8.png', 'logo 9.png', 'logo 10.png' ];
+            const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'logo 7.png', 'logo 8.png', 'logo 9.png'];
             let logoHTML = '<span class="partners-title">Empresas que realizamos eventos</span>';
             logoHTML += '<div class="logo-track">';
             [...listaLogos, ...listaLogos].forEach(nomeArquivo => {
