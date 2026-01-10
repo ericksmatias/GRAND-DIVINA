@@ -494,8 +494,7 @@ header p {
    ========================================= */
 @media (max-width: 768px) {
     .container {
-        /* Isso joga o conteúdo (título e botões) para o rodapé */
-        justify-content: flex-end !important; 
+        /* Isso joga o conteúdo (título e botões) para o rodapé */ 
         padding-bottom: 80px !important; /* Espaço para não colar no chão */
     }
     /* Ajustes Gerais */
