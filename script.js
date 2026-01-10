@@ -99,7 +99,6 @@ function updateSlide() {
     modalContent.classList.add('fade-out');
 
     setTimeout(() => {
-        // 1. Declaramos as variáveis apenas UMA VEZ
         const item = galleryData[currentCategory][currentIndex];
         const imageContainer = document.querySelector('.slide-image');
         const modalCap = document.getElementById('modal-cap');
@@ -107,7 +106,7 @@ function updateSlide() {
         
         if (!imageContainer) return;
 
-        // 2. Limpa e Renderiza Imagem ou Vídeo
+        // Limpa e Renderiza Mídia
         imageContainer.innerHTML = '';
         if (item.img.toLowerCase().endsWith('.mp4')) {
             const video = document.createElement('video');
@@ -117,8 +116,6 @@ function updateSlide() {
             video.loop = true;
             video.playsInline = true;
             video.setAttribute('preload', 'auto');
-            video.load(); 
-            video.play().catch(e => console.log("Erro ao dar play:", e));
             imageContainer.appendChild(video);
         } else {
             const img = document.createElement('img');
@@ -126,28 +123,22 @@ function updateSlide() {
             imageContainer.appendChild(img);
         }
 
-        // 3. Lógica da Capacidade (Apenas usamos as variáveis já declaradas acima)
+        // Capacidade
         if (modalCap) {
-            if (currentCategory === 'espacos' && item.cap) {
-                modalCap.textContent = item.cap;
-                modalCap.style.display = 'block';
-            } else {
-                modalCap.style.display = 'none';
-            }
+            modalCap.textContent = item.cap || '';
+            modalCap.style.display = (currentCategory === 'espacos' && item.cap) ? 'block' : 'none';
         }
 
+        // Logos dos Parceiros (Lógica Corrigida)
         if (partnersContainer) {
             if (currentCategory === 'social') {
                 const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'Logo 7.png', 'logo 8.png', 'logo 9.png', 'logo 10.png'];
-                
-                // Adicionamos o título VIP antes da trilha
                 let logoHTML = '<span class="partners-title">Empresas que realizamos eventos</span>';
                 logoHTML += '<div class="logo-track">';
-                
+                // Duplicamos a lista para o scroll infinito
                 [...listaLogos, ...listaLogos].forEach(nomeArquivo => {
                     logoHTML += `<img src="assets/${nomeArquivo}" alt="Parceiro" class="partners-img">`;
                 });
-                
                 logoHTML += '</div>';
                 partnersContainer.innerHTML = logoHTML;
                 partnersContainer.style.display = 'block';
@@ -157,7 +148,6 @@ function updateSlide() {
             }
         }
 
-        // 5. Atualização de textos e links
         modalTitle.textContent = item.title;
         modalDesc.textContent = item.desc;
         
@@ -220,6 +210,7 @@ function preloadGalleryAssets() {
     });
     console.log("Galeria 100% em cache (Fotos e Vídeos).");
 }
+
 
 
 
