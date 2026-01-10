@@ -63,8 +63,8 @@ body {
     z-index: 10;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; 
+    align-items: center;     
     margin: 0 auto;
 }
 
@@ -132,7 +132,7 @@ header p {
     font-size: 0.8rem;
 }
 
-/* Suas Animações Shine Originais Mantidas */
+/* Animações Shine Mantidas */
 .btn::after {
     content: '';
     position: absolute;
@@ -152,12 +152,6 @@ header p {
 .links .btn:nth-child(3)::after { animation-delay: 0.5s; }
 .links .btn:nth-child(4)::after { animation-delay: 0.75s; }
 
-/* Animações de Entrada Mantidas */
-.fade-in-up { opacity: 0; transform: translateY(30px); animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-.delay-1 { animation-delay: 0.3s; }
-.delay-2 { animation-delay: 0.6s; }
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-
 /* =========================================
    4. MODAL DA GALERIA
    ========================================= */
@@ -166,6 +160,7 @@ header p {
     position: fixed;
     z-index: 1000;
     left: 0; top: 0;
+    overflow: visible !important;
     width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(20px) saturate(150%);
@@ -173,7 +168,6 @@ header p {
     align-items: center;
     opacity: 0;
     transition: opacity 0.5s ease;
-    overflow: visible !important;
 }
 
 .modal.show { display: flex; opacity: 1; }
@@ -189,21 +183,27 @@ header p {
     box-shadow: 0 25px 50px rgba(0,0,0,0.6);
     background: rgba(15, 15, 15, 0.95);
     border-radius: 8px;
+    transition: opacity 0.4s ease-in-out;
     overflow: visible !important; 
 }
 
-/* CORREÇÃO: Estilo do Botão Fechar para PC (Fora do Mobile) */
+/* AJUSTE PC: Garantindo que o X apareça no Computador */
 .close-btn {
     position: absolute;
     top: -45px;
     right: 0;
-    color: white;
+    color: #fff;
     font-size: 35px;
     cursor: pointer;
-    z-index: 10001;
+    z-index: 1001;
 }
 
-.gallery-slide { display: flex; width: 100%; height: 100%; flex-direction: row; }
+.gallery-slide {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
 
 .slide-image {
     flex: 0 0 60% !important;
@@ -229,10 +229,19 @@ header p {
     justify-content: flex-start;
     background: linear-gradient(135deg, #1a0508, #000);
     border-left: 2px solid var(--color-wine);
-    overflow-y: auto;
+    overflow-y: auto; 
+    overflow-x: hidden;
 }
 
-/* Suas funções de Carrossel de Logos e Botão Neon Mantidas Intactas */
+.slide-info h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--color-gold);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+/* Suas animações Neon e Logos Mantidas */
 .cta-btn {
     display: inline-block;
     padding: 12px 20px;
@@ -250,6 +259,7 @@ header p {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    flex-shrink: 0;
 }
 .cta-btn::after { content: ''; position: absolute; inset: 2px; background: var(--color-wine); z-index: -1; transition: background 0.3s; }
 .cta-btn:hover::after { background: transparent; }
@@ -265,8 +275,12 @@ header p {
     padding-top: 15px;
 }
 
-.logo-track { display: flex; align-items: center; width: max-content; animation: scrollLogos 25s linear infinite; }
-@keyframes scrollLogos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.logo-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: scrollLogos 25s linear infinite;
+}
 
 .nav-btn {
     position: absolute;
@@ -284,6 +298,7 @@ header p {
     cursor: pointer;
     z-index: 99999 !important; 
 }
+
 .prev { left: -80px !important; }
 .next { right: -80px !important; }
 
@@ -294,14 +309,14 @@ header p {
     .container {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: flex-end !important; /* CORREÇÃO: Empurra para baixo para não tapar rostos */
+        justify-content: flex-end !important; /* CONTEÚDO PARA BAIXO */
         align-items: center !important;
         min-height: 100vh !important;
-        padding-bottom: 110px !important; /* Espaço para o rodapé */
+        padding-bottom: 120px !important; /* AJUSTE PARA NÃO ESMAGAR COPYRIGHT */
         margin: 0 auto !important;
     }
 
-    /* CORREÇÃO: Diminuir títulos levemente no mobile */
+    /* Textos menores para o Mobile */
     header h1 { font-size: 1.8rem !important; margin-bottom: 0.3rem !important; }
     header p { font-size: 0.7rem !important; margin-bottom: 1.5rem !important; }
     .btn { padding: 12px 15px !important; }
@@ -311,12 +326,11 @@ header p {
         height: 90vh !important;
         width: 95% !important;
         position: relative !important;
-        overflow-y: auto !important;
     }
 
     .gallery-slide { flex-direction: column; height: auto; }
-    .slide-image { flex: 0 0 250px !important; width: 100% !important; }
-    .slide-info { flex: 1 0 auto !important; width: 100% !important; border-left: none; border-top: 2px solid var(--color-wine); }
+    .slide-image { flex: 0 0 250px !important; width: 100% !important; order: 1; }
+    .slide-info { flex: 1 0 auto !important; width: 100% !important; border-left: none; border-top: 2px solid var(--color-wine); order: 2; }
 
     .close-btn {
         position: absolute !important;
@@ -327,23 +341,23 @@ header p {
         height: 40px !important;
         background: rgba(0, 0, 0, 0.7) !important;
         border-radius: 50% !important;
+        font-size: 30px !important;
         display: flex !important;
         align-items: center;
         justify-content: center;
-        z-index: 9999 !important;
     }
 
     .nav-btn { top: 125px !important; width: 45px !important; height: 45px !important; }
     .prev { left: 10px !important; }
     .next { right: 10px !important; }
-} /* CORREÇÃO: Chave do Media Query fechada aqui */
+} /* FECHAMENTO CORRETO DO MEDIA QUERY */
 
 /* =========================================
    6. RODAPÉ E EXTRAS
    ========================================= */
 .footer-fixed {
     position: fixed; 
-    bottom: 25px;
+    bottom: 25px; 
     left: 0; 
     width: 100%;
     text-align: center; 
@@ -353,7 +367,7 @@ header p {
 .footer-fixed p, 
 .footer-fixed a {
     font-size: 0.45rem !important; 
-    color: rgba(255, 255, 255, 0.5) !important; /* CORREÇÃO: Tirar o azul */
+    color: rgba(255, 255, 255, 0.5) !important; /* CORRIGIDO: Sem azul */
     letter-spacing: 1px; 
     text-decoration: none !important;
 }
