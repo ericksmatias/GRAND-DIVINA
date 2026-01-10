@@ -327,7 +327,7 @@ header p {
     display: flex;
     align-items: center;
     width: max-content;
-    animation: scrollLogos 20s linear infinite;
+    animation: scrollLogos 15s linear infinite;
 }
 
 .logo-track img {
