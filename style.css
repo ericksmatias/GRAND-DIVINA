@@ -344,34 +344,42 @@ header p {
 
 @keyframes scrollLogos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* Isso garante que as setas apareçam nas laterais no PC */
-.nav-btn {
-    position: absolute;
-    top: 50% !important; 
-    transform: translateY(-50%) !important;
-    background: rgba(0, 0, 0, 0.7) !important; /* Mais escuro para destacar */
-    border: 1px solid var(--color-gold) !important;
-    color: var(--color-gold) !important;
-    width: 50px !important; 
-    height: 50px !important;
-    border-radius: 50% !important;
-    display: flex !important; /* Força o display */
-    align-items: center; 
-    justify-content: center;
-    cursor: pointer;
-    z-index: 5000 !important; /* Valor bem alto para não sumir */
-    transition: 0.3s;
+.modal {
+    overflow: visible !important; 
 }
 
-.prev { left: -20px !important; } 
-.next { right: -20px !important; }
-.nav-btn:hover { background: var(--color-wine); color: #fff; transform: translateY(-50%) scale(1.1); }
-
-.close-btn {
+.nav-btn {
     position: absolute;
-    top: 20px; right: 30px;
-    color: white; font-size: 40px; font-weight: bold;
-    cursor: pointer; z-index: 1100;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 1px solid var(--color-gold) !important;
+    color: var(--color-gold) !important;
+    width: 60px !important; /* Um pouco maior no PC fica mais elegante */
+    height: 60px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999 !important; /* Garante que fica acima de tudo */
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    }
+
+/* Posicionamento fora da caixa no Desktop */
+.prev { 
+    left: -80px !important; 
+    }
+
+.next { 
+    right: -80px !important; 
+    }
+
+.nav-btn:hover {
+    background: var(--color-gold) !important;
+    color: black !important;
+    transform: translateY(-50%) scale(1.1) !important;
 }
 
 /* =========================================
