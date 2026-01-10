@@ -96,11 +96,14 @@ function openGallery(category) {
 
 function updateSlide() {
     const modalContent = document.querySelector('.modal-content');
+    const imageContainer = document.querySelector('.slide-image');
+    
+    // Inicia o fade out (fica invisível)
     modalContent.classList.add('fade-out');
+    if (imageContainer) imageContainer.classList.add('fade-out');
 
     setTimeout(() => {
         const item = galleryData[currentCategory][currentIndex];
-        const imageContainer = document.querySelector('.slide-image');
         const modalCap = document.getElementById('modal-cap');
         const partnersContainer = document.getElementById('partners-logos');
         
@@ -129,13 +132,12 @@ function updateSlide() {
             modalCap.style.display = (currentCategory === 'espacos' && item.cap) ? 'block' : 'none';
         }
 
-        // Logos dos Parceiros (Lógica Corrigida)
+        // Logos dos Parceiros
         if (partnersContainer) {
             if (currentCategory === 'social') {
-                const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'logo 7.png', 'logo 8.png', 'logo 9.png', 'logo 10.png', ];
+                const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'logo 7.png', 'logo 8.png', 'logo 9.png', 'logo 10.png' ];
                 let logoHTML = '<span class="partners-title">Empresas que realizamos eventos</span>';
                 logoHTML += '<div class="logo-track">';
-                // Duplicamos a lista para o scroll infinito
                 [...listaLogos, ...listaLogos].forEach(nomeArquivo => {
                     logoHTML += `<img src="assets/${nomeArquivo}" alt="Parceiro" class="partners-img">`;
                 });
@@ -155,18 +157,29 @@ function updateSlide() {
         modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
         modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
 
+        // Finaliza o fade (volta a ficar visível com o conteúdo novo)
         modalContent.classList.remove('fade-out');
-    }, 400); 
+        imageContainer.classList.remove('fade-out');
+    }, 400); // Tempo exato da transição CSS
 }
 
+
 function closeGallery() {
+    const modal = document.getElementById('gallery-modal');
     modal.classList.remove('show');
-    setTimeout(() => { modal.style.display = 'none'; }, 400);
+    
+    // Aguarda a animação de fade-out do modal terminar para esconder
+    setTimeout(() => { 
+        modal.style.display = 'none'; 
+        // Limpa a mídia ao fechar para não continuar tocando áudio/vídeo em background
+        document.querySelector('.slide-image').innerHTML = '';
+    }, 400);
 
     if (history.state && history.state.modalOpen) {
         history.back();
     }
 }
+
 
 function changeSlide(direction) {
     const items = galleryData[currentCategory];
