@@ -494,52 +494,52 @@ header p {
    ========================================= */
 @media (max-width: 768px) {
     .container {
-        /* Alinha todo o conteúdo (header e links) no final da tela */
+        /* Mudamos para flex-end para empurrar tudo para a base da tela */
         justify-content: flex-end !important; 
-        /* Aumentamos para 120px para que o menu NÃO encoste no copyright */
-        padding-bottom: 120px !important; 
+        /* Aumentamos o respiro para 130px para garantir que não cubra o copyright */
+        padding-bottom: 130px !important; 
         min-height: 100vh;
         display: flex;
         flex-direction: column;
     }
 
-    /* Removemos o margin-top que travava o título no topo */
+    /* Ajuste do Título para liberar o rosto */
     header h1 {
-        font-size: 1.8rem !important; /* Tamanho ajustado para não ocupar a tela toda */
+        font-size: 1.8rem !important; /* Diminuímos um pouco para ocupar menos espaço vertical */
         line-height: 1.1;
         white-space: normal;
         margin-bottom: 0.3rem;
-        margin-top: 0 !important; 
+        /* margin-top: auto faz ele ser empurrado para baixo pelo espaço vazio acima */
+        margin-top: auto !important; 
     }
 
     header p {
         font-size: 0.7rem !important;
-        margin-bottom: 1.5rem !important;
+        margin-bottom: 1.5rem !important; /* Espaço entre o subtítulo e os botões */
     }
 
     /* --- AJUSTE MANUAL DO COPYRIGHT --- */
     .footer-fixed p {
-        font-size: 7px !important; /* <--- MEXA AQUI (7px, 8px, etc) */
-        white-space: nowrap !important; /* Força uma linha só */
+        font-size: 7px !important; /* Ficou menor para garantir que caiba em uma linha */
+        white-space: nowrap !important; 
         text-align: center;
         width: 100%;
-        color: rgba(255,255,255,0.5);
-        /* Garante que ele fique no fundo sem ser atropelado */
-        position: relative;
-        z-index: 1;
+        color: rgba(255,255,255,0.6) !important;
+        /* Sobe um pouquinho o texto para não sumir na barra do Android/iPhone */
+        padding-bottom: 10px; 
     }
 
-    /* Ajustes dos Botões (Menu) */
+    /* Ajustes dos Botões do Menu */
     .links { 
         width: 100%; 
         max-width: 95%; 
-        gap: 8px !important; 
+        gap: 8px !important; /* Encurta a distância entre botões para economizar espaço */
     }
-
+    
     .btn { padding: 10px 10px; }
     .btn span { font-size: 0.65rem; }
 
-    /* --- MODAL (GALERIA) - Mantive suas correções --- */
+    /* --- MODAL (GALERIA) MOBILE --- */
     .modal-content {
         flex-direction: column !important;
         height: 90vh !important;
@@ -549,36 +549,26 @@ header p {
     }
 
     .slide-image {
-        flex: 0 0 250px !important;
+        flex: 0 0 220px !important; /* Foto menor no topo para sobrar texto embaixo */
         width: 100% !important;
     }
 
     .slide-info {
-        padding: 20px !important;
-        border-top: 1px solid var(--color-wine);
+        padding: 15px !important;
+        border-top: 1px solid var(--color-gold);
     }
 
-    .slide-info h2 { font-size: 1.4rem !important; }
+    .slide-info h2 { font-size: 1.2rem !important; }
 
     .slide-info p {
-        text-align: justify !important; /* Agora o texto do meio está alinhado */
+        text-align: justify !important; /* Alinhamento corrigido */
+        font-size: 0.85rem !important;
     }
 
-    .cta-btn {
-        width: 100% !important;
-        margin-bottom: 30px;
-    }
-
-    /* Setas dentro da foto (Modal) */
+    /* Setas dentro da foto no Modal */
     .nav-btn {
-        width: 40px !important;
-        height: 40px !important;
-        background: rgba(0, 0, 0, 0.6) !important;
-        z-index: 3000 !important;
-        top: 125px !important;
+        top: 110px !important; /* Ajustado para a nova altura da foto (220px / 2) */
+        width: 35px !important;
+        height: 35px !important;
     }
-    .prev { left: 10px !important; }
-    .next { right: 10px !important; }
-    
-    .close-btn { top: 10px; right: 10px; font-size: 30px; }
 }
