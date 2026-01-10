@@ -174,11 +174,13 @@ header p {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.8s ease; /* Ajustado para 0.8s */
 }
+
 
 .modal.show { display: flex; opacity: 1; }
 
+/* CAIXA DO MODAL */
 /* CAIXA DO MODAL */
 .modal-content {
     position: relative;
@@ -186,13 +188,20 @@ header p {
     max-width: 1000px;
     height: 85vh; 
     display: flex;
-    flex-direction: row; /* Lado a lado no PC */
+    flex-direction: row; 
     border: 1px solid rgba(212, 175, 55, 0.3);
     box-shadow: 0 25px 50px rgba(0,0,0,0.6);
     background: rgba(15, 15, 15, 0.95);
     border-radius: 8px;
     overflow: visible !important;
+    
+    /* REGRAS DE OURO PARA NÃO PISCAR: */
     transition: all 0.8s ease; 
+    opacity: 0; 
+}
+
+.modal.show .modal-content {
+    opacity: 1;
 }
 
 .gallery-slide {
