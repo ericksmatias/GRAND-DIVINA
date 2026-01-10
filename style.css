@@ -166,16 +166,16 @@ header p {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 2000; /* Aumentado para ficar sobre tudo */
     left: 0; top: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Fundo mais escuro destaca o modal */
+    background-color: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(15px);
     justify-content: center;
     align-items: center;
     opacity: 0;
     transition: opacity 0.5s ease;
-    /* PERMITE QUE AS SETAS APAREÇAM FORA */
+    /* ESSENCIAL: Permite que as setas negativas apareçam no PC */
     overflow: visible !important; 
 }
 
@@ -188,65 +188,28 @@ header p {
     height: 85vh; 
     display: flex;
     flex-direction: row;
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
     background: rgba(15, 15, 15, 0.95);
+    border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: 8px;
-    transition: opacity 0.4s ease-in-out;
-    /* REMOVIDO O OVERFLOW: HIDDEN QUE CORTAVA AS SETAS */
+    /* ESSENCIAL: Permite que as setas e o X saiam da borda */
     overflow: visible !important; 
+    transition: opacity 0.4s ease-in-out;
 }
 
-.modal-content.fade-out { opacity: 0 !important; }
-
-.gallery-slide {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: row;
-    overflow: hidden; /* Garante que a imagem/texto não vazem da borda arredondada */
-    border-radius: 8px;
+/* Botão Fechar (X) - Posicionado em relação ao modal-content */
+.close-btn {
+    position: absolute;
+    top: -45px; /* Fica acima da caixa no PC */
+    right: -10px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 3000;
+    line-height: 1;
 }
 
-/* LADO ESQUERDO: IMAGEM (60%) */
-.slide-image {
-    flex: 0 0 60% !important;
-    width: 60% !important;
-    height: 100%;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.slide-image img, .slide-image video {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-    backface-visibility: hidden; transform: translateZ(0); 
-}
-
-/* LADO DIREITO: TEXTO (40%) */
-.slide-info {
-    flex: 0 0 40% !important;
-    width: 40% !important;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(135deg, #1a0508, #000);
-    border-left: 2px solid var(--color-wine);
-    overflow-y: auto;
-}
-
-.slide-info h2 {
-    font-family: 'Cinzel', serif;
-    color: var(--color-gold);
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    margin-bottom: 10px;
-    white-space: normal; /* Voltamos para normal para não quebrar o layout no PC */
-    line-height: 1.2;
-}
-
-/* SETAS E BOTÃO FECHAR */
+/* Setas de Navegação (PC) */
 .nav-btn {
     position: absolute;
     top: 50% !important;
@@ -254,32 +217,23 @@ header p {
     background: rgba(0, 0, 0, 0.8) !important;
     border: 1px solid var(--color-gold) !important;
     color: var(--color-gold) !important;
-    width: 60px !important;
-    height: 60px !important;
-    border-radius: 50% !important;
-    display: flex !important;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 99999 !important; 
+    z-index: 5000 !important;
     transition: all 0.3s ease;
 }
 
-.prev { left: -80px !important; }
-.next { right: -80px !important; }
+.prev { left: -85px !important; }
+.next { right: -85px !important; }
 
-.close-btn {
-    position: absolute;
-    top: -40px; /* No PC fica acima do modal */
-    right: 0;
-    color: white; 
-    font-size: 35px;
-    cursor: pointer;
-    z-index: 10000;
-    transition: 0.3s;
+.nav-btn:hover {
+    background: var(--color-gold) !important;
+    color: black !important;
 }
-
-.close-btn:hover { color: var(--color-gold); }
 
 /* =========================================
    5. RESPONSIVIDADE MOBILE
