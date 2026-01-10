@@ -98,72 +98,63 @@ function openGallery(category) {
 function updateSlide() {
     const modalContent = document.querySelector('.modal-content');
     const imageContainer = document.querySelector('.slide-image');
-    
-    // Inicia o fade out (fica invisível)
-    modalContent.classList.add('fade-out');
-    if (imageContainer) imageContainer.classList.add('fade-out');
+    const item = galleryData[currentCategory][currentIndex];
+    const modalCap = document.getElementById('modal-cap');
+    const partnersContainer = document.getElementById('partners-logos');
 
-    setTimeout(() => {
-        const item = galleryData[currentCategory][currentIndex];
-        const modalCap = document.getElementById('modal-cap');
-        const partnersContainer = document.getElementById('partners-logos');
-        
-        if (!imageContainer) return;
+    if (!imageContainer) return;
 
-        // Limpa e Renderiza Mídia
-        imageContainer.innerHTML = '';
-        if (item.img.toLowerCase().endsWith('.mp4')) {
-            const video = document.createElement('video');
-            video.src = item.img;
-            video.autoplay = true;
-            video.muted = true;
-            video.loop = true;
-            video.playsInline = true;
-            video.setAttribute('preload', 'auto');
-            imageContainer.appendChild(video);
+    // 1. LIMPEZA IMEDIATA (Mata a imagem antiga antes de qualquer coisa)
+    imageContainer.innerHTML = '';
+
+    // 2. RENDERIZAÇÃO DA MÍDIA
+    if (item.img.toLowerCase().endsWith('.mp4')) {
+        const video = document.createElement('video');
+        video.src = item.img;
+        video.autoplay = true;
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+        video.setAttribute('preload', 'auto');
+        imageContainer.appendChild(video);
+    } else {
+        const img = document.createElement('img');
+        img.src = item.img;
+        imageContainer.appendChild(img);
+    }
+
+    // 3. CAPACIDADE
+    if (modalCap) {
+        modalCap.textContent = item.cap || '';
+        modalCap.style.display = (currentCategory === 'espacos' && item.cap) ? 'block' : 'none';
+    }
+
+    // 4. LOGOS DOS PARCEIROS (Sua lógica original mantida)
+    if (partnersContainer) {
+        if (currentCategory === 'social') {
+            const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'logo 7.png', 'logo 8.png', 'logo 9.png', 'logo 10.png' ];
+            let logoHTML = '<span class="partners-title">Empresas que realizamos eventos</span>';
+            logoHTML += '<div class="logo-track">';
+            [...listaLogos, ...listaLogos].forEach(nomeArquivo => {
+                logoHTML += `<img src="assets/${nomeArquivo}" alt="Parceiro" class="partners-img">`;
+            });
+            logoHTML += '</div>';
+            partnersContainer.innerHTML = logoHTML;
+            partnersContainer.style.display = 'block';
         } else {
-            const img = document.createElement('img');
-            img.src = item.img;
-            imageContainer.appendChild(img);
+            partnersContainer.innerHTML = '';
+            partnersContainer.style.display = 'none';
         }
+    }
 
-        // Capacidade
-        if (modalCap) {
-            modalCap.textContent = item.cap || '';
-            modalCap.style.display = (currentCategory === 'espacos' && item.cap) ? 'block' : 'none';
-        }
-
-        // Logos dos Parceiros
-        if (partnersContainer) {
-            if (currentCategory === 'social') {
-                const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'logo 7.png', 'logo 8.png', 'logo 9.png', 'logo 10.png' ];
-                let logoHTML = '<span class="partners-title">Empresas que realizamos eventos</span>';
-                logoHTML += '<div class="logo-track">';
-                [...listaLogos, ...listaLogos].forEach(nomeArquivo => {
-                    logoHTML += `<img src="assets/${nomeArquivo}" alt="Parceiro" class="partners-img">`;
-                });
-                logoHTML += '</div>';
-                partnersContainer.innerHTML = logoHTML;
-                partnersContainer.style.display = 'block';
-            } else {
-                partnersContainer.innerHTML = '';
-                partnersContainer.style.display = 'none';
-            }
-        }
-
-        modalTitle.textContent = item.title;
-        modalDesc.textContent = item.desc;
-        
-        const text = `Olá, gostei do ${item.title} que vi no site!`;
-        modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
-        modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
-
-        // Finaliza o fade (volta a ficar visível com o conteúdo novo)
-        modalContent.classList.remove('fade-out');
-        imageContainer.classList.remove('fade-out');
-    }, 400); // Tempo exato da transição CSS
+    // 5. TEXTOS E BOTÃO
+    modalTitle.textContent = item.title;
+    modalDesc.textContent = item.desc;
+    
+    const text = `Olá, gostei do ${item.title} que vi no site!`;
+    modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
+    modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
 }
-
 
 function closeGallery() {
     const modal = document.getElementById('gallery-modal');
@@ -186,28 +177,25 @@ function changeSlide(direction) {
     const imgContainer = document.querySelector('.slide-image');
     const modalContent = document.querySelector('.modal-content');
     
-    // 1. Inicia o fade out (tudo some)
+    // Inicia o fade out
     if (imgContainer) imgContainer.classList.add('fade-out');
     if (modalContent) modalContent.classList.add('fade-out');
 
-    // 2. Esperamos o tempo total da transição (500ms)
+    // Espera a imagem sumir totalmente (400ms)
     setTimeout(() => {
         const items = galleryData[currentCategory];
         currentIndex = (currentIndex + direction + items.length) % items.length;
         
-        updateSlide(); // Troca o conteúdo no "escuro"
+        updateSlide(); // Troca a imagem enquanto está invisível
 
-        // 3. O SEGREDO: Esperamos um micro-tempo extra (50ms) 
-        // para o navegador processar a nova imagem/vídeo antes de tirar o fade
+        // Espera um milésimo para o navegador entender a nova imagem e tira o fade
         setTimeout(() => {
             if (imgContainer) imgContainer.classList.remove('fade-out');
             if (modalContent) modalContent.classList.remove('fade-out');
         }, 50); 
         
-    }, 450); 
+    }, 400); 
 }
-
-
 
 // --- NOVO: CAPTURAR O BOTÃO VOLTAR DO CELULAR ---
 window.onpopstate = function(event) {
