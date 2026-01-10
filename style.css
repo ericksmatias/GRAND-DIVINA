@@ -493,27 +493,27 @@ header p {
    8. RESPONSIVIDADE (MOBILE)
    ========================================= */
 @media (max-width: 768px) {
-    /* 1. FORÇAR O CONTEÚDO PARA O FUNDO */
+    /* 1. HOME: EMPURRA TÍTULO E MENU PARA BAIXO */
+    /* Usamos o seletor 'body:not(.modal-open)' para não quebrar a galeria */
     .container {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: flex-end !important; /* Tudo para baixo */
-        height: 100vh !important;
-        padding-bottom: 110px !important; /* Margem de segurança para o copyright */
-        box-sizing: border-box !important;
+        justify-content: flex-end !important;
+        min-height: 100vh !important;
+        height: 100dvh !important; /* dVH ajuda em navegadores mobile */
+        padding-bottom: 120px !important; /* Espaço para o copyright não ser coberto */
     }
 
-    /* 2. LIBERAR O ROSTO (Título e Subtítulo descendo) */
     header {
-        margin-top: auto !important; /* Empurra o bloco todo para baixo */
+        margin-top: auto !important; /* O 'pulo do gato' para descer tudo */
         margin-bottom: 20px !important;
-        padding: 0 !important;
+        text-align: center;
     }
 
     header h1 {
-        font-size: 1.8rem !important; /* Menor para não subir no rosto */
+        font-size: 1.8rem !important; /* Tamanho para não tapar o rosto */
         line-height: 1.1 !important;
-        margin: 0 0 5px 0 !important;
+        margin-bottom: 5px !important;
     }
 
     header p {
@@ -521,45 +521,69 @@ header p {
         margin-bottom: 15px !important;
     }
 
-    /* 3. COPYRIGHT EM LINHA ÚNICA E PROTEGIDO */
+    /* 2. COPYRIGHT: FIXO NO RODAPÉ */
     .footer-fixed {
         position: fixed !important;
         bottom: 0 !important;
+        left: 0;
         width: 100% !important;
-        height: 40px !important; /* Altura fixa para ele ter seu próprio espaço */
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        background: linear-gradient(transparent, rgba(0,0,0,0.8)) !important;
+        z-index: 1000 !important;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        padding: 10px 0 !important;
     }
 
     .footer-fixed p {
-        font-size: 7.5px !important; /* <--- AJUSTE MANUAL AQUI */
+        font-size: 8px !important; /* Ajuste manual aqui */
         white-space: nowrap !important;
+        text-align: center !important;
         margin: 0 !important;
-        padding: 0 10px !important;
     }
 
-    /* 4. BOTÕES (Menu) MAIS COMPACTOS */
+    /* 3. MENU DE BOTÕES */
     .links { 
-        gap: 6px !important; 
-        margin-bottom: 10px !important;
+        width: 100%; 
+        max-width: 90%; 
+        gap: 8px !important; 
+        margin: 0 auto !important;
     }
     .btn { padding: 10px !important; }
-    .btn span { font-size: 0.65rem !important; }
 
-    /* --- MANTENDO SEUS FIXES DO MODAL --- */
-    .modal-content {
-        flex-direction: column !important;
-        height: 90vh !important;
-        width: 95% !important;
-        overflow-y: auto !important;
+    /* 4. FIX DA GALERIA (MODAL) - RESETANDO O FLEX */
+    .modal {
+        display: none; /* Mantém o padrão do seu JS */
     }
-    .slide-image { flex: 0 0 220px !important; width: 100% !important; }
-    .slide-info { padding: 15px !important; border-top: 1px solid var(--color-gold); }
-    .slide-info p { text-align: justify !important; font-size: 0.85rem !important; }
-    .nav-btn { top: 110px !important; width: 35px !important; height: 35px !important; }
-    .prev { left: 10px !important; }
-    .next { right: 10px !important; }
-    .close-btn { top: 10px; right: 10px; font-size: 30px; }
+
+    .modal-content {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important; /* Reseta o 'flex-end' da home */
+        height: 90vh !important;
+        margin-top: 5vh !important;
+        padding-bottom: 0 !important; /* Remove o padding do menu */
+    }
+
+    .gallery-slide {
+        flex-direction: column !important;
+        height: auto !important;
+    }
+
+    .slide-image {
+        flex: 0 0 250px !important; /* Foto no topo */
+        width: 100% !important;
+    }
+
+    .slide-info {
+        flex: 1 !important;
+        padding: 20px !important;
+        text-align: left !important;
+    }
+
+    .slide-info p {
+        text-align: justify !important; /* Texto elegante */
+        font-size: 0.9rem !important;
+    }
+
+    /* Setas e Botão Fechar */
+    .nav-btn { top: 125px !important; z-index: 5000 !important; }
+    .close-btn { z-index: 6000 !important; }
 }
