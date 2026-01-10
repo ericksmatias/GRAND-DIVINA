@@ -450,8 +450,23 @@ header p {
    6. RODAPÉ E EXTRAS (RESTAURADO)
    ========================================= */
 .footer-fixed {
-    position: fixed; bottom: 20px; left: 0; width: 100%;
-    text-align: center; z-index: 100;
+    position: fixed; 
+    bottom: 25px; /* Sobe um pouco para não colar no fundo da tela */
+    left: 0; 
+    width: 100%;
+    text-align: center; 
+    z-index: 100;
+}
+
+/* Força a cor cinza e tira o azul do link */
+.footer-fixed p, 
+.footer-fixed a {
+    font-size: 0.45rem !important; 
+    color: rgba(255, 255, 255, 0.5) !important;
+    letter-spacing: 1px; 
+    white-space: nowrap;
+    text-decoration: none !important;
+    border: none !important;
 }
 
 /* Garante que a tag de versão apareça e não suma */
@@ -461,9 +476,8 @@ header p {
     right: 5px !important;
     background: rgba(94, 11, 21, 0.9) !important; 
     color: #d4af37 !important;
-    font-size: 8px; 
-    padding: 4px 8px;
+    font-size: 7px !important; /* Bem pequena */
+    padding: 2px 6px !important;
     border: 1px solid #d4af37; 
     z-index: 10002 !important;
-    display: block !important;
 }
