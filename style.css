@@ -236,7 +236,7 @@ header p {
     color: var(--color-gold);
     font-size: clamp(1.2rem, 3vw, 1.8rem);
     margin-bottom: 10px;
-    white-space: normal; /* Quebra linha */
+    white-space: nowrap; /* Quebra linha */
     line-height: 1.2;
 }
 
@@ -432,7 +432,7 @@ header p {
 }
 .footer-fixed p, 
 .footer-fixed a {
-    font-size: 0.6rem; 
+    font-size: 0.5rem; 
     color: rgba(255,255,255,0.5) !important;
     letter-spacing: 1px; 
     white-space: nowrap;
