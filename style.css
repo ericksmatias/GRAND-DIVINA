@@ -254,9 +254,9 @@ header p {
     white-space: nowrap; /* Quebra linha */
     line-height: 1.2;
    /* IGUALANDO AO PARTNERS TITLE */
-    font-weight: 700;             /* Deixa a letra mais grossa/negrito */
+    font-weight: 400;             /* Deixa a letra mais grossa/negrito */
     text-transform: uppercase;   /* Deixa tudo em MAIÚSCULO */
-    letter-spacing: 2px;         /* Dá aquele respiro chique entre as letras */
+    letter-spacing: 0.5px;         /* Dá aquele respiro chique entre as letras */
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.4); /* Um brilho leve opcional */
 }
 
