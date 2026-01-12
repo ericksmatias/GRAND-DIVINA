@@ -271,7 +271,7 @@ header p {
     line-height: 1.6;
     color: #ccc;
     margin-bottom: 20px;
-    text-align: left;
+    text-align: justify;
     white-space: pre-line;
 }
 
@@ -337,8 +337,8 @@ header p {
 }
 
 .logo-track img {
-    height: 35px;
-    margin: 0 15px;
+    height: 50px;
+    margin: 0 30px;
     object-fit: contain;
     filter: none;
     opacity: 1;
