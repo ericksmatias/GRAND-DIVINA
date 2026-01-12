@@ -41,20 +41,25 @@ const galleryData = {
         { img: 'assets/panmeireles.mp4', 
          title: 'Salão varanda', 
          cap: 'Capacidade para até 200 pessoas', 
-         desc: `Corporativos (Treinamentos e Confraternizações), Sociais (Recepção de Casamentos & Aniversários).
-Estrutura para receber decoração e música
+         desc: `Corporativos (Treinamentos e Confraternizações)
+         Sociais (Recepção de Casamento & Aniversário)
 
+Estrutura para receber decoração e música
 A partir de 50 Pessoas (Segunda à Quinta)
 A partir de 80 Pessoas (Sexta à Domingo) ` },
         { img: 'assets/rooftop 1.jpeg', 
          title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
-         desc: `Um linda vista para eventos mais intimistas ao ar livre!
+         desc: `Estrutura para receber salão e música
+         A partir de 40 pessoas (Segunda a quinta)
+         A partir de 50 pessoas (Sexta a domingo)
 
 Ideal para Eventos Corporativos e Sociais
 Pode trazer Decoração e Música (Banda ou DJ)` },
         { img: 'assets/rooftop 2.jpeg', 
          title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
-         desc: `Um linda vista para eventos mais intimistas ao ar livre!
+         desc: `Estrutura para receber salão e música
+         A partir de 40 pessoas (Segunda a quinta)
+         A partir de 50 pessoas (Sexta a domingo)
 
 Ideal para Eventos Corporativos e Sociais
 Pode trazer Decoração e Música (Banda ou DJ)` },
@@ -244,6 +249,7 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
 
 
 
