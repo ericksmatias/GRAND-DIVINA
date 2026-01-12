@@ -47,7 +47,7 @@ window.onclick = function(event) {
 const galleryData = {
     'espacos': [
         { img: 'assets/panmeireles.mp4', 
-         title: 'Salão varanda', 
+         title: 'Salão varanda Meireles', 
          cap: 'Capacidade para até 200 pessoas', 
          desc: `Corporativos (Treinamentos e Confraternizações)
          Sociais (Recepção de Casamento & Aniversário)
@@ -60,8 +60,21 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
          desc: `Estrutura para receber decoração e música
          
          A partir de 40 pessoas (Segunda a Quinta)
-         A partir de 50 pessoas (Sexta a Domingo)`
-    }
+         A partir de 50 pessoas (Sexta a Domingo)` },
+
+       { img: 'assets/rooftop 2.jpeg', 
+         title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
+         desc: `Estrutura para receber decoração e música
+         
+         A partir de 40 pessoas (Segunda a Quinta)
+         A partir de 50 pessoas (Sexta a Domingo)` },
+
+        { img: 'assets/rooftop 3.jpeg', 
+         title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
+         desc: `Estrutura para receber decoração e música
+         
+         A partir de 40 pessoas (Segunda a Quinta)
+         A partir de 50 pessoas (Sexta a Domingo)` }
     ],
     'corporativo': [
         { img: 'assets/corp1.jpg', title: 'Casamento 1', desc: 'Descrição.' },
