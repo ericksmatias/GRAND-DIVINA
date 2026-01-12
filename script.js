@@ -21,12 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Insere a imagem antes do overlay
         bgSlider.insertBefore(img, overlay);
 
-        // Fecha o modal ao clicar na parte escura (fundo)
-    window.onclick = function(event) {
-    const modal = document.getElementById('gallery-modal');
-    // Se o usuário clicou no modal, mas NÃO clicou no conteúdo dentro dele
-    if (event.target === modal) {
-        closeGallery();
     }
 };
     }
@@ -42,7 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[currentSlide].classList.add('active');
         }, 4000);
     }
-});
+// FECHAR AO CLICAR FORA (Movido para fora do loop das imagens)
+window.onclick = function(event) {
+    const modal = document.getElementById('gallery-modal');
+    if (event.target === modal) {
+        closeGallery();
+    }
+};
 
 // 2. DADOS DA GALERIA (Fotos e Vídeos)
 const galleryData = {
@@ -70,6 +70,7 @@ Ideal para Eventos Corporativos e Sociais` },
          
          A partir de 40 pessoas (Segunda a Quinta)
          A partir de 50 pessoas (Sexta a Domingo)
+    }
     ],
     'corporativo': [
         { img: 'assets/corp1.jpg', title: 'Casamento 1', desc: 'Descrição.' },
@@ -256,6 +257,7 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
 
 
 
