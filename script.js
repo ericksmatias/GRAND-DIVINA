@@ -182,8 +182,8 @@ function updateSlide() {
     }
 
     // 5. TEXTOS E BOTÃO
-    modalTitle.textContent = item.title;
-    modalDesc.textContent = item.desc;
+    modalTitle.innerText = item.title;
+    modalDesc.innerText = item.desc;
     
     const text = `Olá, gostei do ${item.title} que vi no site!`;
     modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
