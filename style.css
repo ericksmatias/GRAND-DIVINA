@@ -238,7 +238,7 @@ header p {
     padding: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Alinha no topo */
+    justify-content: left; /* Alinha no topo */
     background: linear-gradient(135deg, #1a0508, #000);
     border-left: 2px solid var(--color-wine);
     overflow-y: auto; /* Scroll apenas no texto */
