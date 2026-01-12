@@ -220,6 +220,11 @@ header p {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.slide-image.fade-out {
+    opacity: 0 !important;
 }
 
 .slide-image img, .slide-image video {
