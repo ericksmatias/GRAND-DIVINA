@@ -242,27 +242,32 @@ header p {
     padding: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: justify; /* Alinha no topo */
+    /* justify-content: flex-start mantém o texto no topo */
+    justify-content: flex-start !important; 
     background: linear-gradient(135deg, #1a0508, #000);
     border-left: 2px solid var(--color-wine);
-    overflow-y: auto; /* Scroll apenas no texto */
+    overflow-y: auto;
     overflow-x: hidden;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slide-info h2 {
     font-family: 'Cinzel', serif;
     color: var(--color-gold);
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-size: clamp(0.8rem, 1.8vw, 2rem); 
     margin-bottom: 10px;
-    white-space: normal; /* Quebra linha */
     line-height: 1.2;
-   /* IGUALANDO AO PARTNERS TITLE */
-    font-weight: 400;             /* Deixa a letra mais grossa/negrito */
-    text-transform: uppercase;   /* Deixa tudo em MAIÚSCULO */
-    letter-spacing: 0.5px;         /* Dá aquele respiro chique entre as letras */
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4); /* Um brilho leve opcional */
-    justify-content: justify;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    text-align: left;
+
+    /* REGRAS DE QUEBRA INTELIGENTE */
+    white-space: normal;       /* Permite quebra de linha se necessário */
+    word-wrap: break-word;     /* Força a quebra se uma palavra for muito longa */
+    overflow-wrap: break-word; /* Garante que não vaze de jeito nenhum */
+    max-width: 100%;           /* Respeita o limite da borda */
+    display: block;
 }
 
 .capacity-highlight {
@@ -281,8 +286,18 @@ header p {
     line-height: 1.6;
     color: #ccc;
     margin-bottom: 20px;
-    text-align: justify;
+    
+    /* Troque 'justify' por 'left' se quiser evitar os buracos brancos */
+    text-align: left; 
+    
     white-space: pre-line;
+    /* Adiciona hifenização se você decidir manter o justify no futuro */
+    hyphens: auto; 
+}
+
+#modal-title, #modal-desc, #modal-cap, .capacity-highlight {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
 }
 
 /* Botão Neon */
@@ -296,16 +311,19 @@ header p {
     text-align: center;
     font-weight: bold;
     text-transform: uppercase;
-    transition: 0.3s;
     width: fit-content;
-    margin-top: 10px;
+    
+    /* MÁGICA: O margin-top auto joga o botão para o fim da caixa sempre */
+    margin-top: auto !important; 
     margin-bottom: 20px;
+    
     position: relative;
     overflow: hidden;
     z-index: 1;
     flex-shrink: 0;
-    transition: transform 0.8s ease, margin 0.8s ease, background 0.3s;
-    will-change: transform;
+    
+    /* Transições simples de cor e brilho */
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .cta-btn:hover { background: var(--color-gold); color: black; }
@@ -413,7 +431,7 @@ header p {
         flex: 0 0 250px !important; /* Altura fixa */
         width: 100% !important;
         order: 1;
-        transition: opacity 0.8s ease-in-out; /.
+        transition: opacity 0.8s ease-in-out;
 
     }
 

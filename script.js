@@ -77,10 +77,21 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
          A partir de 50 pessoas (Sexta à Domingo)` },
 
         { img: 'assets/divina 1.jpeg', 
-         title: 'Salão divina', cap: 'Capacidade para até 75 pessoas', 
+         title: 'Salão divina meireles', cap: 'Capacidade para até 75 pessoas', 
          desc: `Estrutura para receber decoração e música
          
-         A partir de 50 pessoas (Todos os dias)` }
+         A partir de 50 pessoas (Todos os dias)` },
+
+         { img: 'assets/Gran divina 1.jpeg', 
+         title: `Salão Grand Divina
+(Cid. Funcionários)`, cap: 'Capacidade para até 100 pessoas', 
+         desc: `Estrutura para receber decoração e música 
+
+• Jardim de Inverno
+• Caramanchão
+• Quermesses
+
+A partir de 50 Pessoas (Todos os dias)` }
     ],
     'corporativo': [
         { img: 'assets/corp1.jpg', title: 'Casamento 1', desc: 'Descrição.' },
@@ -198,23 +209,29 @@ function closeGallery() {
 
 function changeSlide(direction) {
     const imgContainer = document.querySelector('.slide-image');
-    const modalContent = document.querySelector('.modal-content');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalCap = document.getElementById('modal-cap');
     
-    // Inicia o fade out
+    // 1. Inicia o Fade Out (Apaga imagem e textos)
     if (imgContainer) imgContainer.classList.add('fade-out');
-    if (modalContent) modalContent.classList.add('fade-out');
+    if (modalTitle) modalTitle.style.opacity = '0';
+    if (modalDesc) modalDesc.style.opacity = '0';
+    if (modalCap) modalCap.style.opacity = '0';
 
-    // Espera a imagem sumir totalmente (400ms)
+    // 2. Espera o tempo da animação (800ms) para trocar o conteúdo
     setTimeout(() => {
         const items = galleryData[currentCategory];
         currentIndex = (currentIndex + direction + items.length) % items.length;
         
-        updateSlide(); // Troca a imagem enquanto está invisível
+        updateSlide(); // Troca os dados (Título, Desc, Link)
 
-        // Espera um milésimo para o navegador entender a nova imagem e tira o fade
+        // 3. Inicia o Fade In (Acende tudo com os dados novos)
         setTimeout(() => {
             if (imgContainer) imgContainer.classList.remove('fade-out');
-            if (modalContent) modalContent.classList.remove('fade-out');
+            if (modalTitle) modalTitle.style.opacity = '1';
+            if (modalDesc) modalDesc.style.opacity = '1';
+            if (modalCap) modalCap.style.opacity = '1';
         }, 50); 
         
     }, 800); 
