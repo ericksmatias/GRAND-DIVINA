@@ -203,6 +203,10 @@ header p {
     opacity: 1;
 }
 
+.modal.show .cta-btn {
+    animation: slideUpBtn 0.8s ease forwards;
+}
+
 .gallery-slide {
     display: flex;
     width: 100%;
@@ -243,7 +247,7 @@ header p {
     border-left: 2px solid var(--color-wine);
     overflow-y: auto; /* Scroll apenas no texto */
     overflow-x: hidden;
-    transition: opacity 0.8s ease-in-out;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slide-info h2 {
@@ -300,6 +304,8 @@ header p {
     overflow: hidden;
     z-index: 1;
     flex-shrink: 0;
+    transition: transform 0.8s ease, margin 0.8s ease, background 0.3s;
+    will-change: transform;
 }
 
 .cta-btn:hover { background: var(--color-gold); color: black; }
@@ -310,6 +316,10 @@ header p {
 .cta-btn::after { content: ''; position: absolute; inset: 2px; background: var(--color-wine); z-index: -1; transition: background 0.3s; }
 .cta-btn:hover::after { background: transparent; }
 
+@keyframes slideUpBtn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 /* LOGOS (CARROSSEL) */
 #partners-logos {
     margin-top: auto;
