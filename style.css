@@ -289,7 +289,7 @@ header p {
     margin-bottom: 20px;
     
     /* Troque 'justify' por 'left' se quiser evitar os buracos brancos */
-    text-align: left; 
+    text-align: justify; 
     
     white-space: justify;
     /* Adiciona hifenização se você decidir manter o justify no futuro */
