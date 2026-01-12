@@ -20,6 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Insere a imagem antes do overlay
         bgSlider.insertBefore(img, overlay);
+
+        // Fecha o modal ao clicar na parte escura (fundo)
+    window.onclick = function(event) {
+    const modal = document.getElementById('gallery-modal');
+    // Se o usuário clicou no modal, mas NÃO clicou no conteúdo dentro dele
+    if (event.target === modal) {
+        closeGallery();
+    }
+};
     }
 
     // Lógica de rotação das fotos
@@ -249,6 +258,7 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
 
 
 
