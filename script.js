@@ -138,7 +138,7 @@ function updateSlide() {
     if (partnersContainer) {
         if (currentCategory === 'social') {
             const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'logo 7.png', 'logo 8.png', 'logo 10.png'];
-            let logoHTML = '<span class="partners-title">Empresas que realizamos eventos</span>';
+            let logoHTML = '<span class="partners-title">Nossos clientes</span>';
             logoHTML += '<div class="logo-track">';
             [...listaLogos, ...listaLogos].forEach(nomeArquivo => {
                 logoHTML += `<img src="assets/${nomeArquivo}" alt="Parceiro" class="partners-img">`;
@@ -249,6 +249,7 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
 
 
 
