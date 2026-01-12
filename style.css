@@ -251,7 +251,7 @@ header p {
     color: var(--color-gold);
     font-size: clamp(1.2rem, 3vw, 1.8rem);
     margin-bottom: 10px;
-    white-space: nowrap; /* Quebra linha */
+    white-space: normal; /* Quebra linha */
     line-height: 1.2;
    /* IGUALANDO AO PARTNERS TITLE */
     font-weight: 400;             /* Deixa a letra mais grossa/negrito */
