@@ -57,7 +57,7 @@ Ideal para Eventos Corporativos e Sociais
 Pode trazer Decoração e Música (Banda ou DJ)` },
         { img: 'assets/rooftop 2.jpeg', 
          title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
-         desc: `Estrutura para receber salão e música
+         desc: `Estrutura para receber decoração e música
          A partir de 40 pessoas (Segunda a quinta)
          A partir de 50 pessoas (Sexta a domingo)
 
@@ -249,6 +249,7 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
 
 
 
