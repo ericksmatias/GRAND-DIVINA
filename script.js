@@ -73,8 +73,14 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
          title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
          desc: `Estrutura para receber decoração e música
          
-         A partir de 40 pessoas (Segunda a Quinta)
-         A partir de 50 pessoas (Sexta a Domingo)` }
+         A partir de 40 pessoas (Segunda à Quinta)
+         A partir de 50 pessoas (Sexta à Domingo)` },
+
+        { img: 'assets/divina 1.jpeg', 
+         title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
+         desc: `Estrutura para receber decoração e música
+         
+         A partir de 50 pessoas (Todos os dias)` }
     ],
     'corporativo': [
         { img: 'assets/corp1.jpg', title: 'Casamento 1', desc: 'Descrição.' },
