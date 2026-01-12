@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[currentSlide].classList.add('active');
         }, 4000);
     }
+});
 // FECHAR AO CLICAR FORA (Movido para fora do loop das imagens)
 window.onclick = function(event) {
     const modal = document.getElementById('gallery-modal');
@@ -61,7 +62,7 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
          desc: `Estrutura para receber decoração e música
          
          A partir de 40 pessoas (Segunda a Quinta)
-         A partir de 50 pessoas (Sexta a Domingo)
+         A partir de 50 pessoas (Sexta a Domingo)´
 
 Ideal para Eventos Corporativos e Sociais` },
         { img: 'assets/rooftop 1.jpeg', 
@@ -69,7 +70,7 @@ Ideal para Eventos Corporativos e Sociais` },
          desc: `Estrutura para receber decoração e música
          
          A partir de 40 pessoas (Segunda a Quinta)
-         A partir de 50 pessoas (Sexta a Domingo)
+         A partir de 50 pessoas (Sexta a Domingo)´
     }
     ],
     'corporativo': [
