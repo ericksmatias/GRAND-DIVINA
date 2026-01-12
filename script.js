@@ -58,20 +58,18 @@ A partir de 50 Pessoas (Segunda à Quinta)
 A partir de 80 Pessoas (Sexta à Domingo) ` },
         { img: 'assets/rooftop 1.jpeg', 
          title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
-         desc: `Estrutura para receber salão e música
-         A partir de 40 pessoas (Segunda a quinta)
-         A partir de 50 pessoas (Sexta a domingo)
+         desc: `Estrutura para receber decoração e música
+         
+         A partir de 40 pessoas (Segunda a Quinta)
+         A partir de 50 pessoas (Sexta a Domingo)
 
-Ideal para Eventos Corporativos e Sociais
-Pode trazer Decoração e Música (Banda ou DJ)` },
-        { img: 'assets/rooftop 2.jpeg', 
+Ideal para Eventos Corporativos e Sociais` },
+        { img: 'assets/rooftop 1.jpeg', 
          title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
          desc: `Estrutura para receber decoração e música
-         A partir de 40 pessoas (Segunda a quinta)
-         A partir de 50 pessoas (Sexta a domingo)
-
-Ideal para Eventos Corporativos e Sociais
-Pode trazer Decoração e Música (Banda ou DJ)` },
+         
+         A partir de 40 pessoas (Segunda a Quinta)
+         A partir de 50 pessoas (Sexta a Domingo)
     ],
     'corporativo': [
         { img: 'assets/corp1.jpg', title: 'Casamento 1', desc: 'Descrição.' },
@@ -258,6 +256,7 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
 
 
 
