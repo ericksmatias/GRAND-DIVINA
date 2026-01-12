@@ -258,6 +258,7 @@ header p {
     text-transform: uppercase;   /* Deixa tudo em MAIÚSCULO */
     letter-spacing: 0.5px;         /* Dá aquele respiro chique entre as letras */
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.4); /* Um brilho leve opcional */
+    justify-content: justify;
 }
 
 .capacity-highlight {
