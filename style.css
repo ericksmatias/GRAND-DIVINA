@@ -323,7 +323,7 @@ header p {
     color: var(--color-gold);
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     text-align: center;
     display: block;
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
