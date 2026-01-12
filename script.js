@@ -77,7 +77,7 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
          A partir de 50 pessoas (Sexta à Domingo)` },
 
         { img: 'assets/divina 1.jpeg', 
-         title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
+         title: 'Salão divina', cap: 'Capacidade para até 75 pessoas', 
          desc: `Estrutura para receber decoração e música
          
          A partir de 50 pessoas (Todos os dias)` }
