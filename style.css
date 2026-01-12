@@ -263,11 +263,12 @@ header p {
     text-align: left;
 
     /* REGRAS DE QUEBRA INTELIGENTE */
-    white-space: normal;       /* Permite quebra de linha se necessário */
+    white-space: pre-line;       /* Permite quebra de linha se necessário */
     word-wrap: break-word;     /* Força a quebra se uma palavra for muito longa */
     overflow-wrap: break-word; /* Garante que não vaze de jeito nenhum */
     max-width: 100%;           /* Respeita o limite da borda */
     display: block;
+    
 }
 
 .capacity-highlight {
