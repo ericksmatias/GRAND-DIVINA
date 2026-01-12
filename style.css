@@ -271,7 +271,7 @@ header p {
     line-height: 1.6;
     color: #ccc;
     margin-bottom: 20px;
-    text-align: justify;
+    text-align: left;
     white-space: pre-line;
 }
 
