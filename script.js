@@ -55,7 +55,7 @@ const galleryData = {
 Estrutura para receber decoração e música
 A partir de 50 Pessoas (Segunda à Quinta)
 A partir de 80 Pessoas (Sexta à Domingo) ` },
-        { img: 'assets/rooftop.webp', 
+        { img: 'assets/rooftop.mp4', 
          title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
          desc: `Estrutura para receber decoração e música
          
