@@ -55,26 +55,12 @@ const galleryData = {
 Estrutura para receber decoração e música
 A partir de 50 Pessoas (Segunda à Quinta)
 A partir de 80 Pessoas (Sexta à Domingo) ` },
-        { img: 'assets/rooftop 1.jpeg', 
+        { img: 'assets/rooftop.webp', 
          title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
          desc: `Estrutura para receber decoração e música
          
          A partir de 40 pessoas (Segunda a Quinta)
          A partir de 50 pessoas (Sexta a Domingo)` },
-
-       { img: 'assets/rooftop 2.jpeg', 
-         title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
-         desc: `Estrutura para receber decoração e música
-         
-         A partir de 40 pessoas (Segunda a Quinta)
-         A partir de 50 pessoas (Sexta a Domingo)` },
-
-        { img: 'assets/rooftop 3.jpeg', 
-         title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
-         desc: `Estrutura para receber decoração e música
-         
-         A partir de 40 pessoas (Segunda à Quinta)
-         A partir de 50 pessoas (Sexta à Domingo)` },
 
         { img: 'assets/divina 1.jpeg', 
          title: 'Salão divina meireles', cap: 'Capacidade para até 75 pessoas', 
