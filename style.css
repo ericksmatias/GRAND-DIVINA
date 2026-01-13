@@ -293,7 +293,6 @@ header p {
     
     white-space: justify;
     /* Adiciona hifenização se você decidir manter o justify no futuro */
-    hyphens: auto; 
 }
 
 #modal-title, #modal-desc, #modal-cap, .capacity-highlight {
