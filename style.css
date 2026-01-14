@@ -446,7 +446,7 @@ header p {
     content: '';
     position: absolute;
     inset: 2px; /* Deve ser igual ao padding do pai para a borda ser perfeita */
-    background: #0a0a0a;
+    background: #5e0b15;
     border-radius: 6px;
     z-index: -1;
 }
