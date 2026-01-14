@@ -406,7 +406,6 @@ header p {
 }
 
 /* --- REGRA EXCLUSIVA PARA FEEDBACKS (ADAPTATIVO - DESKTOP) --- */
-/* Isso remove a barra lateral e centraliza a foto no PC */
 .modal-content.full-gallery {
     width: auto !important;
     max-width: 90vw !important;
@@ -415,9 +414,46 @@ header p {
     display: inline-flex !important;
     justify-content: center !important;
     align-items: center !important;
-    background: transparent !important;
+    
+    /* Ajustes para o Brilho */
+    background: #0a0a0a !important; /* Fundo sólido para o brilho aparecer */
     border: none !important;
-    box-shadow: none !important;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5) !important;
+    border-radius: 8px;
+    padding: 3px;           /* Espessura da trilha do brilho */
+    position: relative;
+    overflow: hidden !important;
+    z-index: 1;
+}
+
+/* O Rastro Dourado Giratório */
+.modal-content.full-gallery::before {
+    content: '';
+    position: absolute;
+    width: 200%; /* Maior para cobrir toda a rotação */
+    height: 200%;
+    background: conic-gradient(
+        transparent, 
+        var(--color-gold), 
+        transparent 30%
+    );
+    animation: rotateGlow 4s linear infinite;
+    z-index: -2;
+}
+
+/* Fundo interno para criar a borda */
+.modal-content.full-gallery::after {
+    content: '';
+    position: absolute;
+    inset: 3px; /* Espessura da borda */
+    background: #0a0a0a;
+    border-radius: 6px;
+    z-index: -1;
+}
+
+@keyframes rotateGlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* Esconde o texto/botão no modo feedback */
@@ -430,6 +466,7 @@ header p {
     width: auto !important;
     height: auto !important;
     background: transparent !important;
+    padding: 10px; /* Distância entre a foto e a borda brilhante */
 }
 
 .modal-content.full-gallery .slide-image img,
@@ -439,11 +476,12 @@ header p {
     max-width: 85vw !important;
     max-height: 85vh !important;
     object-fit: contain !important;
+    border-radius: 4px; /* Suaviza a foto dentro do brilho */
 }
 
 /* Setas dentro da foto no feedback */
-.modal-content.full-gallery .prev { left: 20px !important; }
-.modal-content.full-gallery .next { right: 20px !important; }
+.modal-content.full-gallery .prev { left: 20px !important; z-index: 10; }
+.modal-content.full-gallery .next { right: 20px !important; z-index: 10; }
 
 /* =========================================
    5. RESPONSIVIDADE MOBILE
