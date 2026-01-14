@@ -405,26 +405,35 @@ header p {
     cursor: pointer; z-index: 1100;
 }
 
-/* Estilos para o Modal de Feedback (100% largura) */
+/* --- REGRA EXCLUSIVA PARA FEEDBACKS (ADAPTATIVO) --- */
+
+/* 1. O container do modal se ajusta à largura da imagem */
 .modal-content.full-gallery {
-    max-width: 1200px; /* Aumenta um pouco o limite já que é tela cheia */
+    width: auto !important;
+    max-width: 90vw !important;
+    height: auto !important;
+    max-height: 90vh !important;
+    display: inline-flex !important; /* Faz o modal "abraçar" o conteúdo */
 }
 
-.modal-content.full-gallery .slide-info {
-    display: none !important; /* Esconde o texto */
-}
-
+/* 2. A imagem do feedback manda no tamanho */
 .modal-content.full-gallery .slide-image {
-    flex: 0 0 100% !important;
-    width: 100% !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    height: auto !important;
 }
 
-/* Ajuste das setas para ficarem sobre a imagem no desktop quando for full */
-.modal-content.full-gallery .nav-btn {
-    background: rgba(0, 0, 0, 0.4);
-    top: 50%;
+/* 3. Garante que a foto de feedback não estique nem corte */
+.modal-content.full-gallery .slide-image img,
+.modal-content.full-gallery .slide-image video {
+    width: auto !important;
+    height: auto !important;
+    max-width: 85vw !important; /* Quase a tela toda */
+    max-height: 85vh !important;
+    object-fit: contain !important; /* Mostra a foto original inteira */
 }
 
+/* 4. Ajuste das setas para ficarem "dentro" da foto no feedback */
 .modal-content.full-gallery .prev { left: 20px !important; }
 .modal-content.full-gallery .next { right: 20px !important; }
 
