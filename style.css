@@ -445,9 +445,9 @@ header p {
 .modal-content.full-gallery::after {
     content: '';
     position: absolute;
-    inset: 2px; /* Deve ser igual ao padding do pai para a borda ser perfeita */
-    background: #5e0b15;
-    border-radius: 6px;
+    inset: 1px; /* Deve ser igual ao padding do pai para a borda ser perfeita */
+    background: #0a0a0a;
+    border-radius: 3px;
     z-index: -1;
 }
 
