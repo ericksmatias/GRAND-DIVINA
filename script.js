@@ -80,7 +80,7 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
 A partir de 50 Pessoas (Todos os dias)` }
     ],
     'corporativo': [
-        { img: 'assets/FT1 - Decoração.jpg', title: 'Casamento 1', desc: 'Descrição.' },
+        { img: 'assets/feedback 1.png', title: 'Casamento 1', desc: 'Descrição.' },
         { img: 'assets/corp2.jpg', title: 'Casamento 2', desc: 'Descrição.' }
     ],
     'social': [
