@@ -405,35 +405,43 @@ header p {
     cursor: pointer; z-index: 1100;
 }
 
-/* --- REGRA EXCLUSIVA PARA FEEDBACKS (ADAPTATIVO) --- */
-
-/* 1. O container do modal se ajusta à largura da imagem */
+/* --- REGRA EXCLUSIVA PARA FEEDBACKS (ADAPTATIVO - DESKTOP) --- */
+/* Isso remove a barra lateral e centraliza a foto no PC */
 .modal-content.full-gallery {
     width: auto !important;
     max-width: 90vw !important;
     height: auto !important;
     max-height: 90vh !important;
-    display: inline-flex !important; /* Faz o modal "abraçar" o conteúdo */
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-/* 2. A imagem do feedback manda no tamanho */
+/* Esconde o texto/botão no modo feedback */
+.modal-content.full-gallery .slide-info {
+    display: none !important;
+}
+
 .modal-content.full-gallery .slide-image {
-    flex: 0 0 auto !important;
+    flex: 0 0 100% !important;
     width: auto !important;
     height: auto !important;
+    background: transparent !important;
 }
 
-/* 3. Garante que a foto de feedback não estique nem corte */
 .modal-content.full-gallery .slide-image img,
 .modal-content.full-gallery .slide-image video {
     width: auto !important;
     height: auto !important;
-    max-width: 85vw !important; /* Quase a tela toda */
+    max-width: 85vw !important;
     max-height: 85vh !important;
-    object-fit: contain !important; /* Mostra a foto original inteira */
+    object-fit: contain !important;
 }
 
-/* 4. Ajuste das setas para ficarem "dentro" da foto no feedback */
+/* Setas dentro da foto no feedback */
 .modal-content.full-gallery .prev { left: 20px !important; }
 .modal-content.full-gallery .next { right: 20px !important; }
 
