@@ -407,45 +407,45 @@ header p {
 
 /* --- REGRA EXCLUSIVA PARA FEEDBACKS (ADAPTATIVO - DESKTOP) --- */
 .modal-content.full-gallery {
-    width: auto !important;
+    width: min-content !important; /* Força o modal a ter a largura exata da imagem */
     max-width: 90vw !important;
     height: auto !important;
     max-height: 90vh !important;
-    display: inline-flex !important;
+    display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     
-    /* Ajustes para o Brilho */
-    background: #0a0a0a !important; /* Fundo sólido para o brilho aparecer */
+    /* Ajustes para o Brilho Colado */
+    background: #0a0a0a !important; 
     border: none !important;
     box-shadow: 0 0 20px rgba(0,0,0,0.5) !important;
     border-radius: 8px;
-    padding: 3px;           /* Espessura da trilha do brilho */
+    padding: 2px; /* Reduzi para a borda ficar mais fina e delicada */
     position: relative;
     overflow: hidden !important;
     z-index: 1;
 }
 
-/* O Rastro Dourado Giratório */
+/* O Rastro Dourado Giratório - Velocidade ajustada para 6s (mais devagar) */
 .modal-content.full-gallery::before {
     content: '';
     position: absolute;
-    width: 200%; /* Maior para cobrir toda a rotação */
-    height: 200%;
+    width: 250%; /* Aumentado para garantir cobertura em fotos verticais */
+    height: 250%;
     background: conic-gradient(
         transparent, 
         var(--color-gold), 
         transparent 30%
     );
-    animation: rotateGlow 4s linear infinite;
+    animation: rotateGlow 6s linear infinite; /* 6 segundos para passar devagar */
     z-index: -2;
 }
 
-/* Fundo interno para criar a borda */
+/* Fundo interno que define a borda */
 .modal-content.full-gallery::after {
     content: '';
     position: absolute;
-    inset: 3px; /* Espessura da borda */
+    inset: 2px; /* Deve ser igual ao padding do pai para a borda ser perfeita */
     background: #0a0a0a;
     border-radius: 6px;
     z-index: -1;
@@ -462,11 +462,12 @@ header p {
 }
 
 .modal-content.full-gallery .slide-image {
-    flex: 0 0 100% !important;
+    flex: 0 0 auto !important;
     width: auto !important;
     height: auto !important;
     background: transparent !important;
-    padding: 10px; /* Distância entre a foto e a borda brilhante */
+    padding: 0 !important; /* REMOVIDO o espaço preto entre foto e borda */
+    line-height: 0; /* Remove espaço fantasma abaixo da imagem */
 }
 
 .modal-content.full-gallery .slide-image img,
@@ -476,12 +477,13 @@ header p {
     max-width: 85vw !important;
     max-height: 85vh !important;
     object-fit: contain !important;
-    border-radius: 4px; /* Suaviza a foto dentro do brilho */
+    border-radius: 6px; /* Arredondamento igual ao do fundo interno */
+    display: block;
 }
 
-/* Setas dentro da foto no feedback */
-.modal-content.full-gallery .prev { left: 20px !important; z-index: 10; }
-.modal-content.full-gallery .next { right: 20px !important; z-index: 10; }
+/* Setas posicionadas sobre a foto */
+.modal-content.full-gallery .prev { left: 15px !important; z-index: 10; }
+.modal-content.full-gallery .next { right: 15px !important; z-index: 10; }
 
 /* =========================================
    5. RESPONSIVIDADE MOBILE
