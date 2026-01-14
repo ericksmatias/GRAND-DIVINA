@@ -405,6 +405,29 @@ header p {
     cursor: pointer; z-index: 1100;
 }
 
+/* Estilos para o Modal de Feedback (100% largura) */
+.modal-content.full-gallery {
+    max-width: 1200px; /* Aumenta um pouco o limite já que é tela cheia */
+}
+
+.modal-content.full-gallery .slide-info {
+    display: none !important; /* Esconde o texto */
+}
+
+.modal-content.full-gallery .slide-image {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+}
+
+/* Ajuste das setas para ficarem sobre a imagem no desktop quando for full */
+.modal-content.full-gallery .nav-btn {
+    background: rgba(0, 0, 0, 0.4);
+    top: 50%;
+}
+
+.modal-content.full-gallery .prev { left: 20px !important; }
+.modal-content.full-gallery .next { right: 20px !important; }
+
 /* =========================================
    5. RESPONSIVIDADE MOBILE
    ========================================= */
@@ -419,20 +442,50 @@ header p {
     /* Modal Mobile */
     .modal-content {
         flex-direction: column !important;
-        height: 90vh !important;
+        height: auto !important;
+        max-height: 85vh !important;
         width: 95% !important;
         overflow-y: auto !important;
+        overflow-x: hidden !important;
         background: #000 !important;
+        display: block !important;
+
+    }
+
+   /* Garante que a imagem dentro do feedback mantenha a proporção original */
+    .modal-content.full-gallery .slide-image img,
+    .modal-content.full-gallery .slide-image video {
+        height: auto !important;
+        max-height: 85vh !important; /* Garante que a foto caiba na tela */
+        object-fit: contain !important; /* Mostra a foto inteira sem cortar */
+    }
+
+    /* Como a altura agora é dinâmica, as setas precisam centralizar no novo tamanho */
+    .modal-content.full-gallery .nav-btn {
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+    }
+    .modal-content.full-gallery {
+        display: flex !important; /* Volta para flex para centralizar a imagem */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content.full-gallery .slide-image {
+        height: auto !important;
+        max-height: 80vh !important;
     }
 
     .gallery-slide { flex-direction: column; height: auto; }
 
-    .slide-image {
-        flex: 0 0 250px !important; /* Altura fixa */
-        width: 100% !important;
-        order: 1;
-        transition: opacity 0.8s ease-in-out;
 
+    .slide-image {
+        flex: none !important;
+        width: 100% !important;
+        height: 250px !important; /* Altura fixa para garantir espaço para o texto/logos */
+        position: sticky; /* Opcional: mantém a foto no topo enquanto rola o texto */
+        top: 0;
+        z-index: 10;
     }
 
    .slide-image.fade-out {
@@ -441,12 +494,14 @@ header p {
     }
 
     .slide-info {
-        flex: 1 0 auto !important;
+        flex: none !important;
         width: 100% !important;
         padding: 20px !important;
-        border-left: none;
+        background: #000 !important;
+        border-left: none !important;
         border-top: 2px solid var(--color-wine);
-        order: 2;
+        display: flex;
+        flex-direction: column;
     }
 
     .slide-info h2 { font-size: 1.4rem; text-align: left; }

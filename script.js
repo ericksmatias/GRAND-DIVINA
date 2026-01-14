@@ -80,7 +80,7 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
 A partir de 50 Pessoas (Todos os dias)` }
     ],
     'corporativo': [
-        { img: 'assets/corp1.jpg', title: 'Casamento 1', desc: 'Descrição.' },
+        { img: 'assets/FT1 - Decoração.jpg', title: 'Casamento 1', desc: 'Descrição.' },
         { img: 'assets/corp2.jpg', title: 'Casamento 2', desc: 'Descrição.' }
     ],
     'social': [
@@ -124,7 +124,15 @@ function updateSlide() {
 
     if (!imageContainer) return;
 
-    // 1. LIMPEZA IMEDIATA (Mata a imagem antiga antes de qualquer coisa)
+    // --- NOVO: LÓGICA DE EXCEÇÃO PARA FEEDBACKS (Casamentos) ---
+    // Verificamos se a categoria é 'corporativo' (que é o botão de casamentos no seu HTML)
+    if (currentCategory === 'corporativo') {
+        modalContent.classList.add('full-gallery');
+    } else {
+        modalContent.classList.remove('full-gallery');
+    }
+
+    // 1. LIMPEZA IMEDIATA
     imageContainer.innerHTML = '';
 
     // 2. RENDERIZAÇÃO DA MÍDIA
@@ -143,13 +151,22 @@ function updateSlide() {
         imageContainer.appendChild(img);
     }
 
-    // 3. CAPACIDADE
-    if (modalCap) {
-        modalCap.textContent = item.cap || '';
-        modalCap.style.display = (currentCategory === 'espacos' && item.cap) ? 'block' : 'none';
+    // 3. TEXTOS (Só atualiza se não for a galeria full para evitar erros)
+    if (currentCategory !== 'corporativo') {
+        if (modalCap) {
+            modalCap.textContent = item.cap || '';
+            modalCap.style.display = (currentCategory === 'espacos' && item.cap) ? 'block' : 'none';
+        }
+
+        modalTitle.innerText = item.title;
+        modalDesc.innerText = item.desc;
+        
+        const text = `Olá, gostei do ${item.title} que vi no site!`;
+        modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
+        modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
     }
 
-    // 4. LOGOS DOS PARCEIROS (Sua lógica original mantida)
+    // 4. LOGOS DOS PARCEIROS
     if (partnersContainer) {
         if (currentCategory === 'social') {
             const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'logo 7.png', 'logo 8.png', 'logo 10.png'];
@@ -166,7 +183,6 @@ function updateSlide() {
             partnersContainer.style.display = 'none';
         }
     }
-
     // 5. TEXTOS E BOTÃO
     modalTitle.innerText = item.title;
     modalDesc.innerText = item.desc;
