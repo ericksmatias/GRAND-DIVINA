@@ -70,14 +70,13 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
 
          { img: 'assets/granddivina.mp4', 
          title: `Salão Grand Divina
-(Cid. Funcionários)`, cap: 'Capacidade para até 100 pessoas', 
-         desc: `Estrutura para receber decoração e música 
+(Cid. Funcionários)`, cap: `Estrutura para receber decoração e música
 
-• Jardim de Inverno
-• Caramanchão
-• Quermesses
+• Jardim de Inverno | Áreas Verdes e Instagramáveis
+• Caramanchão | Iluminação de Quermesse | Fonte
 
-A partir de 50 Pessoas (Todos os dias)` }
+
+A partir de 50 Pessoas (Todos os dias)`},
     ],
     'corporativo': [
         { img: 'assets/feedback 1.png', title: 'Casamento 1', desc: 'Descrição.' },
@@ -86,18 +85,8 @@ A partir de 50 Pessoas (Todos os dias)` }
         { img: 'assets/feedback 4.png', title: 'Casamento 1', desc: 'Descrição.' }
     ],
     'social': [
-        { img: 'assets/bianchi2025.mp4', title: 'Eventos corporativos', desc: 'O 𝐆𝐫𝐚𝐧𝐝 𝐃𝐢𝐯𝐢𝐧𝐚 𝐄𝐯𝐞𝐧𝐭𝐨𝐬 é a escolha certa para quem deseja realizar eventos sociais com charme e excelência. Ideal para aniversários, recepções de batizado, festas de 15 anos e outras celebrações especiais, o espaço oferece uma estrutura completa, atendimento atencioso e uma gastronomia de qualidade, pensada para encantar os convidados e tornar cada evento realmente inesquecível.' },
-        { img: 'assets/sociais.mp4', title: 'Eventos Sociais', desc: `Salão Grand Divina
-(Cid. Funcionários)
-Capacidade para até 100 pessoas
-
-Estrutura para receber decoração e música
-
-* Jardim de Inverno | Áreas Verdes e Instagramáveis
-* Caramanchão | Iluminação de Quermesse | Fonte
-
-
-A partir de 50 Pessoas (Todos os dias)` },
+        { img: 'assets/bianchi2025.mp4', title: 'Eventos corporativos', desc: 'No 𝐆𝐫𝐚𝐧𝐝 𝐃𝐢𝐯𝐢𝐧𝐚 𝐄𝐯𝐞𝐧𝐭𝐨𝐬 dispomos de espaços modernos com capacidade para até 200 pessoas,  ideal para eventos corporativos: reuniões, treinamentos, jantar de negócios, palestras e confraternizações de empresa.  Nosso experiente time tem atendimento personalizado o que garante um serviço de alto padrão. Para completar nossa gastronomia é um dos grandes diferenciais com cardápios exclusivos e adaptados a necessidade do seu evento, unindo sabor e qualidade elevando o nível de seu evento e garantindo o destaque que ele merece.' },
+        { img: 'assets/sociais.mp4', title: 'Eventos Sociais', desc: 'O Grand Divina Eventos é a escolha certa para quem deseja realizar eventos sociais com charme e excelência. Ideal para aniversários, recepções de batizado, festas de 15 anos e outras celebrações especiais, o espaço oferece uma estrutura completa, atendimento atencioso e uma gastronomia de qualidade, pensada para encantar os convidados e tornar cada evento realmente inesquecível.' },
     ]
 };
 
