@@ -53,8 +53,8 @@ const galleryData = {
          Sociais (Recepção de Casamento & Aniversário)
 
 Estrutura para receber decoração e música
-A partir de 50 Pessoas (Segunda à Quinta)
-A partir de 80 Pessoas (Sexta à Domingo) ` },
+A partir de 50 Pessoas (Segunda a Quinta)
+A partir de 80 Pessoas (Sexta a Domingo) ` },
         { img: 'assets/rooftop.mp4', 
          title: 'Rooftop meireles', cap: 'Capacidade para até 75 pessoas', 
          desc: `Estrutura para receber decoração e música
@@ -73,7 +73,7 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
 (Cid. Funcionários)`, cap: 'Capacidade para até 100 pessoas.',
          desc: `Estrutura para receber decoração e música
 
-• Jardim de Inverno | Áreas Verdes e Instagramáveis
+• Jardim de Inverno | Áreas Instagramáveis
 • Caramanchão | Iluminação de Quermesse | Fonte
 
 A partir de 50 Pessoas (Todos os dias)`},
