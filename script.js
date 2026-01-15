@@ -73,8 +73,6 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
 (Cid. Funcionários)`, cap: 'Capacidade para até 100 pessoas.',
          desc: `Estrutura para receber decoração e música
 
-        Estrutura para receber decoração e música
-
 • Jardim de Inverno | Áreas Verdes e Instagramáveis
 • Caramanchão | Iluminação de Quermesse | Fonte
 
