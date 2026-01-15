@@ -74,6 +74,7 @@ A partir de 80 Pessoas (Sexta a Domingo) ` },
          desc: `Estrutura para receber decoração e música
 
 • Jardim de Inverno | Áreas Instagramáveis
+
 • Caramanchão | Iluminação de Quermesse | Fonte
 
 A partir de 50 Pessoas (Todos os dias)`},
