@@ -70,11 +70,13 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
 
          { img: 'assets/granddivina.mp4', 
          title: `Salão Grand Divina
-(Cid. Funcionários)`, cap: `Estrutura para receber decoração e música
+(Cid. Funcionários)`, cap: 'Capacidade para até 100 pessoas.',
+         desc: `Estrutura para receber decoração e música
+
+        Estrutura para receber decoração e música
 
 • Jardim de Inverno | Áreas Verdes e Instagramáveis
 • Caramanchão | Iluminação de Quermesse | Fonte
-
 
 A partir de 50 Pessoas (Todos os dias)`},
     ],
