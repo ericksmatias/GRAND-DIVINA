@@ -342,6 +342,14 @@ header p {
 
 .cta-btn:hover { background: var(--color-gold); color: black; }
 
+/* Garante a renderização do ícone do Font Awesome */
+.fa-whatsapp {
+    display: inline-block !important;
+    font-family: "FontAwesome" !important;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
 /* Efeito Glow Botão */
 @keyframes liquidGlow { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
 .cta-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 150%; height: 300%; background: radial-gradient(circle, rgba(212, 175, 55, 0.8) 0%, transparent 50%); animation: liquidGlow 4s linear infinite; z-index: -1; }
