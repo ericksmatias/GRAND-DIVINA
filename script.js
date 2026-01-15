@@ -184,13 +184,21 @@ function updateSlide() {
             partnersContainer.style.display = 'none';
         }
     }
-    // 5. TEXTOS E BOTÃO
+  // 5. TEXTOS E BOTÃO (Ajustado com o Ícone do WhatsApp)
     modalTitle.innerText = item.title;
     modalDesc.innerText = item.desc;
     
     const text = `Olá, gostei do ${item.title} que vi no site!`;
     modalCta.href = `https://wa.me/5585996377401?text=${encodeURIComponent(text)}`;
-    modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
+    
+    // Aqui injetamos o ícone junto com o texto conforme a categoria
+    const iconeWhats = '<i class="fa fa-whatsapp" style="margin-left: 8px;"></i>';
+    
+    if (currentCategory === 'espacos') {
+        modalCta.innerHTML = `Fale Conosco ${iconeWhats}`;
+    } else {
+        modalCta.innerHTML = `Faça seu Evento ${iconeWhats}`;
+    }
 }
 
 function closeGallery() {
