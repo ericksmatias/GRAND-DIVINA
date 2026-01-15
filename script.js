@@ -282,27 +282,42 @@ window.onpopstate = function(event) {
 };
 
 function preloadGalleryAssets() {
+    // 1. Preload de Imagens do Background (As 17 fotos)
+    const totalPhotos = 17;
+    const isMobile = window.innerWidth <= 768;
+    for (let i = 1; i <= totalPhotos; i++) {
+        const fileName = isMobile ? `mobile ${i}.jpeg` : (i === 1 ? `foto1.jpeg` : `foto ${i}.jpeg`);
+        const img = new Image();
+        img.src = `assets/${fileName}`;
+    }
+
+    // 2. Preload de Itens da Galeria (Vídeos e Imagens dos Modais)
     Object.keys(galleryData).forEach(category => {
         galleryData[category].forEach(item => {
             const path = item.img.toLowerCase();
-
+            
             if (path.endsWith('.mp4')) {
-                // Cria um link no HEAD para priorizar o download do vídeo
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.as = 'video';
-                link.href = item.img;
-                link.type = 'video/mp4';
-                document.head.appendChild(link);
+                // Cria um elemento de vídeo invisível para forçar o browser a baixar o arquivo todo
+                const videoPreload = document.createElement('video');
+                videoPreload.src = item.img;
+                videoPreload.preload = 'auto'; 
+                videoPreload.load(); // Força o início do download
             } else {
                 const imgPreload = new Image();
                 imgPreload.src = item.img;
             }
         });
     });
-    console.log("Sistema de Cache: Vídeos priorizados e Imagens carregadas.");
-}
 
+    // 3. Preload das Logos de Parceiros
+    const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'logo 7.png', 'logo 8.png', 'logo 10.png'];
+    listaLogos.forEach(logo => {
+        const img = new Image();
+        img.src = `assets/${logo}`;
+    });
+
+    console.log("carregado!.");
+}
 
 // Ativar setas do teclado e tecla ESC
 document.addEventListener('keydown', (e) => {
