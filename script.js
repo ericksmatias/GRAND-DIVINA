@@ -87,6 +87,18 @@ A partir de 50 Pessoas (Todos os dias)` }
     ],
     'social': [
         { img: 'assets/bianchi2025.mp4', title: 'Eventos corporativos', desc: 'No 𝐆𝐫𝐚𝐧𝐝 𝐃𝐢𝐯𝐢𝐧𝐚 𝐄𝐯𝐞𝐧𝐭𝐨𝐬 dispomos de espaços modernos com capacidade para até 200 pessoas,  ideal para eventos corporativos: reuniões, treinamentos, jantar de negócios, palestras e confraternizações de empresa.  Nosso experiente time tem atendimento personalizado o que garante um serviço de alto padrão. Para completar nossa gastronomia é um dos grandes diferenciais com cardápios exclusivos e adaptados a necessidade do seu evento, unindo sabor e qualidade elevando o nível de seu evento e garantindo o destaque que ele merece.' },
+        { img: 'assets/sociais.mp4', title: 'Eventos Sociais', desc: `Salão Grand Divina
+(Cid. Funcionários)
+Capacidade para até 100 pessoas
+
+Estrutura para receber decoração e música
+
+* Jardim de Inverno | Áreas Verdes e Instagramáveis
+* Caramanchão | Iluminação de Quermesse | Fonte
+
+
+A partir de 50 Pessoas (Todos os dias)` },
+    ]
     ]
 };
 
