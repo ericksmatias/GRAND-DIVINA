@@ -7,6 +7,7 @@
     --color-gold: #d4af37;
     --color-white: #ffffff;
     --color-gold-hover: #f1d06e;
+    --color-whatsapp: #25d366;
 }
 
 * {
@@ -125,7 +126,20 @@ header p {
     box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
 }
 
-.btn span { z-index: 2; white-space: nowrap; font-size: 0.8rem; }
+.btn span { 
+    z-index: 2; 
+    white-space: nowrap; 
+    font-size: 0.8rem; 
+    /* ADICIONE AS LINHAS ABAIXO: */
+    display: flex;
+    align-items: center;
+    color: var(--color-white); /* Garante que o ícone seja branco */
+}
+
+.btn span .fa-whatsapp {
+    margin-left: 8px; /* Espaço entre o texto e o ícone */
+    font-size: 1rem;  /* Tamanho ajustado para parecer um caractere comum */
+}
 
 .btn .icon {
     position: absolute;
