@@ -68,7 +68,7 @@ A partir de 80 Pessoas (Sexta à Domingo) ` },
          
          A partir de 50 pessoas (Todos os dias)` },
 
-         { img: 'assets/Gran divina 1.jpeg', 
+         { img: 'assets/granddivina.mp4', 
          title: `Salão Grand Divina
 (Cid. Funcionários)`, cap: 'Capacidade para até 100 pessoas', 
          desc: `Estrutura para receber decoração e música 
