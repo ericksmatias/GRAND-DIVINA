@@ -167,19 +167,23 @@ function updateSlide() {
         modalCta.innerHTML = (currentCategory === 'espacos') ? 'Fale Conosco' : 'Faça seu Evento';
     }
 
-    // 4. LOGOS DOS PARCEIROS
+    // 4. LOGOS DOS PARCEIROS (Apenas para o PRIMEIRO vídeo da galeria de eventos)
     if (partnersContainer) {
-        if (currentCategory === 'social') {
+        // CONDIÇÃO: Precisa ser a categoria 'social' E o primeiro slide (index 0)
+        // Nota: No seu objeto galleryData, o vídeo corporativo é o index 0 da categoria 'social'
+        if (currentCategory === 'social' && currentIndex === 0) {
             const listaLogos = ['logo 1.png', 'logo 2.png', 'logo 3.png', 'logo 4.png', 'logo 5.png', 'logo 6.png', 'logo 7.png', 'logo 8.png', 'logo 10.png'];
-            let logoHTML = '<span class="partners-title">Nossos clientes</span>';
-            logoHTML += '<div class="logo-track">';
+            let logoHTML = '<span class="partners-title">Nossos clientes</span><div class="logo-track">';
+            
             [...listaLogos, ...listaLogos].forEach(nomeArquivo => {
                 logoHTML += `<img src="assets/${nomeArquivo}" alt="Parceiro" class="partners-img">`;
             });
+            
             logoHTML += '</div>';
             partnersContainer.innerHTML = logoHTML;
             partnersContainer.style.display = 'block';
         } else {
+            // Se for o segundo vídeo (currentIndex 1) ou outra categoria, esconde tudo
             partnersContainer.innerHTML = '';
             partnersContainer.style.display = 'none';
         }
