@@ -99,7 +99,6 @@ Estrutura para receber decoração e música
 
 A partir de 50 Pessoas (Todos os dias)` },
     ]
-    ]
 };
 
 let currentCategory = '';
