@@ -93,6 +93,26 @@ A partir de 50 Pessoas (Todos os dias)`},
 let currentCategory = '';
 let currentIndex = 0;
 
+// Função para tocar o áudio após a primeira interação
+function startAudio() {
+    const audio = document.getElementById('bg-audio');
+    if (audio) {
+        audio.play().then(() => {
+            // Se o áudio começar, removemos os ouvintes para não rodar de novo
+            document.removeEventListener('click', startAudio);
+            document.removeEventListener('touchstart', startAudio);
+            document.removeEventListener('scroll', startAudio);
+        }).catch(error => {
+            console.log("Autoplay bloqueado pelo navegador. Aguardando interação.");
+        });
+    }
+}
+
+// Ouve cliques, toques ou rolagem para destravar o som
+document.addEventListener('click', startAudio);
+document.addEventListener('touchstart', startAudio);
+document.addEventListener('scroll', startAudio);
+
 // Elementos do DOM
 const modal = document.getElementById('gallery-modal');
 const modalTitle = document.getElementById('modal-title');
