@@ -589,9 +589,22 @@ header p {
     .cta-btn { width: 100%; margin-bottom: 30px; }
 
     .btn span {
-        font-size: 0.75rem;
-        white-space: normal; /* MUDE de 'nowrap' para 'normal' */
+        font-size: 0.65rem !important; /* NOVO: Diminuído para caber o texto Feedback */
+        white-space: nowrap !important; /* ALTERADO: de normal para nowrap para não quebrar linha */
+        display: flex !important;      /* NOVO: Alinha texto e ícone do Whats */
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding-right: 20px;          /* NOVO: Reserva espaço para a seta não sumir */
         text-align: center;
+    }
+
+   /* NOVO: Garante que a seta dourada apareça no final do botão */
+    .btn .icon {
+        position: absolute !important;
+        right: 15px !important;
+        font-size: 0.7rem !important;
+        display: block !important;
     }
 
     /* Setas dentro da imagem no Mobile */
