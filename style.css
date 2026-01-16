@@ -589,24 +589,35 @@ header p {
 
     .cta-btn { width: 100%; margin-bottom: 30px; }
 
-    .btn span {
-        font-size: 0.65rem !important; /* NOVO: Diminuído para caber o texto Feedback */
-        white-space: nowrap !important; /* ALTERADO: de normal para nowrap para não quebrar linha */
-        display: flex !important;      /* NOVO: Alinha texto e ícone do Whats */
+        .btn span {
+        font-size: 0.7rem !important;
+        white-space: nowrap !important;
+        display: flex !important;
         align-items: center;
         justify-content: center;
         width: 100%;
-        padding-right: 20px;          /* NOVO: Reserva espaço para a seta não sumir */
+        /* Ajuste de ouro: removendo o padding fixo e usando margem negativa no ícone */
+        padding-right: 0 !important; 
         text-align: center;
+        position: relative;
     }
 
-   /* NOVO: Garante que a seta dourada apareça no final do botão */
+    /* Centraliza o ícone do Whats como se fosse um caractere, sem empurrar o texto */
+    .btn span .fa-whatsapp {
+        font-size: 0.9rem !important;
+        margin-left: 8px;
+        display: inline-block;
+    }
+
+    /* A seta dourada fica flutuando à direita sem atrapalhar o centro */
     .btn .icon {
         position: absolute !important;
         right: 15px !important;
+        top: 50%;
+        transform: translateY(-50%);
         font-size: 0.7rem !important;
-        display: block !important;
     }
+
 
     /* Setas dentro da imagem no Mobile */
     .nav-btn {
